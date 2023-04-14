@@ -1,9 +1,6 @@
 package controller;
 
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -23,7 +20,8 @@ public class ServerConnection extends Thread{
     public void run() {
         try (Socket socket = new Socket(ip, port)) {
             oos = new ObjectOutputStream(new DataOutputStream(socket.getOutputStream()));
-            ois = new ObjectInputStream()
+            ois = new ObjectInputStream(new DataInputStream(socket.getInputStream()));
+
 
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
