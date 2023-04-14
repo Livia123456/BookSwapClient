@@ -5,7 +5,11 @@ public class Controller {
     ServerConnection server;
 
     public Controller() {
-        gui = new GUIController();
         server = new ServerConnection("127.0.0.1", 700);
+        gui = new GUIController();
+    }
+
+    public static void main(String[] args) {
+        new Controller();
     }
 }

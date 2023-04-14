@@ -21,7 +21,7 @@ public class ServerConnection extends Thread{
         try (Socket socket = new Socket(ip, port)) {
             oos = new ObjectOutputStream(new DataOutputStream(socket.getOutputStream()));
             ois = new ObjectInputStream(new DataInputStream(socket.getInputStream()));
-
+            oos.writeObject("hello world!!");
 
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
