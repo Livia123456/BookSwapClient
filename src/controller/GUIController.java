@@ -1,5 +1,6 @@
 package controller;
 
+import model.UserInfo;
 import view.TerminalUserInterface;
 
 public class GUIController {
@@ -25,6 +26,6 @@ public class GUIController {
 
     private void logIn() {
         String[] array = view.logIn();
-
+        UserInfo userInfo = new UserInfo(array[0], array[1]);
     }
 }
