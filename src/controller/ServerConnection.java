@@ -1,5 +1,6 @@
 package controller;
 
+import model.Email;
 import model.UserInfo;
 
 import java.io.*;
@@ -39,9 +40,9 @@ public class ServerConnection extends Thread{
         }
     }
 
-    public void logIn(UserInfo userInfo) {
+    public void sendMessage(Object object) {
         try {
-            oos.writeObject(userInfo);
+            oos.writeObject(object);
             //oos.writeObject("hello");
             oos.flush();
         } catch (IOException e) {
@@ -60,9 +61,12 @@ public class ServerConnection extends Thread{
                         controller.tryLoggingIn((UserInfo) message);
                         //System.out.println("Userinfo received");
                     }
-                    if (message instanceof String) {
+                    else if (message instanceof String) {
                         System.out.println(message);
-
+                    }
+                    else if (message instanceof Email) {
+                        controller.getGui().newRegistration();
+                        System.out.println("You've got mail!");
                     }
                 }
             } catch (IOException e) {

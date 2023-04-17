@@ -35,4 +35,12 @@ public class TerminalUserInterface {
     public void menu() {
         System.out.println("Visa förstasidan här!");
     }
+
+
+
+    public String getStringInput(String message) {
+        System.out.println(message);
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
 }
