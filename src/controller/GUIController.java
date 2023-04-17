@@ -1,5 +1,6 @@
 package controller;
 
+import model.Email;
 import model.UserInfo;
 import view.TerminalUserInterface;
 
@@ -41,6 +42,10 @@ public class GUIController extends Thread {
     }
 
     private void newUser() {
+        RegistrationController regCon = controller.getRegistrationController();
+        Email email = new Email();
+        email.setEmail(view.getStringInput("Enter email: "));
+        regCon.validEmail(email);
     }
 
     private void logIn() {
@@ -49,5 +54,16 @@ public class GUIController extends Thread {
 //        System.out.println(userInfo.getEmail());
 //        System.out.println(userInfo.getPassword());
         controller.logIn(userInfo);
+    }
+
+    public void newRegistration() {
+        boolean validPassword = false;
+        String password;
+        while (!validPassword) {
+            password = view.getStringInput("Enter password");
+            validPassword = controller.getRegistrationController().validPassword(password);
+        }
+        String name = view.getStringInput("Enter username");
+
     }
 }
