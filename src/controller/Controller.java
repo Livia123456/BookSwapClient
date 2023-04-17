@@ -6,6 +6,6 @@ public class Controller {
 
     public Controller() {
         gui = new GUIController();
-        server = new ServerConnection("127.0.0.1", 700);
+        //server = new ServerConnection("127.0.0.1", 700);
     }
 }
