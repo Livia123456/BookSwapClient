@@ -22,8 +22,9 @@ public class TerminalUserInterface {
     }
 
     public int mainMenu() {
-        System.out.println("[1] Search for books");
-        System.out.println("[2] View your profile");
+        System.out.println("[1] View your profile");
+        System.out.println("[2] Search for books");
+        System.out.println("[3] Upload book");
         System.out.println("[0] Sign out");
         return getIntegerInput();
     }

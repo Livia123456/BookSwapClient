@@ -38,6 +38,9 @@ public class GUIController {
                     //Här exekveras kod som visar användarens uppgifter.
                     //Jag tänker mig något i stil med: view.showUserInfo(User user);
                     break;
+                case 3:
+                    //Här exekveras kod för uppladdning av böcker
+                    break;
                 case 0:
                     System.exit(0);
                 default:
