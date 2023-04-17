@@ -41,8 +41,8 @@ public class ServerConnection extends Thread{
 
     public void logIn(UserInfo userInfo) {
         try {
-            //oos.writeObject(userInfo);
-            oos.writeObject("hello");
+            oos.writeObject(userInfo);
+            //oos.writeObject("hello");
             oos.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -58,6 +58,7 @@ public class ServerConnection extends Thread{
                 while ((message = ois.readObject()) != null) {
                     if (message instanceof UserInfo) {
                         controller.tryLoggingIn((UserInfo) message);
+                        //System.out.println("Userinfo received");
                     }
                     if (message instanceof String) {
                         System.out.println(message);

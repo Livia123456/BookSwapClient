@@ -16,11 +16,14 @@ public class GUIController extends Thread {
     public void tryLoggingIn(UserInfo message) {
         if(message.isCorrectInfo()) {
             view.menu();
+        } else {
+            System.out.println("Incorrect email or password");
+            logInMenu();
         }
     }
 
     private void logInMenu() {
-        while (true) {
+
             switch (view.firstPage()) {
                 case 1:
                     logIn();
@@ -29,7 +32,7 @@ public class GUIController extends Thread {
                     newUser();
                     break;
             }
-        }
+
     }
 
     @Override
@@ -42,6 +45,9 @@ public class GUIController extends Thread {
 
     private void logIn() {
         String[] array = view.logIn();
-        controller.logIn(new UserInfo(array[0], array[1]));
+        UserInfo userInfo = new UserInfo(array[0].trim(), array[1].trim());
+//        System.out.println(userInfo.getEmail());
+//        System.out.println(userInfo.getPassword());
+        controller.logIn(userInfo);
     }
 }

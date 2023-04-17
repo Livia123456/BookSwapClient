@@ -10,13 +10,17 @@ public class TerminalUserInterface {
         String[] array = new String[2];
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter email: ");
-        while (!scanner.hasNext()) {
-            array[0] = scanner.next();
-            scanner = new Scanner(System.in);
+        if (scanner.hasNext()) {
+            String str = scanner.nextLine();
+            //System.out.println(str);
+            array[0] = str;
         }
+        Scanner sc = new Scanner(System.in);
         System.out.print("Enter password: ");
-        while (!scanner.hasNext()) {
-            array[1] = scanner.next();
+        if (sc.hasNext()) {
+            String str = sc.nextLine();
+            //System.out.println(str);
+            array[1] = str;
         }
         return array;
     }
