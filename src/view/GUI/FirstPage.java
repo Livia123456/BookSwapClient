@@ -1,20 +1,28 @@
 package view.GUI;
 
+import controller.Controller;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class FirstPage {
-    public void setUp(String[] args)
+public class FirstPage extends JPanel implements ActionListener {
+    private Controller controller;
+    private JTextField emailField;
+    private JPasswordField passwordField;
+    private JButton loginButton;
+    private JButton signUpButton;
+    private JLabel errorMessage;
+    public FirstPage(Controller controller) {
+        this.controller = controller;
+        setUp();
+    }
+
+    public void setUp()
     {
-        JFrame frame = new JFrame("BookSwap");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-
-        JPanel panel = new JPanel();
-        panel.setLayout(null);
+        setLayout(null);
 
         JLabel welcomeText = new JLabel("Welcome!");
         Font welcomeFont = welcomeText.getFont().deriveFont(Font.BOLD);
@@ -26,68 +34,94 @@ public class FirstPage {
         text.setFont(font);
         text.setBounds(450, 230, 300, 20);
 
-        JLabel usernameLabel = new JLabel("Username:");
-        usernameLabel.setBounds(450, 290, 100, 20);
+        JLabel emailLabel = new JLabel("Email:");
+        emailLabel.setBounds(450, 290, 100, 20);
 
-        JTextField usernameField = new JTextField(20);
+        emailField = new JTextField(20);
         //usernameField.setBackground(Color.LIGHT_GRAY);
-        usernameField.setBorder(new LineBorder(Color.GRAY));
-        usernameField.setBounds(590, 286, 200, 26);
+        emailField.setBorder(new LineBorder(Color.GRAY));
+        emailField.setBounds(590, 286, 200, 26);
 
 
         JLabel passwordLabel = new JLabel("Password:");
         passwordLabel.setBounds(450, 330, 100, 20);
 
 
-        JPasswordField passwordField = new JPasswordField(24);
+        passwordField = new JPasswordField(24);
         //passwordField.setBackground(Color.lightGray);
         passwordField.setBorder(new LineBorder(Color.GRAY));
         passwordField.setBounds(590, 325, 200, 30);
         passwordField.setEchoChar('*');
 
-        JButton loginButton = new JButton("Login");
+        loginButton = new JButton("Log In");
         loginButton.setBounds(640, 390, 100, 25);
 
-        JButton signUpButton = new JButton("Sign Up");
+        signUpButton = new JButton("Sign Up");
         signUpButton.setBounds(445, 390, 100, 25);
 
-        panel.add(welcomeText);
-        panel.add(text);
-        panel.add(usernameLabel);
-        panel.add(usernameField);
-        panel.add(passwordLabel);
-        panel.add(passwordField);
-        panel.add(loginButton);
-        panel.add(signUpButton);
-        frame.setSize(1200, 700);
-        frame.setLocationRelativeTo(null);
-        frame.add(panel);
+        errorMessage = new JLabel();
+        errorMessage.setBounds(590, 365, 200, 20);
 
-        frame.addMouseListener(new MouseListener() {
+        add(welcomeText);
+        add(text);
+        add(emailLabel);
+        add(emailField);
+        add(passwordLabel);
+        add(passwordField);
+        add(errorMessage);
+        add(loginButton);
+        add(signUpButton);
 
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                int x = e.getX();
-                int y = e.getY();
-                System.out.println("X: " + x + ", Y: " + y);
-            }
+        loginButton.addActionListener(this);
+        signUpButton.addActionListener(this);
 
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-            }
-        });
-        frame.setVisible(true);
+//        addMouseListener(new MouseListener() {
+//
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                int x = e.getX();
+//                int y = e.getY();
+//                System.out.println("X: " + x + ", Y: " + y);
+//            }
+//
+//            @Override
+//            public void mousePressed(MouseEvent e) {
+//            }
+//
+//            @Override
+//            public void mouseReleased(MouseEvent e) {
+//            }
+//
+//            @Override
+//            public void mouseEntered(MouseEvent e) {
+//            }
+//
+//            @Override
+//            public void mouseExited(MouseEvent e) {
+//            }
+//        });
     }
+
+    public static void main(String[] args) {
+        //new FirstPage(controller);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == loginButton) {
+            if(!emailField.getText().isEmpty() && passwordField.getPassword().length > 0) {
+                controller.getGui().logIn(emailField.getText(), passwordField.getPassword());
+            } else {
+                errorMessage.setText("Enter email and password");
+            }
+        } else if (e.getSource() == signUpButton) {
+
+        }
+
+    }
+
+    public void setErrorMessage(String errorText) {
+        errorMessage.setText(errorText);
+    }
+
 }

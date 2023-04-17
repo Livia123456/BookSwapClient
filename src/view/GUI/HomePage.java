@@ -1,54 +1,73 @@
 package view.GUI;
 
+import controller.Controller;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class HomePage
+public class HomePage extends JPanel implements ActionListener
 {
-    public static void main(String[] args) throws IOException {
-        JFrame frame = new JFrame("BookSwap");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    private Controller controller;
+    private JButton homeButton;
+    private JButton bookMarketButton;
+    private JButton profileButton;
+    private JButton upLoadABookButton;
+    private JButton searchForABookButton;
 
+    public HomePage() {
+        setUp();
+    }
 
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.WHITE);
-        panel.setLayout(null);
+    public void setUp() {
+        setBackground(Color.WHITE);
+        setLayout(null);
 
         JLabel bookSwap = new JLabel("BookSwap");
         bookSwap.setFont(new Font("Calibri", Font.PLAIN, 16));
         bookSwap.setBounds(24, 46, 100, 20);
 
-        JButton homeButton = new JButton("Home");
+        homeButton = new JButton("Home");
         homeButton.setBounds(116, 48, 45, 16);
+        homeButton.addActionListener(this);
 
-        JButton bookMarketButton = new JButton("BookMarket");
+        bookMarketButton = new JButton("BookMarket");
         bookMarketButton.setBounds(173, 48, 85, 16);
+        bookMarketButton.addActionListener(this);
 
-        JButton profileButton = new JButton("Profile");
+        profileButton = new JButton("Profile");
         profileButton.setBounds(269, 48, 45, 16);
+        profileButton.addActionListener(this);
 
         JLabel bookSwapBig = new JLabel("B o o k S w a p");
         bookSwapBig.setFont(new Font("Calibri", Font.PLAIN, 44));
         bookSwapBig.setBounds(390, 140, 400, 40);
         bookSwapBig.setForeground(Color.GRAY);
 
-        JButton upLoadABookButton = new JButton("Upload a book");
+        upLoadABookButton = new JButton("Upload a book");
         upLoadABookButton.setBounds(480, 200, 130, 24);
+        upLoadABookButton.addActionListener(this);
 
-        JButton searchForABookButton = new JButton("Search for a book");
+        searchForABookButton = new JButton("Search for a book");
         searchForABookButton.setBounds(470, 236, 150, 24);
+        searchForABookButton.addActionListener(this);
 
         // Load the image into a BufferedImage object
-        BufferedImage book1 = ImageIO.read(new File("files/Book1.jpg"));
-        BufferedImage book2 = ImageIO.read(new File("files/Book2.jpg"));
+        BufferedImage book1;
+        BufferedImage book2;
+        try {
+            book1 = ImageIO.read(new File("files/Book1.jpg"));
+            book2 = ImageIO.read(new File("files/Book2.jpg"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         // Create a JLabel object and set its icon to the loaded image
         JLabel bookLabel1 = new JLabel(new ImageIcon(book1));
@@ -58,46 +77,54 @@ public class HomePage
         bookLabel2.setBounds(580, 250, 600, 500);
 
 
-        panel.add(bookSwap);
-        panel.add(homeButton);
-        panel.add(bookMarketButton);
-        panel.add(profileButton);
-        panel.add(bookSwapBig);
-        panel.add(upLoadABookButton);
-        panel.add(searchForABookButton);
-        panel.add(bookLabel1);
-        panel.add(bookLabel2);
 
-        frame.setSize(1100, 700);
-        frame.setLocationRelativeTo(null);
-        frame.add(panel);
+        add(bookSwap);
+        add(homeButton);
+        add(bookMarketButton);
+        add(profileButton);
+        add(bookSwapBig);
+        add(upLoadABookButton);
+        add(searchForABookButton);
+        add(bookLabel1);
+        add(bookLabel2);
+        setVisible(false);
 
-        frame.addMouseListener(new MouseListener() {
+//        addMouseListener(new MouseListener() {
+//
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                int x = e.getX();
+//                int y = e.getY();
+//                System.out.println("X: " + x + ", Y: " + y);
+//            }
+//
+//            @Override
+//            public void mousePressed(MouseEvent e) {
+//            }
+//
+//            @Override
+//            public void mouseReleased(MouseEvent e) {
+//            }
+//
+//            @Override
+//            public void mouseEntered(MouseEvent e) {
+//            }
+//
+//            @Override
+//            public void mouseExited(MouseEvent e) {
+//            }
+//        });
+    }
 
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                int x = e.getX();
-                int y = e.getY();
-                System.out.println("X: " + x + ", Y: " + y);
-            }
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
-            @Override
-            public void mousePressed(MouseEvent e) {
-            }
+    }
 
-            @Override
-            public void mouseReleased(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-            }
-        });
-
-        frame.setVisible(true);
+    public static void main(String[] args) {
+//        MainFrame mainFrame = new MainFrame();
+//        mainFrame.homePage();
     }
 }
+
+
