@@ -3,11 +3,23 @@ package controller;
 import model.UserInfo;
 import view.TerminalUserInterface;
 
-public class GUIController {
-    TerminalUserInterface view;
+public class GUIController extends Thread {
+    private TerminalUserInterface view;
+    private Controller controller;
 
-    public GUIController() {
+    public GUIController(Controller controller) {
         this.view  = new TerminalUserInterface();
+        this.controller = controller;
+        start();
+    }
+
+    public void tryLoggingIn(UserInfo message) {
+        if(message.isCorrectInfo()) {
+            view.menu();
+        }
+    }
+
+    private void logInMenu() {
         while (true) {
             switch (view.firstPage()) {
                 case 1:
@@ -18,7 +30,11 @@ public class GUIController {
                     break;
             }
         }
+    }
 
+    @Override
+    public void run() {
+        logInMenu();
     }
 
     private void newUser() {
@@ -26,6 +42,6 @@ public class GUIController {
 
     private void logIn() {
         String[] array = view.logIn();
-        UserInfo userInfo = new UserInfo(array[0], array[1]);
+        controller.logIn(new UserInfo(array[0], array[1]));
     }
 }
