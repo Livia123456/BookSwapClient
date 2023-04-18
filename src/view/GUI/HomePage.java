@@ -87,7 +87,7 @@ public class HomePage extends JPanel implements ActionListener
         add(searchForABookButton);
         add(bookLabel1);
         add(bookLabel2);
-        setVisible(false);
+        //setVisible(false);
 
 //        addMouseListener(new MouseListener() {
 //
