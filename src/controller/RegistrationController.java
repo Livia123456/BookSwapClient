@@ -3,6 +3,8 @@ package controller;
 import model.Email;
 import model.UserInfo;
 
+import java.util.Arrays;
+
 public class RegistrationController {
     private Controller controller;
     public RegistrationController(Controller controller) {
@@ -40,7 +42,7 @@ public class RegistrationController {
     }
 
     public void newUser(String currentEmail, String userName, char[] password) {
-        UserInfo userInfo = new UserInfo(currentEmail, password.toString());
+        UserInfo userInfo = new UserInfo(currentEmail, Arrays.toString(password));
         userInfo.setName(userName);
         controller.getServer().sendMessage(userInfo);
     }
