@@ -10,7 +10,7 @@ public class MainFrame extends JFrame {
     private Controller controller;
     private FirstPage firstPage;
     private HomePage homePage;
-    //private JPanel panel;
+    private JPanel currentPanel;
 
     //public MainFrame() {
     public MainFrame(Controller controller) {
@@ -43,6 +43,9 @@ public class MainFrame extends JFrame {
     public void homePage() {
         firstPage.setVisible(false);
         homePage.setVisible(true);
+        getContentPane().removeAll();
         setContentPane(homePage);
+        getContentPane().revalidate();
+        getContentPane().repaint();
     }
 }
