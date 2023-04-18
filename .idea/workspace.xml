@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes" />
+    <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
+      <change afterPath="$PROJECT_DIR$/src/controller/BookController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/TerminalUserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/TerminalUserInterface.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,6 +61,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Controller">
+    <configuration name="BookController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controller.BookController" />
+      <module name="BookSwapClient" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Controller" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.Controller" />
       <module name="BookSwapClient" />
@@ -105,26 +126,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegistrationController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="controller.RegistrationController" />
-      <module name="BookSwapClient" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Controller" />
+        <item itemvalue="Application.BookController" />
         <item itemvalue="Application.HomePage" />
         <item itemvalue="Application.MainFrame" />
         <item itemvalue="Application.FirstPage" />
-        <item itemvalue="Application.RegistrationController" />
       </list>
     </recent_temporary>
   </component>

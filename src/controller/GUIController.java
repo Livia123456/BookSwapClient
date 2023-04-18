@@ -36,7 +36,7 @@ public class GUIController extends Thread {
 
     @Override
     public void run() {
-        this.view  = new MainFrame(controller);
+        //this.view  = new MainFrame(controller);
         //logInMenu();
     }
 
