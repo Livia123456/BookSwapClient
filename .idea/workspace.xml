@@ -105,12 +105,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegistrationController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="controller.RegistrationController" />
+    <configuration name="RegistrationPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.GUI.RegistrationPage" />
       <module name="BookSwapClient" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.*" />
+          <option name="PATTERN" value="view.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -121,10 +121,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Controller" />
+        <item itemvalue="Application.RegistrationPage" />
         <item itemvalue="Application.HomePage" />
         <item itemvalue="Application.MainFrame" />
         <item itemvalue="Application.FirstPage" />
-        <item itemvalue="Application.RegistrationController" />
       </list>
     </recent_temporary>
   </component>
@@ -166,8 +166,27 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
-          <line>48</line>
+          <line>52</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/GUI/RegistrationPage.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
+          <line>64</line>
+          <properties class="view.GUI.MainFrame" method="registerNewUser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
