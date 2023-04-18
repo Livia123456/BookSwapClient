@@ -17,7 +17,6 @@ public class RegistrationPage extends JPanel implements ActionListener {
     private JButton signUpButton;
     private JLabel errorMessage;
     private JLabel emailLabel;
-    //public RegistrationPage() {
     public RegistrationPage(Controller controller) {
         this.controller = controller.getGui();
     }
@@ -40,55 +39,34 @@ public class RegistrationPage extends JPanel implements ActionListener {
         emailLabel.setBounds(450, 290, 100, 20);
 
         emailField = new JTextField(20);
-        //usernameField.setBackground(Color.LIGHT_GRAY);
         emailField.setBorder(new LineBorder(Color.GRAY));
         emailField.setBounds(590, 286, 200, 26);
 
-
-//        JLabel passwordLabel = new JLabel("Password:");
-//        passwordLabel.setBounds(450, 330, 100, 20);
-//
-//
-//        passwordField = new JPasswordField(24);
-//        //passwordField.setBackground(Color.lightGray);
-//        passwordField.setBorder(new LineBorder(Color.GRAY));
-//        passwordField.setBounds(590, 325, 200, 30);
-//        passwordField.setEchoChar('*');
-//
-//        loginButton = new JButton("Log In");
-//        loginButton.setBounds(640, 390, 100, 25);
-
         signUpButton = new JButton("Sign Up");
-        signUpButton.setBounds(445, 390, 100, 25);
+        signUpButton.setBounds(640, 390, 100, 25);
 
         errorMessage = new JLabel();
-        errorMessage.setBounds(590, 365, 200, 20);
+        errorMessage.setBounds(590, 330, 200, 20);
+        errorMessage.setFont(font);
 
         add(welcomeText);
         add(text);
         add(emailLabel);
         add(emailField);
         add(errorMessage);
-        //add(loginButton);
         add(signUpButton);
 
-        //loginButton.addActionListener(this);
         signUpButton.addActionListener(this);
 
-    }
-
-    public static void main(String[] args) {
-//        MainFrame mf = new MainFrame();
-//        mf.registration();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == signUpButton && passwordField == null) {
-            if(!emailField.getText().isEmpty()) {
+            if(!emailField.getText().isEmpty() && controller.validEmail(emailField.getText())) {
                 controller.newUser(emailField.getText());
             } else {
-                errorMessage.setText("Please enter email");
+                errorMessage.setText("Please enter valid email address");
             }
         } else if (e.getSource() == signUpButton) {
             if(!emailField.getText().isEmpty()) {
@@ -106,15 +84,20 @@ public class RegistrationPage extends JPanel implements ActionListener {
     public void setUpUserNamePassword() {
         setLayout(null);
 
-        JLabel welcomeText = new JLabel("Welcome!");
+        JLabel welcomeText = new JLabel("Enter your information");
         Font welcomeFont = welcomeText.getFont().deriveFont(Font.BOLD);
         welcomeText.setFont(welcomeFont);
-        welcomeText.setBounds(565, 200, 100, 20);
+        welcomeText.setBounds(450, 200, 300, 20);
 
-        JLabel text = new JLabel("Enter your information");
+        JTextArea text = new JTextArea("Password must be at least 6 characters and " +
+                "\ncontain one number 0-9 and one letter a-z");
         Font font = text.getFont().deriveFont(Font.ITALIC);
         text.setFont(font);
-        text.setBounds(450, 230, 300, 20);
+        text.setBounds(450, 230, 300, 50);
+        text.setPreferredSize(new Dimension(300, 50));
+        text.setEditable(false);
+        text.setRows(2);
+        text.setOpaque(false);
 
         emailLabel = new JLabel("User name");
         emailLabel.setBounds(450, 290, 100, 20);
@@ -134,10 +117,11 @@ public class RegistrationPage extends JPanel implements ActionListener {
         passwordField.setEchoChar('*');
 
         signUpButton = new JButton("Sign Up");
-        signUpButton.setBounds(445, 390, 100, 25);
+        signUpButton.setBounds(640, 390, 100, 25);
 
         errorMessage = new JLabel();
-        errorMessage.setBounds(590, 365, 200, 20);
+        errorMessage.setBounds(450, 365, 300, 20);
+        errorMessage.setFont(font);
 
         add(welcomeText);
         add(text);

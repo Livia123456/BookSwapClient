@@ -44,7 +44,7 @@ public class GUIController extends Thread {
     public void newUser(String email) {
         RegistrationController regCon = controller.getRegistrationController();
         Email newEmail = new Email(email);
-        regCon.validEmail(newEmail);
+        regCon.checkIfEmailIsRegistered(newEmail);
     }
 
     public void logIn(String email, char[] password) {
@@ -68,5 +68,9 @@ public class GUIController extends Thread {
         }
         controller.getRegistrationController().newUser(currentEmail, userName, password);
 
+    }
+
+    public boolean validEmail(String email) {
+        return controller.getRegistrationController().validEmail(email);
     }
 }
