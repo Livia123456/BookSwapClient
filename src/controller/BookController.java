@@ -6,14 +6,17 @@ import view.TerminalUserInterface;
 public class BookController {
 
 
-    private TerminalUserInterface terminalUserInterface;
     private Book book;
     private Controller controller;
 
     public BookController(Controller controller){
-
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         this.controller = controller;
-        book = new Book("Bibeln", "Jesus kristus m.fl", "0000-01-01",
+        book = new Book("Bibeln", "Jesus kristus m.fl", "0001-01-01",
                 "Religion", null);
         uploadBook(book);
     }

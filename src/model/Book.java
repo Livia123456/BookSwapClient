@@ -1,9 +1,11 @@
 package model;
 
 import javax.swing.*;
+import java.io.Serializable;
 
-public class Book {
+public class Book implements Serializable {
 
+    private final static long serialVersionUID = 1L;
     private String title;
     private String author;
     private String release_date;

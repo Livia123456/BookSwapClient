@@ -15,7 +15,7 @@ public class Controller {
         gui = new GUIController(this);
         registrationController = new RegistrationController(this);
         bookController = new BookController(this);
-        //terminalUserInterface = new TerminalUserInterface(this);
+
     }
 
     public static void main(String[] args) {
