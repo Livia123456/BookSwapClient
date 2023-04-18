@@ -22,23 +22,10 @@ public class GUIController extends Thread {
         }
     }
 
-//    private void logInMenu() {
-//
-//            switch (view.firstPage()) {
-//                case 1:
-//                    logIn();
-//                    break;
-//                case 2:
-//                    newUser();
-//                    break;
-//            }
-//
-//    }
-
     @Override
     public void run() {
         this.view  = new MainFrame(controller);
-        //logInMenu();
+        view.uploadBookPage(); //todo detta är tillfälligt för att jag inte pallar logga in hela tiden :P
     }
 
     public void newUser(String email) {

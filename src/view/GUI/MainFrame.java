@@ -10,6 +10,7 @@ public class MainFrame extends JFrame {
     private Controller controller;
     private FirstPage firstPage;
     private HomePage homePage;
+    private UploadBookPage uploadBookPage;
     private RegistrationPage registrationPage;
     private JPanel currentPanel;
 
@@ -17,12 +18,11 @@ public class MainFrame extends JFrame {
     public MainFrame(Controller controller) {
         this.controller = controller;
         firstPage = new FirstPage(controller, this);
-        homePage = new HomePage();
+        homePage = new HomePage(controller, this);
         registrationPage = new RegistrationPage(controller);
         registrationPage.setUpEmail();
-        //registrationPage = new RegistrationPage();
+        uploadBookPage = new UploadBookPage(controller, this);
         setUp();
-
     }
 
     private void setUp() {
@@ -67,6 +67,12 @@ public class MainFrame extends JFrame {
         registrationPage.setUpUserNamePassword();
         getContentPane().removeAll();
         setContentPane(registrationPage);
+        getContentPane().revalidate();
+        getContentPane().repaint();
+    }
+    public void uploadBookPage() {
+        getContentPane().removeAll();
+        setContentPane(uploadBookPage);
         getContentPane().revalidate();
         getContentPane().repaint();
     }

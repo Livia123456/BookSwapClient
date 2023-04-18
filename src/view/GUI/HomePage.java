@@ -1,5 +1,6 @@
 package view.GUI;
 
+import com.sun.tools.javac.Main;
 import controller.Controller;
 
 import javax.imageio.ImageIO;
@@ -7,8 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -21,30 +20,17 @@ public class HomePage extends JPanel implements ActionListener
     private JButton profileButton;
     private JButton upLoadABookButton;
     private JButton searchForABookButton;
+    private MainFrame mainFrame;
 
-    public HomePage() {
+    public HomePage(Controller controller, MainFrame mainFrame) {
+        this.controller = controller;
+        this.mainFrame = mainFrame;
         setUp();
     }
 
     public void setUp() {
         setBackground(Color.WHITE);
         setLayout(null);
-
-        JLabel bookSwap = new JLabel("BookSwap");
-        bookSwap.setFont(new Font("Calibri", Font.PLAIN, 16));
-        bookSwap.setBounds(24, 46, 100, 20);
-
-        homeButton = new JButton("Home");
-        homeButton.setBounds(116, 48, 45, 16);
-        homeButton.addActionListener(this);
-
-        bookMarketButton = new JButton("BookMarket");
-        bookMarketButton.setBounds(173, 48, 85, 16);
-        bookMarketButton.addActionListener(this);
-
-        profileButton = new JButton("Profile");
-        profileButton.setBounds(269, 48, 45, 16);
-        profileButton.addActionListener(this);
 
         JLabel bookSwapBig = new JLabel("B o o k S w a p");
         bookSwapBig.setFont(new Font("Calibri", Font.PLAIN, 44));
@@ -76,54 +62,52 @@ public class HomePage extends JPanel implements ActionListener
         JLabel bookLabel2 = new JLabel(new ImageIcon(book2));
         bookLabel2.setBounds(580, 250, 600, 500);
 
-
-
-        add(bookSwap);
-        add(homeButton);
-        add(bookMarketButton);
-        add(profileButton);
         add(bookSwapBig);
         add(upLoadABookButton);
         add(searchForABookButton);
         add(bookLabel1);
         add(bookLabel2);
-        //setVisible(false);
+        menuSetUp();
+    }
 
-//        addMouseListener(new MouseListener() {
-//
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                int x = e.getX();
-//                int y = e.getY();
-//                System.out.println("X: " + x + ", Y: " + y);
-//            }
-//
-//            @Override
-//            public void mousePressed(MouseEvent e) {
-//            }
-//
-//            @Override
-//            public void mouseReleased(MouseEvent e) {
-//            }
-//
-//            @Override
-//            public void mouseEntered(MouseEvent e) {
-//            }
-//
-//            @Override
-//            public void mouseExited(MouseEvent e) {
-//            }
-//        });
+    private void menuSetUp() {
+        JLabel bookSwap = new JLabel("BookSwap");
+        bookSwap.setFont(new Font("Calibri", Font.PLAIN, 16));
+        bookSwap.setBounds(24, 46, 100, 20);
+
+        homeButton = new JButton("Home");
+        homeButton.setBounds(116, 48, 45, 16);
+        homeButton.addActionListener(this);
+
+        bookMarketButton = new JButton("BookMarket");
+        bookMarketButton.setBounds(173, 48, 85, 16);
+        bookMarketButton.addActionListener(this);
+
+        profileButton = new JButton("Profile");
+        profileButton.setBounds(269, 48, 45, 16);
+        profileButton.addActionListener(this);
+
+        add(bookSwap);
+        add(homeButton);
+        add(bookMarketButton);
+        add(profileButton);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == homeButton) {
 
-    }
+        } else if (e.getSource() == bookMarketButton) {
 
-    public static void main(String[] args) {
-//        MainFrame mainFrame = new MainFrame();
-//        mainFrame.homePage();
+        } else if (e.getSource() == profileButton) {
+
+        }
+
+        else if (e.getSource() == upLoadABookButton) {
+            mainFrame.uploadBookPage();
+        } else if (e.getSource() == searchForABookButton) {
+
+        }
     }
 }
 
