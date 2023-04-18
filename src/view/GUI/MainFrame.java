@@ -10,13 +10,17 @@ public class MainFrame extends JFrame {
     private Controller controller;
     private FirstPage firstPage;
     private HomePage homePage;
+    private RegistrationPage registrationPage;
     private JPanel currentPanel;
 
     //public MainFrame() {
     public MainFrame(Controller controller) {
         this.controller = controller;
-        firstPage = new FirstPage(controller);
+        firstPage = new FirstPage(controller, this);
         homePage = new HomePage();
+        registrationPage = new RegistrationPage(controller);
+        registrationPage.setUpEmail();
+        //registrationPage = new RegistrationPage();
         setUp();
 
     }
@@ -48,4 +52,28 @@ public class MainFrame extends JFrame {
         getContentPane().revalidate();
         getContentPane().repaint();
     }
+
+    public void registration() {
+        firstPage.setVisible(false);
+        registrationPage.setVisible(true);
+        getContentPane().removeAll();
+        setContentPane(registrationPage);
+        getContentPane().revalidate();
+        getContentPane().repaint();
+    }
+
+    public void registerNewUser() {
+        registrationPage = new RegistrationPage(controller);
+        registrationPage.setUpUserNamePassword();
+        getContentPane().removeAll();
+        setContentPane(registrationPage);
+        getContentPane().revalidate();
+        getContentPane().repaint();
+    }
+
+    public RegistrationPage getRegistrationPage() {
+        return registrationPage;
+    }
 }
+
+

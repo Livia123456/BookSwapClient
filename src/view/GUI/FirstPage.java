@@ -10,13 +10,15 @@ import java.awt.event.ActionListener;
 
 public class FirstPage extends JPanel implements ActionListener {
     private Controller controller;
+    private MainFrame mainFrame;
     private JTextField emailField;
     private JPasswordField passwordField;
     private JButton loginButton;
     private JButton signUpButton;
     private JLabel errorMessage;
-    public FirstPage(Controller controller) {
+    public FirstPage(Controller controller, MainFrame mainFrame) {
         this.controller = controller;
+        this.mainFrame = mainFrame;
         setUp();
     }
 
@@ -115,7 +117,7 @@ public class FirstPage extends JPanel implements ActionListener {
                 errorMessage.setText("Enter email and password");
             }
         } else if (e.getSource() == signUpButton) {
-
+            mainFrame.registration();
         }
 
     }

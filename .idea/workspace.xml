@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
+      <change afterPath="$PROJECT_DIR$/src/view/GUI/RegistrationPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Email.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/FirstPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/FirstPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,12 +115,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegistrationController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="controller.RegistrationController" />
+    <configuration name="RegistrationPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="view.GUI.RegistrationPage" />
       <module name="BookSwapClient" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.*" />
+          <option name="PATTERN" value="view.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -125,10 +131,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Controller" />
+        <item itemvalue="Application.RegistrationPage" />
         <item itemvalue="Application.HomePage" />
         <item itemvalue="Application.MainFrame" />
         <item itemvalue="Application.FirstPage" />
-        <item itemvalue="Application.RegistrationController" />
       </list>
     </recent_temporary>
   </component>
@@ -170,8 +176,27 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
-          <line>48</line>
+          <line>52</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/GUI/RegistrationPage.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
+          <line>64</line>
+          <properties class="view.GUI.MainFrame" method="registerNewUser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

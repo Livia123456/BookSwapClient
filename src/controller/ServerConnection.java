@@ -65,7 +65,7 @@ public class ServerConnection extends Thread{
                         System.out.println(message);
                     }
                     else if (message instanceof Email) {
-                        controller.getGui().newRegistration();
+                        controller.getGui().showRegistrationPage((Email) message);
                         System.out.println("You've got mail!");
                     }
                 }

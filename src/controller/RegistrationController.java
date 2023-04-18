@@ -1,6 +1,7 @@
 package controller;
 
 import model.Email;
+import model.UserInfo;
 
 public class RegistrationController {
     private Controller controller;
@@ -12,14 +13,13 @@ public class RegistrationController {
         controller.getServer().sendMessage(email);
     }
 
-    public boolean validPassword(String password) {
-        if(password.length() < 6) {
+    public boolean validPassword(char[] password) {
+        if(password.length < 6) {
             return false;
         }
-        char[] array = password.toCharArray();
         boolean hasDigit = false;
         boolean hasLetter = false;
-        for (char c : array) {
+        for (char c : password) {
             if (c >= 48 && c <= 57) {
                 hasDigit = true;
             }
@@ -37,5 +37,11 @@ public class RegistrationController {
 //        System.out.println(rc.validPassword("h1234"));
 //        System.out.println(rc.validPassword("1122345567"));
 //        System.out.println(rc.validPassword("hej123"));
+    }
+
+    public void newUser(String currentEmail, String userName, char[] password) {
+        UserInfo userInfo = new UserInfo(currentEmail, password.toString());
+        userInfo.setName(userName);
+        controller.getServer().sendMessage(userInfo);
     }
 }
