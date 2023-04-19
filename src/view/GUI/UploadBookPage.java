@@ -142,7 +142,7 @@ public class UploadBookPage extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == homeButton) {
-
+            controller.getGui().homePage();
         } else if (e.getSource() == bookMarketButton) {
 
         } else if (e.getSource() == profileButton) {
