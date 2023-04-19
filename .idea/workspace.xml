@@ -59,6 +59,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Controller">
+    <configuration name="BookController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controller.BookController" />
+      <module name="BookSwapClient" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Controller" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.Controller" />
       <module name="BookSwapClient" />
@@ -98,37 +111,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegistrationController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="controller.RegistrationController" />
-      <module name="BookSwapClient" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RegistrationPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="view.GUI.RegistrationPage" />
-      <module name="BookSwapClient" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="view.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Controller" />
-        <item itemvalue="Application.RegistrationController" />
-        <item itemvalue="Application.RegistrationPage" />
+        <item itemvalue="Application.BookController" />
         <item itemvalue="Application.HomePage" />
         <item itemvalue="Application.MainFrame" />
       </list>
@@ -175,24 +161,14 @@
           <line>52</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/GUI/RegistrationPage.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
-          <line>64</line>
-          <properties class="view.GUI.MainFrame" method="registerNewUser">
+          <url>file://$PROJECT_DIR$/src/controller/ServerConnection.java</url>
+          <line>42</line>
+          <properties class="controller.ServerConnection" method="sendMessage">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="11" />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

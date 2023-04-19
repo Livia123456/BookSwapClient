@@ -1,10 +1,20 @@
 package view;
 
+import controller.BookController;
+import controller.Controller;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TerminalUserInterface {
     //private Scanner scanner = new Scanner(System.in);
+
+    private BookController bookController;
+    private Controller controller;
+
+    public TerminalUserInterface(Controller controller) {
+        this.controller = controller;
+    }
 
     public String[] logIn(){
         String[] array = new String[2];
@@ -36,6 +46,14 @@ public class TerminalUserInterface {
         System.out.println("Visa förstasidan här!");
     }
 
+    public void uploadBook() {
+        String title = getStringInput("Enter title: ");
+        String author = getStringInput("Enter author: ");
+
+        //bookController = new BookController();
+
+
+    }
 
 
     public String getStringInput(String message) {

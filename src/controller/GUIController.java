@@ -26,6 +26,7 @@ public class GUIController extends Thread {
     public void run() {
         this.view  = new MainFrame(controller);
         view.uploadBookPage(); //todo detta är tillfälligt för att jag inte pallar logga in hela tiden :P
+
     }
 
     public void newUser(String email) {
