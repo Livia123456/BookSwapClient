@@ -4,6 +4,8 @@ import model.Email;
 import model.UserInfo;
 import view.GUI.MainFrame;
 
+import java.util.Arrays;
+
 public class GUIController extends Thread {
     private MainFrame view;
     private Controller controller;
@@ -36,7 +38,7 @@ public class GUIController extends Thread {
     }
 
     public void logIn(String email, char[] password) {
-        UserInfo userInfo = new UserInfo(email.trim(), password.toString().trim());
+        UserInfo userInfo = new UserInfo(email.trim(), Arrays.toString(password).trim());
         controller.logIn(userInfo);
     }
     public void showRegistrationPage(Email message) {
