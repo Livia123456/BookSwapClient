@@ -140,6 +140,7 @@ public class UploadBookPage extends JPanel implements ActionListener {
         add(profileButton);
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == homeButton) {
@@ -151,7 +152,13 @@ public class UploadBookPage extends JPanel implements ActionListener {
         }
 
         else if (e.getSource() == upLoadABookButton) {
-            Book book = new Book(titleField.getText(), authorField.getText(), yearField.getText(),
+            String year = yearField.getText();
+            if (year == "" || year.isEmpty()) {
+                year = null;
+            }
+
+
+            Book book = new Book(titleField.getText(), authorField.getText(), year,
                     genreField.getText(), null);
             controller.getBookController().uploadBook(book);
 
