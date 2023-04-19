@@ -38,6 +38,10 @@ public class Controller {
         return gui;
     }
 
+    public BookController getBookController() {
+        return bookController;
+    }
+
     public RegistrationController getRegistrationController() {
         return registrationController;
     }

@@ -1,6 +1,7 @@
 package view.GUI;
 
 import controller.Controller;
+import model.Book;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -150,6 +151,10 @@ public class UploadBookPage extends JPanel implements ActionListener {
         }
 
         else if (e.getSource() == upLoadABookButton) {
+            Book book = new Book(titleField.getText(), authorField.getText(), yearField.getText(),
+                    genreField.getText(), null);
+            controller.getBookController().uploadBook(book);
+
             //todo kalla på metod här
         }
     }
