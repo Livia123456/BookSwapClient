@@ -27,8 +27,7 @@ public class GUIController extends Thread {
     @Override
     public void run() {
         this.view  = new MainFrame(controller);
-        view.uploadBookPage(); //todo detta är tillfälligt för att jag inte pallar logga in hela tiden :P
-
+        //view.uploadBookPage(); //todo detta är tillfälligt för att jag inte pallar logga in hela tiden :P
     }
 
     public void newUser(String email) {
@@ -38,7 +37,8 @@ public class GUIController extends Thread {
     }
 
     public void logIn(String email, char[] password) {
-        UserInfo userInfo = new UserInfo(email.trim(), Arrays.toString(password).trim());
+        UserInfo userInfo = new UserInfo(email.trim(), new String(password));
+        System.out.println(userInfo.getEmail() + "\n" + userInfo.getPassword());
         controller.logIn(userInfo);
     }
     public void showRegistrationPage(Email message) {
@@ -62,5 +62,9 @@ public class GUIController extends Thread {
 
     public boolean validEmail(String email) {
         return controller.getRegistrationController().validEmail(email);
+    }
+
+    public void homePage() {
+        view.homePage();
     }
 }
