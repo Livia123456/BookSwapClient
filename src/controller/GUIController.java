@@ -37,13 +37,13 @@ public class GUIController extends Thread {
     }
 
     public void logIn(String email, char[] password) {
-        UserInfo userInfo = new UserInfo(email.trim(), new String(password));
+        UserInfo userInfo = new UserInfo(new Email(email.trim()), new String(password));
         System.out.println(userInfo.getEmail() + "\n" + userInfo.getPassword());
         controller.logIn(userInfo);
     }
-    public void showRegistrationPage(Email message) {
-        if(message.isRegistered()) {
-            currentEmail = message.getEmail();
+    public void showRegistrationPage(Email email) {
+        if(email.isRegistered()) {
+            currentEmail = email.getEmailAddress();
             view.registerNewUser();
         } else {
             view.getRegistrationPage().setErrorMessage("Email address already in use");
