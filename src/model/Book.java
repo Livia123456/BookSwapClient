@@ -78,28 +78,40 @@ public class Book implements Serializable {
             book = new Book();
         }
         public BookBuilder title(String title) {
-            book.title = title;
+            if (title != null && !title.isEmpty()) {
+                book.title = title;
+            }
             return this;
         }
         public BookBuilder author(String author) {
-            book.author = author;
+            if (author != null && !author.isEmpty()) {
+                book.author = author;
+            }
             return this;
         }
         public BookBuilder release_date(String release_date) {
-            book.release_date = release_date;
+            if (release_date != null && !release_date.isEmpty()) {
+                book.release_date = release_date;
+            }
             return this;
         }
         public BookBuilder genre(String genre) {
-            book.genre = genre;
+            if (genre != null && !genre.isEmpty()) {
+                book.genre = genre;
+            }
             return this;
         }
 
         public BookBuilder image(ImageIcon image) {
-            book.image = image;
+            if (image != null) {
+                book.image = image;
+            }
             return this;
         }
         public BookBuilder uploadedBy(UserInfo uploadedBy) {
-            book.uploadedBy = uploadedBy;
+            if (uploadedBy != null) {
+                book.uploadedBy = uploadedBy;
+            }
             return this;
         }
 

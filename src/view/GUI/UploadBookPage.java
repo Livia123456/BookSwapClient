@@ -151,11 +151,13 @@ public class UploadBookPage extends JPanel implements ActionListener {
         }
 
         else if (e.getSource() == upLoadABookButton) {
-            Book book = new Book.BookBuilder().title(titleField.getText()).author(authorField.getText())
-                    .release_date(yearField.getText()).genre(genreField.getText()).build();
-            controller.getBookController().uploadBook(book);
-
-            //todo kalla på metod här
+            boolean hasTitle = (titleField.getText() != null && !titleField.getText().isEmpty());
+            boolean hasAuthor = (authorField.getText() != null && !authorField.getText().isEmpty());
+            if(hasTitle && hasAuthor) {
+                Book book = new Book.BookBuilder().title(titleField.getText()).author(authorField.getText())
+                        .release_date(yearField.getText()).genre(genreField.getText()).build();
+                controller.getBookController().uploadBook(book);
+            }
         }
     }
 }
