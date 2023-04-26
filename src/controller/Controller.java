@@ -13,11 +13,17 @@ public class Controller {
     private RegistrationController registrationController;
     private BookController bookController;
 
+    private SearchController searchController;
+
+
     public Controller() {
         server = new ServerConnection("127.0.0.1", 700, this);
         gui = new GUIController(this);
         registrationController = new RegistrationController(this);
         bookController = new BookController(this);
+
+        searchController = new SearchController(this);
+
     }
 
     public static void main(String[] args) {
