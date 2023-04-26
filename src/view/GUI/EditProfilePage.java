@@ -15,7 +15,7 @@ import java.io.IOException;
 
 public class EditProfilePage extends ProfilePage implements ActionListener {
 
-    private GUIController controller;
+    private Controller controller;
 
     //userInfo buttons
     private JTextField userNameField;
@@ -27,7 +27,7 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
 
     public EditProfilePage(Controller controller) {
         super(controller);
-        this.controller = controller.getGui();
+        this.controller = controller;
         setUp();
     }
 
@@ -88,7 +88,12 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == update) {
-            System.out.println("update");
+
+            String newName = userNameField.getText();
+            String newPassword = passWordField.getText();
+            String newEmail = eMailField.getText();
+            controller.checkNewPersonalInfo(newName, newPassword, newEmail);
+
         } else if (e.getSource() == deleteAccount) {
            int yesNo = JOptionPane.showConfirmDialog(null, "Are you sure you want to " +
                    "delete your account?", "DELETE ACCOUNT", JOptionPane.YES_NO_OPTION);
@@ -100,4 +105,5 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
         }
 
     }
+
 }

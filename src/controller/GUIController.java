@@ -4,6 +4,7 @@ import model.Email;
 import model.UserInfo;
 import view.GUI.MainFrame;
 
+import javax.swing.*;
 import java.util.Arrays;
 
 public class GUIController extends Thread {
@@ -61,6 +62,10 @@ public class GUIController extends Thread {
 
     }
 
+    public void showErrorMessage(String errorMessage) {
+        JOptionPane.showMessageDialog(null, errorMessage);
+    }
+
     public boolean validEmail(String email) {
         return controller.getRegistrationController().validEmail(email);
     }
@@ -71,6 +76,7 @@ public class GUIController extends Thread {
 
     public void bookMarket() {
     }
+
 
     public void profilePage() {
         view.editProfile();
