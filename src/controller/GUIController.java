@@ -4,8 +4,6 @@ import model.Email;
 import model.UserInfo;
 import view.GUI.MainFrame;
 
-import java.util.Arrays;
-
 public class GUIController extends Thread {
     private MainFrame view;
     private Controller controller;
@@ -70,9 +68,34 @@ public class GUIController extends Thread {
     }
 
     public void bookMarket() {
+        view.search();
     }
 
     public void profilePage() {
         view.editProfile();
+    }
+
+    public void advanceSearch() {
+        view.advancedSearch();
+    }
+
+    public void editProfile() {
+        view.editProfile();
+    }
+
+    public void uploadBook() {
+        view.uploadABook();
+    }
+
+    public void myWishList() {
+        view.myWishList();
+    }
+
+    public void myBooks() {
+        view.myBooks();
+    }
+
+    public void signOut() {
+        //TODO nått måste hända här....
     }
 }

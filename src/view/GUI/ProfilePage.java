@@ -5,7 +5,6 @@ import controller.GUIController;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,6 +22,7 @@ public class ProfilePage extends PageWithMenu{
     private JButton myWishList;
     private JButton myBooks;
     private JButton signOut;
+    private JButton changePicture;
 
 
     public ProfilePage(Controller controller) {
@@ -60,7 +60,7 @@ public class ProfilePage extends PageWithMenu{
         bookLabel1.setBounds(-5, 80, 250, 250);
 
 
-        JButton changePicture = new JButton("Change picture"); //????
+        changePicture = new JButton("Change picture"); //????
         changePicture.setBounds(46, 340, 150, 26);
 
         add(bookLabel1);
@@ -104,16 +104,16 @@ public class ProfilePage extends PageWithMenu{
         this.editPersonalInformation.setEnabled(false);
     }
 
-    public void setUploadABook(JButton uploadABook) {
-        this.uploadABook = uploadABook;
+    public void setUploadABookFalse() {
+        this.uploadABook.setEnabled(false);
     }
 
-    public void setMyWishList(JButton myWishList) {
-        this.myWishList = myWishList;
+    public void setMyWishListFalse() {
+        this.myWishList.setEnabled(false);
     }
 
-    public void setMyBooks(JButton myBooks) {
-        this.myBooks = myBooks;
+    public void setMyBooksFalse() {
+        this.myBooks.setEnabled(false);
     }
 
     public void setSignOut(JButton signOut) {
@@ -124,9 +124,19 @@ public class ProfilePage extends PageWithMenu{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == signOut) {
-                System.out.println("Signout");
+            if (e.getSource() == editPersonalInformation) {
+                controller.editProfile();
+
+            } else if (e.getSource() == uploadABook) {
+                controller.uploadBook();
+            } else if (e.getSource() == myWishList) {
+                controller.myWishList();
+            } else if (e.getSource() == myBooks) {
+                controller.myBooks();
+            } else if (e.getSource() == signOut) {
+                System.out.println("SIGNOUT");
+                controller.signOut();
             }
         }
-    } //todo menuclass
+    }
 }
