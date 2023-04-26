@@ -12,13 +12,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 
-public class BookMarket extends PageWithMenu implements ActionListener {
+public class AdvancedSearch extends PageWithMenu implements ActionListener {
     private JButton searchButton = new JButton("Search");
 
-    public BookMarket(Controller controller) {
+    public AdvancedSearch(Controller controller) {
         super(controller);
+        setUp();
     }
 
     private JTextField titleField;
@@ -156,66 +156,67 @@ public class BookMarket extends PageWithMenu implements ActionListener {
         resultPublisher.setEnabled(false);
         resultPublisher.setBorder(new LineBorder(Color.GRAY));
         resultPublisher.setBounds(250, 260, 295, 24);
-
-        BufferedImage bookToUplad = ImageIO.read(new File("files/Book3.png"));
-
-        // Calculate the new width and height
-        int newWidth1 = 200; // Set your desired width
-        int newHeight1 = (int) Math.round((double) bookToUplad.getHeight() / bookToUplad.getWidth() * newWidth1);
-
-        // Create a new image with the new dimensions
-        BufferedImage bookToUploadResized = new BufferedImage(newWidth1, newHeight1, bookToUplad.getType());
-
-        // Scale the original image onto the new image
-        Graphics2D g2d1 = bookToUploadResized.createGraphics();
-        g2d1.drawImage(bookToUplad, 0, 0, newWidth1, newHeight1, null);
-        g2d1.dispose();
-
-        JLabel bookToUpladLabel = new JLabel(new ImageIcon(bookToUploadResized));
-        bookToUpladLabel.setHorizontalAlignment(JLabel.CENTER);
-        bookToUpladLabel.setVerticalAlignment(JLabel.CENTER);
-
-        JPanel bookPanel = new JPanel();
-        bookPanel.setBackground(Color.WHITE);
-        bookPanel.setBorder(new LineBorder(Color.GRAY, 2, true));
-        bookPanel.setBounds(505, 98, newWidth1+10, newHeight1+10);
-
-        panel1.add(resultISBN);
-        panel1.add(resultTitle);
-        panel1.add(resultAuthor);
-        panel1.add(resultGenre);
-        panel1.add(resultYear);
-        panel1.add(resultEdition);
-        panel1.add(resultPublisher);
-        bookPanel.add(bookToUpladLabel, BorderLayout.CENTER);
-        add(bookPanel);
-
-        JScrollPane scrollPane = new JScrollPane(panel1);
-        scrollPane.setBackground(Color.WHITE);
-        scrollPane.setBorder(new LineBorder(Color.PINK));
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollPane.setBounds(486, 76, 570, 554);
-
-
-        add(advancedSearch);
-        add(iSBN);
-        add(iSBNField);
-        add(title);
-        add(titleField);
-        add(author);
-        add(authorField);
-        add(genre);
-        add(genreComboBox);
-        add(year);
-        add(yearField);
-        add(edition);
-        add(editionField);
-        add(publisher);
-        add(publisherField);
-        add(bookMarket);
-        add(scrollPane);
-        add(searchButton);
+//
+//        BufferedImage bookToUplad = ImageIO.read(new File("files/Book3.png"));
+//
+//        // Calculate the new width and height
+//        int newWidth1 = 200; // Set your desired width
+//        int newHeight1 = (int) Math.round((double) bookToUplad.getHeight() / bookToUplad.getWidth() * newWidth1);
+//
+//        // Create a new image with the new dimensions
+//        BufferedImage bookToUploadResized = new BufferedImage(newWidth1, newHeight1, bookToUplad.getType());
+//
+//        // Scale the original image onto the new image
+//        Graphics2D g2d1 = bookToUploadResized.createGraphics();
+//        g2d1.drawImage(bookToUplad, 0, 0, newWidth1, newHeight1, null);
+//        g2d1.dispose();
+//
+//        JLabel bookToUpladLabel = new JLabel(new ImageIcon(bookToUploadResized));
+//        bookToUpladLabel.setHorizontalAlignment(JLabel.CENTER);
+//        bookToUpladLabel.setVerticalAlignment(JLabel.CENTER);
+//
+//        JPanel bookPanel = new JPanel();
+//        bookPanel.setBackground(Color.WHITE);
+//        bookPanel.setBorder(new LineBorder(Color.GRAY, 2, true));
+//        bookPanel.setBounds(505, 98, newWidth1+10, newHeight1+10);
+//
+//        panel1.add(resultISBN);
+//        panel1.add(resultTitle);
+//        panel1.add(resultAuthor);
+//        panel1.add(resultGenre);
+//        panel1.add(resultYear);
+//        panel1.add(resultEdition);
+//        panel1.add(resultPublisher);
+//        bookPanel.add(bookToUpladLabel, BorderLayout.CENTER);
+//        add(bookPanel);
+//
+//        JScrollPane scrollPane = new JScrollPane(panel1);
+//        scrollPane.setBackground(Color.WHITE);
+//        scrollPane.setBorder(new LineBorder(Color.PINK));
+//        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+//        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+//        scrollPane.setBounds(486, 76, 570, 554);
+//
+//
+//        add(advancedSearch);
+//        add(iSBN);
+//        add(iSBNField);
+//        add(title);
+//        add(titleField);
+//        add(author);
+//        add(authorField);
+//        add(genre);
+//        add(genreComboBox);
+//        add(year);
+//        add(yearField);
+//        add(edition);
+//        add(editionField);
+//        add(publisher);
+//        add(publisherField);
+//        add(bookMarket);
+//        add(scrollPane);
+//        add(searchButton);
+//        super.menuSetUp();
     }
 
     @Override

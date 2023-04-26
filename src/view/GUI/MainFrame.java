@@ -11,7 +11,7 @@ public class MainFrame extends JFrame {
     private UploadBookPage uploadBookPage;
     private RegistrationPage registrationPage;
     private EditProfilePage editProfilePage;
-    private BookMarket advancedSearch;
+    private AdvancedSearch advancedSearch;
     private JPanel currentPanel;
 
     //public MainFrame() {
@@ -22,7 +22,7 @@ public class MainFrame extends JFrame {
         registrationPage = new RegistrationPage(controller);
         registrationPage.setUpEmail();
         uploadBookPage = new UploadBookPage(controller, this);
-        advancedSearch = new BookMarket(controller);
+        advancedSearch = new AdvancedSearch(controller);
         setUp();
         //homePage();
         //editProfile();

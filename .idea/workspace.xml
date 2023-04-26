@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
-      <change afterPath="$PROJECT_DIR$/files/Avatar.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/Book3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/Book4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/PP.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/PP1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/PPSNABB.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/gubbe.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/files/upLoadedBook.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/BookMarket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/BookMarket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/BookMarket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/AdvancedSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/BookMarketPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/BookMarketSimple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/Search.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/EditProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/EditProfile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/MyBooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MyBooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/MyWishList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MyWishList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/UpLoadABook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/UpLoadABook.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

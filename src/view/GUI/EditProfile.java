@@ -13,7 +13,7 @@ import java.io.IOException;
 public class EditProfile implements ActionListener {
 
     private HomePage homePage;
-    private BookMarket bookMarket;
+    private AdvancedSearch bookMarket;
     private JFrame frame = new JFrame("BookSwap");
     private JButton homeButton = new JButton("Home");
     private JButton bookMarketButton = new JButton("Book market");
@@ -155,21 +155,7 @@ public class EditProfile implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == homeButton) {
-            try {
-                homePage = new HomePage();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        }
 
-        if (e.getSource() == bookMarketButton) {
-            try {
-                bookMarket = new BookMarket();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        }
 
         if (e.getSource() == editPersonalInformation) {
 

@@ -1,9 +1,7 @@
 package view.GUI;
 
-import javax.annotation.processing.RoundEnvironment;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +15,7 @@ import java.io.IOException;
 public class UpLoadABook implements ActionListener {
 
     private HomePage homePage;
-    private BookMarket bookMarket;
+    private AdvancedSearch bookMarket;
     private JFrame frame = new JFrame("BookSwap");
     private JButton homeButton = new JButton("Home");
     private JButton bookMarketButton = new JButton("Book market");
@@ -243,21 +241,9 @@ public class UpLoadABook implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == homeButton) {
-            try {
-                homePage = new HomePage();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        }
 
-        if (e.getSource() == bookMarketButton) {
-            try {
-                bookMarket = new BookMarket();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        }
+
+
 
         if (e.getSource() == editPersonalInformation) {
 
