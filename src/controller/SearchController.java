@@ -13,12 +13,10 @@ public class SearchController {
 
 
     public SearchController(Controller controller){
-
         this.controller = controller;
     }
     
     public void search(SearchObject searchObject){
-
         controller.getServer().sendMessage(searchObject);
     }
 
