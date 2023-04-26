@@ -8,6 +8,7 @@ public class Controller {
     private ServerConnection server;
     private RegistrationController registrationController;
     private BookController bookController;
+    private SearchController searchController;
     private TerminalUserInterface terminalUserInterface;
 
     public Controller() {
@@ -15,6 +16,7 @@ public class Controller {
         gui = new GUIController(this);
         registrationController = new RegistrationController(this);
         bookController = new BookController(this);
+        searchController = new SearchController(this);
 
     }
 
