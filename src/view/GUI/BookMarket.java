@@ -1,5 +1,7 @@
 package view.GUI;
 
+import controller.Controller;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -12,43 +14,25 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class BookMarket implements ActionListener {
-
-    private HomePage homePage;
-    private Profile profile;
-    private JFrame frame = new JFrame("BookSwap");
-    private JButton homeButton = new JButton("Home");
-    private JButton bookMarketButton = new JButton("Book market");
-    private JButton profileButton = new JButton("Profile");
-
+public class BookMarket extends PageWithMenu implements ActionListener {
     private JButton searchButton = new JButton("Search");
 
-    public static void main(String[] args) throws IOException {
-
-        BookMarket bookMarket = new BookMarket();
+    public BookMarket(Controller controller) {
+        super(controller);
     }
 
-    public BookMarket() throws IOException {
+    private JTextField titleField;
+    private JTextField authorField;
+    private JComboBox genreComboBox;
+    private JTextField yearField;
+    private JTextField editionField;
+    private JTextField iSBNField;
+    private JTextField publisherField;
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+    public void setUp() {
 
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.WHITE);
-        panel.setLayout(null);
-
-        JLabel bookSwap = new JLabel("BookSwap");
-        bookSwap.setFont(new Font("Calibri", Font.PLAIN, 18));
-        bookSwap.setBounds(18, 46, 100, 20);
-
-        homeButton.setBounds(116, 48, 60, 16);
-        homeButton.addActionListener(this);
-
-        bookMarketButton.setBounds(183, 48, 100, 16);
-        bookMarketButton.setEnabled(false);
-
-        profileButton.setBounds(289, 48, 60, 16);
-        profileButton.addActionListener(this);
+        setBackground(Color.WHITE);
+        setLayout(null);
 
         JLabel advancedSearch = new JLabel("Advanced search");
         advancedSearch.setFont(new Font("Calibri", Font.ITALIC, 22));
@@ -59,7 +43,7 @@ public class BookMarket implements ActionListener {
         title.setFont(new Font("Serif", Font.BOLD, 16));
         title.setBounds(30, 140, 100, 20);
 
-        JTextField titleField = new JTextField(20);
+        titleField = new JTextField(20);
         titleField.setBorder(new LineBorder(Color.GRAY));
         titleField.setBounds(153, 200, 300, 24);
 
@@ -67,15 +51,15 @@ public class BookMarket implements ActionListener {
         author.setFont(new Font("Serif", Font.BOLD, 16));
         author.setBounds(30, 200, 100, 20);
 
-        JTextField authourField = new JTextField(20);
-        authourField.setBorder(new LineBorder(Color.GRAY));
-        authourField.setBounds(153, 320, 300, 24);
+        authorField = new JTextField(20);
+        authorField.setBorder(new LineBorder(Color.GRAY));
+        authorField.setBounds(153, 320, 300, 24);
 
         JLabel genre = new JLabel("Genre:");
         genre.setFont(new Font("Serif", Font.BOLD, 16));
         genre.setBounds(30, 260, 100, 20);
 
-        JComboBox genreComboBox = new JComboBox<>(new String[]{"Fiction", "Data Science", "HCI", "Mathematics", "Language Arts", "Fine Arts", "Physical Education"});
+        genreComboBox = new JComboBox<>(new String[]{"Fiction", "Data Science", "HCI", "Mathematics", "Language Arts", "Fine Arts", "Physical Education"});
         genreComboBox.setMaximumRowCount(5);
         genreComboBox.setBackground(Color.WHITE);
         genreComboBox.setBounds(149, 260, 309, 24);
@@ -85,7 +69,7 @@ public class BookMarket implements ActionListener {
         year.setFont(new Font("Serif", Font.BOLD, 16));
         year.setBounds(30, 320, 100, 20);
 
-        JTextField yearField = new JTextField(20);
+        yearField = new JTextField(20);
         yearField.setBorder(new LineBorder(Color.GRAY));
         yearField.setBounds(153, 379, 300, 24);
 
@@ -93,7 +77,7 @@ public class BookMarket implements ActionListener {
         edition.setFont(new Font("Serif", Font.BOLD, 16));
         edition.setBounds(30, 380, 100, 20);
 
-        JTextField editionField = new JTextField(20);
+        editionField = new JTextField(20);
         editionField.setBorder(new LineBorder(Color.GRAY));
         editionField.setBounds(153, 439, 300, 24);
 
@@ -101,7 +85,7 @@ public class BookMarket implements ActionListener {
         iSBN.setFont(new Font("Serif", Font.BOLD, 16));
         iSBN.setBounds(30, 500, 100, 20);
 
-        JTextField iSBNField = new JTextField(20);
+        iSBNField = new JTextField(20);
         iSBNField.setEnabled(false);
         iSBNField.setBorder(new LineBorder(Color.GRAY));
         iSBNField.setBounds(153, 138, 300, 24);
@@ -110,7 +94,7 @@ public class BookMarket implements ActionListener {
         publisher.setFont(new Font("Serif", Font.BOLD, 16));
         publisher.setBounds(30, 440, 100, 20);
 
-        JTextField publisherField = new JTextField(20);
+        publisherField = new JTextField(20);
         publisherField.setBorder(new LineBorder(Color.GRAY));
         publisherField.setBounds(153, 499, 300, 24);
 
@@ -204,7 +188,7 @@ public class BookMarket implements ActionListener {
         panel1.add(resultEdition);
         panel1.add(resultPublisher);
         bookPanel.add(bookToUpladLabel, BorderLayout.CENTER);
-        panel.add(bookPanel);
+        add(bookPanel);
 
         JScrollPane scrollPane = new JScrollPane(panel1);
         scrollPane.setBackground(Color.WHITE);
@@ -213,52 +197,29 @@ public class BookMarket implements ActionListener {
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollPane.setBounds(486, 76, 570, 554);
 
-        panel.add(bookSwap);
-        panel.add(homeButton);
-        panel.add(bookMarketButton);
-        panel.add(profileButton);
-        panel.add(advancedSearch);
-        panel.add(iSBN);
-        panel.add(iSBNField);
-        panel.add(title);
-        panel.add(titleField);
-        panel.add(author);
-        panel.add(authourField);
-        panel.add(genre);
-        panel.add(genreComboBox);
-        panel.add(year);
-        panel.add(yearField);
-        panel.add(edition);
-        panel.add(editionField);
-        panel.add(publisher);
-        panel.add(publisherField);
-        panel.add(bookMarket);
-        panel.add(scrollPane);
-        panel.add(searchButton);
 
-        frame.setSize(1100, 700);
-        frame.setLocationRelativeTo(null);
-        frame.add(panel, BorderLayout.CENTER);
-        frame.setVisible(true);
+        add(advancedSearch);
+        add(iSBN);
+        add(iSBNField);
+        add(title);
+        add(titleField);
+        add(author);
+        add(authorField);
+        add(genre);
+        add(genreComboBox);
+        add(year);
+        add(yearField);
+        add(edition);
+        add(editionField);
+        add(publisher);
+        add(publisherField);
+        add(bookMarket);
+        add(scrollPane);
+        add(searchButton);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == homeButton) {
-            try {
-                homePage = new HomePage();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        }
-
-        if (e.getSource() == profileButton) {
-            try {
-                profile = new Profile();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        }
 
         if (e.getSource() == searchButton) {
 

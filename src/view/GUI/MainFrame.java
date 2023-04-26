@@ -11,6 +11,7 @@ public class MainFrame extends JFrame {
     private UploadBookPage uploadBookPage;
     private RegistrationPage registrationPage;
     private EditProfilePage editProfilePage;
+    private BookMarket advancedSearch;
     private JPanel currentPanel;
 
     //public MainFrame() {
@@ -21,6 +22,7 @@ public class MainFrame extends JFrame {
         registrationPage = new RegistrationPage(controller);
         registrationPage.setUpEmail();
         uploadBookPage = new UploadBookPage(controller, this);
+        advancedSearch = new BookMarket(controller);
         setUp();
         //homePage();
         //editProfile();
@@ -87,6 +89,18 @@ public class MainFrame extends JFrame {
     public void uploadBookPage() {
         getContentPane().removeAll();
         setContentPane(uploadBookPage);
+        getContentPane().revalidate();
+        getContentPane().repaint();
+    }
+
+    public void advancedSearch() {
+
+        setSize(1100, 700);
+        setLocationRelativeTo(null);
+        //add(panel, BorderLayout.CENTER);
+        setVisible(true);
+        getContentPane().removeAll();
+        setContentPane(advancedSearch);
         getContentPane().revalidate();
         getContentPane().repaint();
     }

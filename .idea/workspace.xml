@@ -10,20 +10,9 @@
       <change afterPath="$PROJECT_DIR$/files/PPSNABB.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/files/gubbe.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/files/upLoadedBook.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/GUI/BookMarketPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/GUI/BookMarketSimple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/GUI/EditProfilePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/GUI/MyBooks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/GUI/MyWishList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/GUI/PageWithMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/GUI/Profile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/GUI/ProfilePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/GUI/UpLoadABook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/BookMarket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/BookMarket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/EditProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/EditProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/HomePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,13 +168,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
-          <line>53</line>
+          <line>55</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/controller/ServerConnection.java</url>
           <line>42</line>
-          <properties class="controller.ServerConnection" method="sendMessage">
+          <properties class="controller.ServerConnection">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
