@@ -3,8 +3,6 @@ package view.GUI;
 import controller.Controller;
 
 import javax.swing.*;
-import java.awt.*;
-import java.text.CompactNumberFormat;
 
 public class MainFrame extends JFrame {
     private Controller controller;
@@ -12,6 +10,7 @@ public class MainFrame extends JFrame {
     private HomePage homePage;
     private UploadBookPage uploadBookPage;
     private RegistrationPage registrationPage;
+    private EditProfilePage editProfilePage;
     private JPanel currentPanel;
 
     //public MainFrame() {
@@ -23,6 +22,8 @@ public class MainFrame extends JFrame {
         registrationPage.setUpEmail();
         uploadBookPage = new UploadBookPage(controller, this);
         setUp();
+        //homePage();
+        //editProfile();
     }
 
     private void setUp() {
@@ -58,6 +59,19 @@ public class MainFrame extends JFrame {
         registrationPage.setVisible(true);
         getContentPane().removeAll();
         setContentPane(registrationPage);
+        getContentPane().revalidate();
+        getContentPane().repaint();
+    }
+
+    public void editProfile() {
+        setSize(1100, 700);
+//        setLocationRelativeTo(null);
+//        add(panel, BorderLayout.CENTER);
+//        setVisible(true);
+        editProfilePage = new EditProfilePage(controller);
+        editProfilePage.setVisible(true);
+        getContentPane().removeAll();
+        setContentPane(editProfilePage);
         getContentPane().revalidate();
         getContentPane().repaint();
     }

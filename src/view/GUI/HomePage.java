@@ -12,17 +12,15 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class HomePage extends JPanel implements ActionListener
+public class HomePage extends PageWithMenu implements ActionListener
 {
     private Controller controller;
-    private JButton homeButton;
-    private JButton bookMarketButton;
-    private JButton profileButton;
     private JButton upLoadABookButton;
     private JButton searchForABookButton;
     private MainFrame mainFrame;
 
     public HomePage(Controller controller, MainFrame mainFrame) {
+        super(controller);
         this.controller = controller;
         this.mainFrame = mainFrame;
         setUp();
@@ -67,43 +65,14 @@ public class HomePage extends JPanel implements ActionListener
         add(searchForABookButton);
         add(bookLabel1);
         add(bookLabel2);
-        menuSetUp();
-    }
-
-    private void menuSetUp() {
-        JLabel bookSwap = new JLabel("BookSwap");
-        bookSwap.setFont(new Font("Calibri", Font.PLAIN, 16));
-        bookSwap.setBounds(24, 46, 100, 20);
-
-        homeButton = new JButton("Home");
-        homeButton.setBounds(116, 48, 45, 16);
-        homeButton.addActionListener(this);
-
-        bookMarketButton = new JButton("BookMarket");
-        bookMarketButton.setBounds(173, 48, 85, 16);
-        bookMarketButton.addActionListener(this);
-
-        profileButton = new JButton("Profile");
-        profileButton.setBounds(269, 48, 45, 16);
-        profileButton.addActionListener(this);
-
-        add(bookSwap);
-        add(homeButton);
-        add(bookMarketButton);
-        add(profileButton);
+        super.menuSetUp();
+        super.setHomeButtonFalse();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == homeButton) {
 
-        } else if (e.getSource() == bookMarketButton) {
-
-        } else if (e.getSource() == profileButton) {
-
-        }
-
-        else if (e.getSource() == upLoadABookButton) {
+        if (e.getSource() == upLoadABookButton) {
             mainFrame.uploadBookPage();
         } else if (e.getSource() == searchForABookButton) {
 

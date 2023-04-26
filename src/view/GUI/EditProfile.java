@@ -18,6 +18,12 @@ public class EditProfile implements ActionListener {
     private JButton homeButton = new JButton("Home");
     private JButton bookMarketButton = new JButton("Book market");
     private JButton profileButton = new JButton("Profile");
+    private JButton editPersonalInformation = new JButton("Edit personal information");
+    private JButton uploadABook = new JButton("Upload a book");
+    private JButton myWishList = new JButton("My wish list");
+    private JButton myBooks = new JButton("My books");
+    private JButton signOut = new JButton("Sign out");
+    private JButton changePicture = new JButton("Change picture");
 
     public static void main(String[] args) throws IOException {
 
@@ -62,24 +68,23 @@ public class EditProfile implements ActionListener {
         JLabel bookLabel1 = new JLabel(new ImageIcon(resizedImage));
         bookLabel1.setBounds(-5, 80, 250, 250);
 
-        JButton editPersonalInformation = new JButton("Edit personal information");
         editPersonalInformation.setBounds(286, 120, 200, 26);
-        editPersonalInformation.setEnabled(false);
+        editPersonalInformation.addActionListener(this);
 
-        JButton uploadABook = new JButton("Upload a book");
         uploadABook.setBounds(286, 160, 200, 26);
+        uploadABook.addActionListener(this);
 
-        JButton myWishList = new JButton("My wish list");
         myWishList.setBounds(286, 200, 200, 26);
+        myWishList.addActionListener(this);
 
-        JButton myBooks = new JButton("My books");
         myBooks.setBounds(286, 240, 200, 26);
+        myBooks.addActionListener(this);
 
-        JButton signOut = new JButton("Sign out");
         signOut.setBounds(286, 280, 200, 26);
+        signOut.addActionListener(this);
 
-        JButton changePicture = new JButton("Change picture");
         changePicture.setBounds(46, 340, 150, 26);
+        changePicture.addActionListener(this);
 
 
         /**
@@ -119,7 +124,7 @@ public class EditProfile implements ActionListener {
 
         JButton deleteAccount = new JButton("Delete account");
         deleteAccount.setFont(new Font("Calibri", Font.BOLD, 10));
-        deleteAccount.setBounds(813, 282, 110, 20);
+        deleteAccount.setBounds(824, 282, 90, 20);
 
         panel.add(bookSwap);
         panel.add(homeButton);
@@ -149,14 +154,13 @@ public class EditProfile implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         if (e.getSource() == homeButton) {
             try {
-                
                 homePage = new HomePage();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-            frame.setVisible(false);
         }
 
         if (e.getSource() == bookMarketButton) {
@@ -165,7 +169,26 @@ public class EditProfile implements ActionListener {
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-            frame.setVisible(false);
+        }
+
+        if (e.getSource() == editPersonalInformation) {
+
+        }
+
+        if (e.getSource() == uploadABook) {
+
+        }
+
+        if (e.getSource() == myWishList) {
+
+        }
+
+        if (e.getSource() == myBooks) {
+
+        }
+
+        if (e.getSource() == signOut) {
+
         }
 
     }

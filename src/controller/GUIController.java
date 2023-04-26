@@ -68,4 +68,11 @@ public class GUIController extends Thread {
     public void homePage() {
         view.homePage();
     }
+
+    public void bookMarket() {
+    }
+
+    public void profilePage() {
+        view.editProfile();
+    }
 }
