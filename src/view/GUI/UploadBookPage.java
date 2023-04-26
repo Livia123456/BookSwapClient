@@ -170,6 +170,8 @@ public class UploadBookPage extends JPanel implements ActionListener {
                 Book book = new Book.BookBuilder().title(titleField.getText()).author(authorField.getText())
                         .release_date(yearField.getText()).genre(genreField.getText()).build();
                 controller.getBookController().uploadBook(book);
+            } else {
+                JOptionPane.showMessageDialog(null, "You need to enter both title and author");
             }
 
         }
