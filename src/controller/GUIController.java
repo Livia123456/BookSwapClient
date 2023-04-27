@@ -1,11 +1,11 @@
 package controller;
 
+import model.Book;
 import model.Email;
 import model.UserInfo;
 import view.GUI.MainFrame;
 
 import javax.swing.*;
-import java.util.Arrays;
 
 public class GUIController extends Thread {
     private MainFrame view;
@@ -105,5 +105,11 @@ public class GUIController extends Thread {
 
     public void signOut() {
         //TODO nått måste hända här....
+    }
+
+    public void bookReceived(Book book) {
+        if (book.isUploaded()) {
+            //TODO vad händer här???
+        }
     }
 }

@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/EditProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/EditProfilePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Book.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

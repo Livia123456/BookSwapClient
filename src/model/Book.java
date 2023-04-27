@@ -1,5 +1,6 @@
 package model;
 
+
 import javax.swing.*;
 import java.io.Serializable;
 
@@ -11,12 +12,27 @@ import java.io.Serializable;
 public class Book implements Serializable {
 
     private final static long serialVersionUID = 1L;
+    private int bookId;
     private String title;
     private String author;
     private String release_date;
     private String genre;
     private ImageIcon image;
+    private String edition;
+    private String publisher;
+    private String isbn;
     private UserInfo uploadedBy;
+    private boolean isUploaded = false;
+
+
+
+    public int getBook_id() {
+        return bookId;
+    }
+
+    public void setBook_id(int bookId) {
+        this.bookId = bookId;
+    }
 
     public String getTitle() {
         return title;
@@ -58,12 +74,44 @@ public class Book implements Serializable {
         this.image = image;
     }
 
+    public String getEdition() {
+        return edition;
+    }
+
+    public void setEdition(String edition) {
+        this.edition = edition;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
     public UserInfo getUploadedBy() {
         return uploadedBy;
     }
 
     public void setUploadedBy(UserInfo uploadedBy) {
         this.uploadedBy = uploadedBy;
+    }
+
+    public boolean isUploaded() {
+        return isUploaded;
+    }
+
+    public void setUploaded(boolean uploaded) {
+        isUploaded = uploaded;
     }
 
     /**
@@ -77,47 +125,58 @@ public class Book implements Serializable {
         public BookBuilder() {
             book = new Book();
         }
+
+        public BookBuilder bookId(int bookId) {
+            book.bookId = bookId;
+            return this;
+        }
+
         public BookBuilder title(String title) {
-            if (title != null && !title.isEmpty()) {
-                book.title = title;
-            }
+            book.title = title;
             return this;
         }
         public BookBuilder author(String author) {
-            if (author != null && !author.isEmpty()) {
-                book.author = author;
-            }
+            book.author = author;
             return this;
         }
         public BookBuilder release_date(String release_date) {
-            if (release_date != null && !release_date.isEmpty()) {
-                book.release_date = release_date;
-            }
+            book.release_date = release_date;
             return this;
         }
         public BookBuilder genre(String genre) {
-            if (genre != null && !genre.isEmpty()) {
-                book.genre = genre;
-            }
+            book.genre = genre;
             return this;
         }
 
         public BookBuilder image(ImageIcon image) {
-            if (image != null) {
-                book.image = image;
-            }
+            book.image = image;
             return this;
         }
+
+        public BookBuilder edition(String edition) {
+            book.edition = edition;
+            return this;
+        }
+
+        public BookBuilder publisher(String publisher) {
+            book.publisher = publisher;
+            return this;
+        }
+
+        public BookBuilder isbn(String isbn) {
+            book.isbn = isbn;
+            return this;
+        }
+
         public BookBuilder uploadedBy(UserInfo uploadedBy) {
-            if (uploadedBy != null) {
-                book.uploadedBy = uploadedBy;
-            }
+            book.uploadedBy = uploadedBy;
             return this;
         }
 
         public Book build() {
             return book;
         }
+
 
     }
 }
