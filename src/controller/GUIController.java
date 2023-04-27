@@ -113,6 +113,6 @@ public class GUIController extends Thread {
     }
 
     public void signOut() {
-        //TODO nått måste hända här....
+        controller.getGui().firstPage();
     }
 }
