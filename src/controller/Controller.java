@@ -76,9 +76,14 @@ public class Controller {
         return bookController;
     }
 
+    public SearchController getSearchController() {
+        return searchController;
+    }
+
     public RegistrationController getRegistrationController() {
         return registrationController;
     }
+
 
     public UserInfo getCurrentUser() { return currentUser; }
     public void setCurrentUser(UserInfo userInfo) { this.currentUser = userInfo; }

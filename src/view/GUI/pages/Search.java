@@ -18,6 +18,7 @@ public class Search extends PageWithMenu implements ActionListener {
 
     private JButton searchButton = new JButton("Search");
     private JButton advancedSearchButton = new JButton("Advanced search");
+    private JTextArea searchField;
     private GUIController controller;
 
     public Search(Controller controller) {
@@ -36,7 +37,7 @@ public class Search extends PageWithMenu implements ActionListener {
         searchForABookETC.setForeground(Color.GRAY);
         searchForABookETC.setBounds(119, 100, 800, 24);
 
-        JTextArea searchField = new JTextArea();
+        searchField = new JTextArea();
         searchField.setBorder(new LineBorder(Color.GRAY));
         searchField.setBounds(119, 132, 606, 22);
 
@@ -76,7 +77,8 @@ public class Search extends PageWithMenu implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == searchButton) {
-            System.out.println("Searched");
+            controller.search(searchField.getText());
+
         } else if (e.getSource() == advancedSearchButton) {
             controller.advanceSearch();
         }
