@@ -18,6 +18,7 @@ public class MyBooks extends ProfilePage implements ActionListener {
 
     public MyBooks(Controller controller) {
         super(controller);
+        setUp();
     }
 
     public void setUp() {

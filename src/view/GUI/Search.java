@@ -16,7 +16,7 @@ import java.io.IOException;
 public class Search extends PageWithMenu implements ActionListener {
 
     private JButton searchButton = new JButton("Search");
-    private JButton advancedSearchButton = new JButton("Advanced");
+    private JButton advancedSearchButton = new JButton("Advanced search");
     private GUIController controller;
 
     public Search(Controller controller) {
@@ -39,11 +39,13 @@ public class Search extends PageWithMenu implements ActionListener {
         searchField.setBorder(new LineBorder(Color.GRAY));
         searchField.setBounds(119, 132, 606, 22);
 
-        searchButton.setBounds(113, 165, 88, 26);
+        //searchButton.setBounds(113, 165, 88, 26);
+        searchButton.setBounds(735, 132, 88, 26);
         searchButton.addActionListener(this);
 
         advancedSearchButton.setFont(new Font("Calibri", Font.ITALIC, 11));
-        advancedSearchButton.setBounds(194, 165, 84, 26);
+        //advancedSearchButton.setBounds(194, 165, 84, 26);
+        advancedSearchButton.setBounds(113, 165, 130, 26);
         advancedSearchButton.addActionListener(this);
 
         try {
@@ -72,12 +74,9 @@ public class Search extends PageWithMenu implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-
         if (e.getSource() == searchButton) {
-
-        }
-
-        if (e.getSource() == advancedSearchButton); {
+            System.out.println("Searched");
+        } else if (e.getSource() == advancedSearchButton) {
             controller.advanceSearch();
         }
     }

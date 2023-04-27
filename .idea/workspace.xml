@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/AdvancedSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/AdvancedSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/EditProfile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/FirstPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/FirstPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/MyBooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MyBooks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/MyWishList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MyWishList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/Profile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/ProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/ProfilePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/Search.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/UpLoadABook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/UpLoadABook.java" afterDir="false" />
     </list>
@@ -182,28 +177,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
-          <line>101</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
-          <line>152</line>
+          <line>173</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/GUI/ProfilePage.java</url>
+          <line>130</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/GUI/Search.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

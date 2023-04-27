@@ -28,6 +28,7 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
 
     public UpLoadABook(Controller controller) {
         super(controller);
+        setUp();
     }
 
     public void setUp() {

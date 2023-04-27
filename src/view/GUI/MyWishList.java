@@ -19,6 +19,7 @@ public class MyWishList extends ProfilePage implements ActionListener {
 
    public MyWishList(Controller controller) {
        super(controller);
+       setUp();
    }
 
     public void setUp() {

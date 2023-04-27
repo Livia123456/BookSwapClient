@@ -223,7 +223,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         add(scrollPane);
         add(searchButton);
         super.menuSetUp();
-        super.setBookMarketButtonFalse();
+        //super.setBookMarketButtonFalse();
     }
 
     @Override
