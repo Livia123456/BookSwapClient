@@ -66,6 +66,16 @@ public class MainFrame extends JFrame {
         getContentPane().repaint();
     }
 
+    public void firstPage() {
+        //firstPage.setVisible(false);
+        firstPage = new FirstPage(controller, this);
+        firstPage.setVisible(true);
+        getContentPane().removeAll();
+        setContentPane(firstPage);
+        getContentPane().revalidate();
+        getContentPane().repaint();
+    }
+
     public void registration() {
         firstPage.setVisible(false);
         registrationPage.setVisible(true);

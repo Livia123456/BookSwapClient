@@ -106,6 +106,7 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
                UserInfo currentUser = controller.getCurrentUser();
                AccountToDelete accountToDelete = new AccountToDelete(currentUser);
                controller.tellServerToDeleteAccount(accountToDelete);
+               controller.getGui().firstPage();
            }
         }
 

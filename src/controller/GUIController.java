@@ -96,6 +96,8 @@ public class GUIController extends Thread {
         view.uploadABook();
     }
 
+    public void firstPage() { view.firstPage(); }
+
     public void myWishList() {
         view.myWishList();
     }
