@@ -100,7 +100,8 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
            if (yesNo == 1) { //no
                System.out.println(1);
            } else if (yesNo == 0) { //yes
-               System.out.println(0);
+               // Här börjar delete account-exekvering
+
            }
         }
 

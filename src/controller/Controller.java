@@ -12,8 +12,8 @@ public class Controller {
     private ServerConnection server;
     private RegistrationController registrationController;
     private BookController bookController;
-
     private SearchController searchController;
+    private UserInfo currentUser;
 
 
     public Controller() {
@@ -38,6 +38,14 @@ public class Controller {
         gui.tryLoggingIn(message);
     }
 
+    /**
+     * Method that checks if new account credentials are valid. If not, error message is displayed.
+     * If valid, a newUserInfo instance is sent to system server. Once it reaches the server
+     * the database will be updated.
+     * @param newName
+     * @param newPassword
+     * @param newEmail
+     */
     public void checkNewPersonalInfo(String newName, String newPassword, String newEmail) {
         char[] newPasswordArray = newPassword.toCharArray();
         boolean newPasswordIsValid = registrationController.validPassword(newPasswordArray);
@@ -49,7 +57,6 @@ public class Controller {
         } else {
             gui.showErrorMessage("Invalid e-mail or password.");
         }
-
     }
 
     public ServerConnection getServer() {
@@ -67,4 +74,7 @@ public class Controller {
     public RegistrationController getRegistrationController() {
         return registrationController;
     }
+
+    public UserInfo getCurrentUser() { return currentUser; }
+    public void setCurrentUser(UserInfo userInfo) { this.currentUser = userInfo; }
 }
