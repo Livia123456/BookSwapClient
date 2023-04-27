@@ -2,6 +2,8 @@ package view.GUI;
 
 import controller.Controller;
 import controller.GUIController;
+import model.AccountToDelete;
+import model.UserInfo;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -100,7 +102,10 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
            if (yesNo == 1) { //no
                System.out.println(1);
            } else if (yesNo == 0) { //yes
-               System.out.println(0);
+               // Här börjar delete account-exekvering
+               UserInfo currentUser = controller.getCurrentUser();
+               AccountToDelete accountToDelete = new AccountToDelete(currentUser);
+               controller.tellServerToDeleteAccount(accountToDelete);
            }
         }
 
