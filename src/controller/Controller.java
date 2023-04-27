@@ -1,5 +1,6 @@
 package controller;
 
+import model.AccountToDelete;
 import model.Email;
 import model.UserInfo;
 import model.UserInfoUpdate;
@@ -57,6 +58,10 @@ public class Controller {
         } else {
             gui.showErrorMessage("Invalid e-mail or password.");
         }
+    }
+
+    public void tellServerToDeleteAccount(AccountToDelete accountToDelete) {
+        server.sendMessage(accountToDelete);
     }
 
     public ServerConnection getServer() {

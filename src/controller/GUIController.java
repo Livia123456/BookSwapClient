@@ -20,6 +20,7 @@ public class GUIController extends Thread {
     public void tryLoggingIn(UserInfo message) {
         if(message.isCorrectInfo()) {
             view.homePage();
+            controller.setCurrentUser(message);
         } else {
             view.getFirstPage().setErrorMessage("Incorrect email or password");
         }
