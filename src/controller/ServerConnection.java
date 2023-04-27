@@ -7,6 +7,7 @@ import model.UserInfo;
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 public class ServerConnection extends Thread{
     private String ip;
@@ -69,8 +70,8 @@ public class ServerConnection extends Thread{
                         controller.getGui().showRegistrationPage((Email) message);
                         System.out.println("You've got mail!");
                     }
-                    else if (message instanceof SearchAble) {
-                        System.out.println(message);
+                    else if (message instanceof ArrayList<?>) {
+                        System.out.println(message);        //todo: display i GUI
                     }
 
                 }

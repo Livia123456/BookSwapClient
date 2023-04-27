@@ -8,6 +8,7 @@ import java.io.Serializable;
  */
 public class SearchObject implements SearchAble, Serializable {
 
+    private final static long serialVersionUID = 2L;
     private String searchString;
 
     public SearchObject(String searchString){
