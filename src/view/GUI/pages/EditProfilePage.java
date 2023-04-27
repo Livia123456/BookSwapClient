@@ -89,7 +89,7 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == update) {
-
+            System.out.println("UPDATE");
             String newName = userNameField.getText();
             String newPassword = passWordField.getText();
             String newEmail = eMailField.getText();
