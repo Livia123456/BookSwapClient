@@ -76,36 +76,6 @@ public class FirstPage extends JPanel implements ActionListener {
 
         loginButton.addActionListener(this);
         signUpButton.addActionListener(this);
-
-//        addMouseListener(new MouseListener() {
-//
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                int x = e.getX();
-//                int y = e.getY();
-//                System.out.println("X: " + x + ", Y: " + y);
-//            }
-//
-//            @Override
-//            public void mousePressed(MouseEvent e) {
-//            }
-//
-//            @Override
-//            public void mouseReleased(MouseEvent e) {
-//            }
-//
-//            @Override
-//            public void mouseEntered(MouseEvent e) {
-//            }
-//
-//            @Override
-//            public void mouseExited(MouseEvent e) {
-//            }
-//        });
-    }
-
-    public static void main(String[] args) {
-        //new FirstPage(controller);
     }
 
     @Override
