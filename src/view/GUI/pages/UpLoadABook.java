@@ -1,6 +1,8 @@
-package view.GUI;
+package view.GUI.pages;
 
 import controller.Controller;
+import model.Book;
+import view.GUI.ProfilePage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -25,9 +27,11 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
 
     private JButton uploadImage;
     private JButton uploadToBookMarket;
+    private Controller controller;
 
     public UpLoadABook(Controller controller) {
         super(controller);
+        this.controller = controller;
         setUp();
     }
 
@@ -132,6 +136,9 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
         uploadToBookMarket.setFont(new Font("Calibri", Font.PLAIN, 14));
         uploadToBookMarket.setBounds(783, 624, 180, 34);
 
+        uploadImage.addActionListener(this);
+        uploadToBookMarket.addActionListener(this);
+
 
         add(iSBN);
         add(iSBNField);
@@ -159,6 +166,15 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == uploadToBookMarket) {
+            boolean hasTitle = (titleField.getText() != null && !titleField.getText().isEmpty());
+            boolean hasAuthor = (authorField.getText() != null && !authorField.getText().isEmpty());
+            if(hasTitle && hasAuthor) {
+                Book book = new Book.BookBuilder().title(titleField.getText()).author(authorField.getText())
+                        .release_date(yearField.getText()).genre(genreComboBox.getSelectedItem().toString()).build();
+                controller.getBookController().uploadBook(book);
+            } else {
+                JOptionPane.showMessageDialog(null, "You need to enter both title and author");
+            }
 
         } else if (e.getSource() == uploadImage) {
 

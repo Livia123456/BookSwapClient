@@ -1,4 +1,4 @@
-package view.GUI;
+package view.GUI.pages;
 
 import controller.Controller;
 import controller.GUIController;

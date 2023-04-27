@@ -1,7 +1,9 @@
-package view.GUI;
+package view.GUI.pages;
 
 import com.sun.tools.javac.Main;
 import controller.Controller;
+import view.GUI.MainFrame;
+import view.GUI.PageWithMenu;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -73,7 +75,7 @@ public class HomePage extends PageWithMenu implements ActionListener
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == upLoadABookButton) {
-            mainFrame.uploadBookPage();
+            mainFrame.uploadABook();
         } else if (e.getSource() == searchForABookButton) {
 
         }

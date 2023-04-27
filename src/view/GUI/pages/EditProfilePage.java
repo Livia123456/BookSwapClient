@@ -1,9 +1,10 @@
-package view.GUI;
+package view.GUI.pages;
 
 import controller.Controller;
 import controller.GUIController;
 import model.AccountToDelete;
 import model.UserInfo;
+import view.GUI.ProfilePage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
