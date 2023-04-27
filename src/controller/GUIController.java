@@ -1,6 +1,8 @@
 package controller;
 
 import model.Email;
+import model.SearchAble;
+import model.SearchObject;
 import model.UserInfo;
 import view.GUI.MainFrame;
 
@@ -82,6 +84,10 @@ public class GUIController extends Thread {
 
     public void profilePage() {
         view.editProfile();
+    }
+
+    public void search(String search){
+        controller.getSearchController().search(new SearchObject(search));
     }
 
     public void advanceSearch() {

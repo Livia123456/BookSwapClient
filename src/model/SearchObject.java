@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Class that creates and represents a search object.
  * @author Kasper
  */
-public class SearchObject implements Serializable {
+public class SearchObject implements SearchAble, Serializable {
 
     private String searchString;
 

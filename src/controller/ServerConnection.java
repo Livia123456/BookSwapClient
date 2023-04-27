@@ -1,6 +1,7 @@
 package controller;
 
 import model.Email;
+import model.SearchAble;
 import model.UserInfo;
 
 import java.io.*;
@@ -68,6 +69,10 @@ public class ServerConnection extends Thread{
                         controller.getGui().showRegistrationPage((Email) message);
                         System.out.println("You've got mail!");
                     }
+                    else if (message instanceof SearchAble) {
+                        System.out.println(message);
+                    }
+
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);

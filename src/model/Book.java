@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Sebastian Zulj, Kasper Lindberg
  */
 
-public class Book implements Serializable {
+public class Book implements SearchAble, Serializable {
 
     private final static long serialVersionUID = 1L;
     private String title;
