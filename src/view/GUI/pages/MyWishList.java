@@ -1,6 +1,7 @@
-package view.GUI;
+package view.GUI.pages;
 
 import controller.Controller;
+import view.GUI.ProfilePage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

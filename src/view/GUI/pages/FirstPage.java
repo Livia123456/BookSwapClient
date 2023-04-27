@@ -1,6 +1,7 @@
-package view.GUI;
+package view.GUI.pages;
 
 import controller.Controller;
+import view.GUI.MainFrame;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;

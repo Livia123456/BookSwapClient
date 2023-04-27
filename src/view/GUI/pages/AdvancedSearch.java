@@ -1,6 +1,7 @@
-package view.GUI;
+package view.GUI.pages;
 
 import controller.Controller;
+import view.GUI.PageWithMenu;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

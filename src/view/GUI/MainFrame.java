@@ -1,6 +1,7 @@
 package view.GUI;
 
 import controller.Controller;
+import view.GUI.pages.*;
 
 import javax.swing.*;
 
