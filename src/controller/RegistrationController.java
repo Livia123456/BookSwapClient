@@ -42,7 +42,7 @@ public class RegistrationController {
 //    }
 
     public void newUser(String currentEmail, String userName, char[] password) {
-        UserInfo userInfo = new UserInfo(new Email(currentEmail), Arrays.toString(password));
+        UserInfo userInfo = new UserInfo(new Email(currentEmail), new String(password));
         userInfo.setName(userName);
         controller.getServer().sendMessage(userInfo);
     }

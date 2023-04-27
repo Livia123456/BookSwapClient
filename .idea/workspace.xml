@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
+    <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/AdvancedSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/AdvancedSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/EditProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/EditProfilePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/FirstPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/FirstPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/RegistrationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/MyBooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/MyBooks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/MyWishList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/MyWishList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/RegistrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/RegistrationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/Search.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/Search.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/UpLoadABook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/UpLoadABook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/EditProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/EditProfilePage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,6 +186,16 @@
           <url>file://$PROJECT_DIR$/src/view/GUI/pages/UpLoadABook.java</url>
           <line>170</line>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/Controller.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/GUI/pages/EditProfilePage.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

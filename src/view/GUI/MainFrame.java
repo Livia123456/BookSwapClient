@@ -27,7 +27,7 @@ public class MainFrame extends JFrame {
         homePage = new HomePage(controller, this);
         registrationPage = new RegistrationPage(controller);
         registrationPage.setUpEmail();
-        uploadBookPage = new UploadBookPage(controller, this);
+        //uploadBookPage = new UploadABookPage(controller, this);
         advancedSearch = new AdvancedSearch(controller);
         myBooks = new MyBooks(controller);
         search = new Search(controller);
@@ -96,14 +96,14 @@ public class MainFrame extends JFrame {
         getContentPane().revalidate();
         getContentPane().repaint();
     }
-    public void uploadBookPage() { //gammal......!!!!
-        getContentPane().removeAll();
-        setContentPane(uploadBookPage);
-        getContentPane().revalidate();
-        getContentPane().repaint();
-        uploadBookPage.repaint();
-
-    }
+//    public void uploadBookPage() { //gammal......!!!!
+//        getContentPane().removeAll();
+//        setContentPane(uploadBookPage);
+//        getContentPane().revalidate();
+//        getContentPane().repaint();
+//        uploadBookPage.repaint();
+//
+//    }
 
     public void advancedSearch() {
         advancedSearch = new AdvancedSearch(controller);
