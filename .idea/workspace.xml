@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/UpLoadABook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/UpLoadABook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/FirstPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/FirstPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/RegistrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/RegistrationPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,27 +168,27 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/GUI/pages/Search.java</url>
-          <line>77</line>
+          <line>78</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/GUI/pages/UpLoadABook.java</url>
-          <line>189</line>
+          <line>194</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/GUI/pages/UpLoadABook.java</url>
-          <line>192</line>
+          <line>197</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/Controller.java</url>
-          <line>47</line>
+          <line>56</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/GUI/pages/EditProfilePage.java</url>
-          <line>91</line>
+          <line>93</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <breakpoint type="java-exception">

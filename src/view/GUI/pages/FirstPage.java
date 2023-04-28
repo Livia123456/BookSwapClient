@@ -88,7 +88,7 @@ public class FirstPage extends JPanel implements ActionListener {
                 errorMessage.setText("Enter email and password");
             }
         } else if (e.getSource() == signUpButton) {
-            mainFrame.registration();
+            mainFrame.registration(emailField.getText());
         }
 
     }

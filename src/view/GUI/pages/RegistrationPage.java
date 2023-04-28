@@ -2,6 +2,7 @@ package view.GUI.pages;
 
 import controller.Controller;
 import controller.GUIController;
+import view.GUI.MainFrame;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -17,14 +18,82 @@ public class RegistrationPage extends JPanel implements ActionListener {
     private JButton signUpButton;
     private JLabel errorMessage;
     private JLabel emailLabel;
+    private JButton loginButton;
+    private boolean emailChecked = false;
     public RegistrationPage(Controller controller) {
         this.controller = controller.getGui();
+        setUp();
+    }
+
+    public RegistrationPage(Controller controller, String email) {
+        this(controller);
+        setUpEmail();
+        emailField.setText(email);
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == signUpButton) {
+            boolean emailIsValid = (!emailField.getText().isEmpty() && controller.validEmail(emailField.getText()));
+
+            if (!emailChecked && emailIsValid) {
+                controller.newUser(emailField.getText());
+
+            } else if(emailChecked && !emailField.getText().isEmpty()) {
+                    controller.newRegistration(emailField.getText(), passwordField.getPassword());
+            } else {
+                String errorText = emailChecked ? "Please enter username and password" : "Please enter valid email address";
+                errorMessage.setText(errorText);
+            }
+        } else if (e.getSource() == loginButton) {
+            controller.firstPage();
+        }
+
+
+//        if (e.getSource() == signUpButton && passwordField == null ) { // passwordField.getPassword() == null || new String(passwordField.getPassword()).isEmpty())
+//            if(!emailField.getText().isEmpty() && controller.validEmail(emailField.getText())) {
+//                controller.newUser(emailField.getText());
+//            } else {
+//                errorMessage.setText("Please enter valid email address");
+//            }
+//        } else if (e.getSource() == signUpButton) {
+//            if(!emailField.getText().isEmpty()) {
+//                controller.newRegistration(emailField.getText(), passwordField.getPassword());
+//            } else {
+//                errorMessage.setText("Please enter username and password");
+//            }
+//        }
+    }
+
+    public void setErrorMessage(String errorText) {
+        errorMessage.setText(errorText);
+    }
+
+    public void setUp() {
+        setLayout(null);
+
+        emailField = new JTextField(20);
+        emailField.setBorder(new LineBorder(Color.GRAY));
+        emailField.setBounds(590, 286, 200, 26);
+
+        signUpButton = new JButton("Sign Up");
+        signUpButton.setBounds(640, 390, 100, 25);
+
+        loginButton = new JButton("Back");
+        loginButton.setBounds(445, 390, 100, 25);
+
+        signUpButton.addActionListener(this);
+        signUpButton.addActionListener(this);
+
+        add(emailField);
+        add(signUpButton);
+        add(loginButton);
+
     }
 
     public void setUpEmail()
     {
-        setLayout(null);
-
         JLabel welcomeText = new JLabel("Welcome!");
         Font welcomeFont = welcomeText.getFont().deriveFont(Font.BOLD);
         welcomeText.setFont(welcomeFont);
@@ -38,51 +107,21 @@ public class RegistrationPage extends JPanel implements ActionListener {
         emailLabel = new JLabel("Email:");
         emailLabel.setBounds(450, 290, 100, 20);
 
-        emailField = new JTextField(20);
-        emailField.setBorder(new LineBorder(Color.GRAY));
-        emailField.setBounds(590, 286, 200, 26);
-
-        signUpButton = new JButton("Sign Up");
-        signUpButton.setBounds(640, 390, 100, 25);
-
         errorMessage = new JLabel();
         errorMessage.setBounds(590, 330, 200, 20);
         errorMessage.setFont(font);
 
+        signUpButton.addActionListener(this);
+        loginButton.addActionListener(this);
+
         add(welcomeText);
         add(text);
         add(emailLabel);
-        add(emailField);
         add(errorMessage);
-        add(signUpButton);
-
-        signUpButton.addActionListener(this);
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == signUpButton && passwordField == null) {
-            if(!emailField.getText().isEmpty() && controller.validEmail(emailField.getText())) {
-                controller.newUser(emailField.getText());
-            } else {
-                errorMessage.setText("Please enter valid email address");
-            }
-        } else if (e.getSource() == signUpButton) {
-            if(!emailField.getText().isEmpty()) {
-                controller.newRegistration(emailField.getText(), passwordField.getPassword());
-            } else {
-                errorMessage.setText("Please enter username and password");
-            }
-        }
-    }
-
-    public void setErrorMessage(String errorText) {
-        errorMessage.setText(errorText);
     }
 
     public void setUpUserNamePassword() {
-        setLayout(null);
+        emailChecked = true;
 
         JLabel welcomeText = new JLabel("Enter your information");
         Font welcomeFont = welcomeText.getFont().deriveFont(Font.BOLD);
@@ -102,10 +141,6 @@ public class RegistrationPage extends JPanel implements ActionListener {
         emailLabel = new JLabel("User name");
         emailLabel.setBounds(450, 290, 100, 20);
 
-        emailField = new JTextField(20);
-        //usernameField.setBackground(Color.LIGHT_GRAY);
-        emailField.setBorder(new LineBorder(Color.GRAY));
-        emailField.setBounds(590, 286, 200, 26);
 
         JLabel passwordLabel = new JLabel("Password:");
         passwordLabel.setBounds(450, 330, 100, 20);
@@ -116,9 +151,6 @@ public class RegistrationPage extends JPanel implements ActionListener {
         passwordField.setBounds(590, 325, 200, 30);
         passwordField.setEchoChar('*');
 
-        signUpButton = new JButton("Sign Up");
-        signUpButton.setBounds(640, 390, 100, 25);
-
         errorMessage = new JLabel();
         errorMessage.setBounds(450, 365, 300, 20);
         errorMessage.setFont(font);
@@ -126,12 +158,7 @@ public class RegistrationPage extends JPanel implements ActionListener {
         add(welcomeText);
         add(text);
         add(emailLabel);
-        add(emailField);
         add(errorMessage);
-        add(signUpButton);
-
-        signUpButton.addActionListener(this);
-
         add(passwordLabel);
         add(passwordField);
     }

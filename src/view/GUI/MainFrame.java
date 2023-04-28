@@ -18,24 +18,12 @@ public class MainFrame extends JFrame {
 
     private MyBooks myBooks;
     private UpLoadABook upLoadABook;
-    private JPanel currentPanel;
 
-    //public MainFrame() {
     public MainFrame(Controller controller) {
         this.controller = controller;
         firstPage = new FirstPage(controller, this);
-        homePage = new HomePage(controller, this);
-        registrationPage = new RegistrationPage(controller);
-        registrationPage.setUpEmail();
-        //uploadBookPage = new UploadABookPage(controller, this);
-        advancedSearch = new AdvancedSearch(controller);
-        myBooks = new MyBooks(controller);
-        search = new Search(controller);
-        myWishList = new MyWishList(controller);
-        upLoadABook = new UpLoadABook(controller);
         setUp();
-        //homePage();
-        //editProfile();
+        //firstPage();
     }
 
     private void setUp() {
@@ -49,16 +37,12 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        //new MainFrame();
-    }
 
     public FirstPage getFirstPage() {
         return firstPage;
     }
 
     public void homePage() {
-        //firstPage.setVisible(false);
         homePage = new HomePage(controller,this);
         homePage.setVisible(true);
         getContentPane().removeAll();
@@ -68,7 +52,6 @@ public class MainFrame extends JFrame {
     }
 
     public void firstPage() {
-        //firstPage.setVisible(false);
         firstPage = new FirstPage(controller, this);
         firstPage.setVisible(true);
         getContentPane().removeAll();
@@ -77,8 +60,10 @@ public class MainFrame extends JFrame {
         getContentPane().repaint();
     }
 
-    public void registration() {
+    public void registration(String email) {
         firstPage.setVisible(false);
+        registrationPage = new RegistrationPage(controller, email);
+        //registrationPage.setUpEmail();
         registrationPage.setVisible(true);
         getContentPane().removeAll();
         setContentPane(registrationPage);
@@ -96,21 +81,12 @@ public class MainFrame extends JFrame {
         getContentPane().revalidate();
         getContentPane().repaint();
     }
-//    public void uploadBookPage() { //gammal......!!!!
-//        getContentPane().removeAll();
-//        setContentPane(uploadBookPage);
-//        getContentPane().revalidate();
-//        getContentPane().repaint();
-//        uploadBookPage.repaint();
-//
-//    }
 
     public void advancedSearch() {
         advancedSearch = new AdvancedSearch(controller);
         advancedSearch.setVisible(true);
         setSize(1100, 700);
         setLocationRelativeTo(null);
-        //add(panel, BorderLayout.CENTER);
         setVisible(true);
         getContentPane().removeAll();
         setContentPane(advancedSearch);
@@ -134,9 +110,7 @@ public class MainFrame extends JFrame {
 
     public void editProfile() {
         setSize(1100, 700);
-//        setLocationRelativeTo(null);
-//        add(panel, BorderLayout.CENTER);
-//        setVisible(true);
+
         editProfilePage = new EditProfilePage(controller);
         editProfilePage.setVisible(true);
 
@@ -151,9 +125,6 @@ public class MainFrame extends JFrame {
 
         myWishList = new MyWishList(controller);
         myWishList.setVisible(true);
-
-//        setLocationRelativeTo(null);
-//        setVisible(true);
 
         getContentPane().removeAll();
         setContentPane(myWishList);
