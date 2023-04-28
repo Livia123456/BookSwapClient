@@ -1,5 +1,6 @@
 package controller;
 
+import model.Book;
 import model.Email;
 import model.SearchAble;
 import model.SearchObject;
@@ -7,7 +8,6 @@ import model.UserInfo;
 import view.GUI.MainFrame;
 
 import javax.swing.*;
-import java.util.Arrays;
 
 public class GUIController extends Thread {
     private MainFrame view;
@@ -114,5 +114,13 @@ public class GUIController extends Thread {
 
     public void signOut() {
         controller.getGui().firstPage();
+    }
+
+    public void bookReceived(Book book) {
+        if (book.isUploaded()) {
+            view.bookSuccessfullyUploaded();
+        } else {
+            view.bookUnableToUpload();
+        }
     }
 }

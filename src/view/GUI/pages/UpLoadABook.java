@@ -15,6 +15,7 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class UpLoadABook extends ProfilePage implements ActionListener {
     private JTextField iSBNField;
@@ -28,6 +29,7 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
     private JButton uploadImage;
     private JButton uploadToBookMarket;
     private Controller controller;
+    private JLabel errorMessage;
 
     public UpLoadABook(Controller controller) {
         super(controller);
@@ -41,18 +43,19 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
         /**
          * Edit info
          */
-
+        Font font = new Font("Calibri", Font.PLAIN, 14);
 
         JLabel iSBN = new JLabel("ISBN:");
-        iSBN.setFont(new Font("Calibri", Font.PLAIN, 14));
+        iSBN.setForeground(Color.GRAY);
+        iSBN.setFont(font);
         iSBN.setBounds(640, 120, 100, 20);
 
         iSBNField = new JTextField();
         iSBNField.setBorder(new LineBorder(Color.GRAY));
         iSBNField.setBounds(740, 122, 260, 20);
 
-        JLabel title = new JLabel("Title*:");
-        title.setFont(new Font("Calibri", Font.PLAIN, 14));
+        JLabel title = new JLabel("Title:");
+        title.setFont(font);
         title.setBounds(640, 160, 100, 20);
 
         titleField = new JTextField();
@@ -60,7 +63,7 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
         titleField.setBounds(740, 162, 260, 20);
 
         JLabel author = new JLabel("Author:");
-        author.setFont(new Font("Calibri", Font.PLAIN, 14));
+        author.setFont(font);
         author.setBounds(640, 200, 100, 20);
 
         authorField = new JTextField();
@@ -68,7 +71,8 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
         authorField.setBounds(740, 202, 260, 20);
 
         JLabel year = new JLabel("Year:");
-        year.setFont(new Font("Calibri", Font.PLAIN, 14));
+        year.setFont(font);
+        year.setForeground(Color.GRAY);
         year.setBounds(640, 240, 100, 20);
 
         yearField = new JTextField();
@@ -76,7 +80,8 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
         yearField.setBounds(740, 242, 260, 20);
 
         JLabel edition = new JLabel("Edition:");
-        edition.setFont(new Font("Calibri", Font.PLAIN, 14));
+        edition.setFont(font);
+        edition.setForeground(Color.GRAY);
         edition.setBounds(640, 280, 100, 20);
 
         editionField = new JTextField();
@@ -84,7 +89,8 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
         editionField.setBounds(740, 282, 260, 20);
 
         JLabel publisher = new JLabel("Publisher:");
-        publisher.setFont(new Font("Calibri", Font.PLAIN, 14));
+        publisher.setFont(font);
+        publisher.setForeground(Color.GRAY);
         publisher.setBounds(640, 320, 100, 20);
 
         publisherField = new JTextField();
@@ -93,14 +99,22 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
 
         JLabel genre = new JLabel("Genre:");
         genre.setFont(new Font("Calibri", Font.PLAIN, 14));
+        genre.setForeground(Color.GRAY);
         genre.setBounds(640, 360, 100, 20);
 
-        genreComboBox = new JComboBox<>(new String[]{"Fiction", "Data Science", "HCI", "Mathematics", "Language Arts", "Fine Arts", "Physical Education"});
+        genreComboBox = new JComboBox<>(new String[]{"-","Fiction", "Data Science", "HCI", "Mathematics", "Language Arts", "Fine Arts", "Physical Education"});
         genreComboBox.setMaximumRowCount(5);
         genreComboBox.setBackground(Color.WHITE);
         genreComboBox.setBounds(735, 360, 272, 24);
         genreComboBox.setVisible(true);
 
+        errorMessage = new JLabel("");
+        errorMessage.setFont(new Font("Calibri", Font.ITALIC, 14));
+        errorMessage.setBounds(660, 400, 340, 50);
+
+
+        //bilden ligger här
+        /*
         BufferedImage bookToUpload = null;
         try {
             bookToUpload = ImageIO.read(new File("files/upLoadedBook.png"));
@@ -132,11 +146,19 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
         uploadImage = new JButton("Add image");
         uploadImage.setBounds(816, 590, 112, 26);
 
+        bookPanel.add(bookToUpladLabel, BorderLayout.CENTER);
+        add(bookPanel);
+
+        uploadImage.addActionListener(this);
+
+        add(uploadImage);
+        */
+
         uploadToBookMarket = new JButton("Upload to book market");
         uploadToBookMarket.setFont(new Font("Calibri", Font.PLAIN, 14));
         uploadToBookMarket.setBounds(783, 624, 180, 34);
 
-        uploadImage.addActionListener(this);
+
         uploadToBookMarket.addActionListener(this);
 
 
@@ -154,13 +176,18 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
         add(publisherField);
         add(genre);
         add(genreComboBox);
-        bookPanel.add(bookToUpladLabel, BorderLayout.CENTER);
-        add(bookPanel);
-        add(uploadImage);
+        add(errorMessage);
+
+
         add(uploadToBookMarket);
         super.setUp();
         super.setUploadABookFalse();
 
+    }
+
+    public void setErrorMessageText(String message) {
+
+        errorMessage.setText(message);
     }
 
     @Override
@@ -173,12 +200,28 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
                         .release_date(yearField.getText()).genre(genreComboBox.getSelectedItem().toString()).build();
                 controller.getBookController().uploadBook(book);
             } else {
-                JOptionPane.showMessageDialog(null, "You need to enter both title and author");
+                errorMessage.setText("You need to enter both title and author");
+                //JOptionPane.showMessageDialog(null, "You need to enter both title and author");
             }
 
         } else if (e.getSource() == uploadImage) {
 
         }
 
+    }
+
+    public void uploadSuccessful() {
+        iSBNField.setText("");
+        titleField.setText("");
+        authorField.setText("");
+        yearField.setText("");
+        editionField.setText("");
+        publisherField.setText("");
+        genreComboBox.setSelectedIndex(0);
+        errorMessage.setText("Book successfully uploaded");
+    }
+
+    public void uploadUnsuccessful() {
+        errorMessage.setText("Unable to upload book");
     }
 }

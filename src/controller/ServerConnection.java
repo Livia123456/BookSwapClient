@@ -1,5 +1,6 @@
 package controller;
 
+import model.Book;
 import model.Email;
 import model.SearchAble;
 import model.UserInfo;
@@ -69,6 +70,8 @@ public class ServerConnection extends Thread{
                     else if (message instanceof Email) {
                         controller.getGui().showRegistrationPage((Email) message);
                         System.out.println("You've got mail!");
+                    } else if (message instanceof Book) {
+                        controller.getGui().bookReceived((Book) message);
                     }
                     else if (message instanceof ArrayList<?>) {
                         System.out.println(message);        //todo: display i GUI
