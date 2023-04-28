@@ -184,6 +184,14 @@ public class MainFrame extends JFrame {
     public RegistrationPage getRegistrationPage() {
         return registrationPage;
     }
+
+    public void bookSuccessfullyUploaded() {
+        upLoadABook.uploadSuccessful();
+    }
+
+    public void bookUnableToUpload() {
+        upLoadABook.uploadUnsuccessful();
+    }
 }
 
 

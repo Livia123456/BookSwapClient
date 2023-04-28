@@ -109,7 +109,9 @@ public class GUIController extends Thread {
 
     public void bookReceived(Book book) {
         if (book.isUploaded()) {
-            //TODO vad händer här???
+            view.bookSuccessfullyUploaded();
+        } else {
+            view.bookUnableToUpload();
         }
     }
 }
