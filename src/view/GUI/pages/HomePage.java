@@ -77,7 +77,7 @@ public class HomePage extends PageWithMenu implements ActionListener
         if (e.getSource() == upLoadABookButton) {
             mainFrame.uploadABook();
         } else if (e.getSource() == searchForABookButton) {
-
+            mainFrame.search();
         }
     }
 }
