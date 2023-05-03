@@ -37,10 +37,10 @@ public class RegistrationPage extends JPanel implements ActionListener {
         if(e.getSource() == signUpButton) {
             boolean emailIsValid = (!emailField.getText().isEmpty() && controller.validEmail(emailField.getText()));
 
-            if (!emailChecked && emailIsValid) {
+            if (!emailChecked && emailIsValid) { //check email
                 controller.newUser(emailField.getText());
 
-            } else if(emailChecked && !emailField.getText().isEmpty()) {
+            } else if(emailChecked && !emailField.getText().isEmpty()) { //register
                     controller.newRegistration(emailField.getText(), passwordField.getPassword());
             } else {
                 String errorText = emailChecked ? "Please enter username and password" : "Please enter valid email address";
