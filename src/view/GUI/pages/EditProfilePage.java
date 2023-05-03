@@ -43,7 +43,7 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
         userName.setFont(labelFont);
         userName.setBounds(640, 120, 100, 20);
 
-        userNameField = new JTextField(" Current username");
+        userNameField = new JTextField(controller.getCurrentUser().getName());
         userNameField.setFont(fieldFont);
         userNameField.setForeground(Color.GRAY);
         userNameField.setBorder(new LineBorder(Color.GRAY));
@@ -61,7 +61,7 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
         eMail.setFont(labelFont);
         eMail.setBounds(640, 200, 100, 20);
 
-        eMailField = new JTextField(" Current e-mail");
+        eMailField = new JTextField(controller.getCurrentUser().getEmail().getEmailAddress());
         eMailField.setFont(fieldFont);
         eMailField.setForeground(Color.GRAY);
         eMailField.setBorder(new LineBorder(Color.GRAY));
