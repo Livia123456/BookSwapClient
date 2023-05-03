@@ -1,5 +1,6 @@
 package controller;
 
+import model.AdvancedSearchObject;
 import model.SearchObject;
 
 
@@ -17,7 +18,14 @@ public class SearchController {
     }
     
     public void search(SearchObject searchObject){
+
         controller.getServer().sendMessage(searchObject);
+    }
+    public void search(String isbn, String title, String author, String genre, String year, String edition,
+                       String publisher) {
+        controller.getServer().sendMessage(new AdvancedSearchObject(isbn, title, author, genre, year, edition,
+                publisher));
+
     }
 
 }

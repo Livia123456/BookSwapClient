@@ -1,6 +1,7 @@
 package view.GUI.pages;
 
 import controller.Controller;
+import controller.GUIController;
 import view.GUI.PageWithMenu;
 
 import javax.imageio.ImageIO;
@@ -14,12 +15,15 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class AdvancedSearch extends PageWithMenu implements ActionListener {
     private JButton searchButton = new JButton("Search");
+    private Controller controller;
 
     public AdvancedSearch(Controller controller) {
         super(controller);
+        this.controller = controller;
         setUp();
     }
 
@@ -61,7 +65,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         genre.setFont(new Font("Serif", Font.BOLD, 16));
         genre.setBounds(30, 260, 100, 20);
 
-        genreComboBox = new JComboBox<>(new String[]{"Fiction", "Data Science", "HCI", "Mathematics", "Language Arts", "Fine Arts", "Physical Education"});
+        genreComboBox = new JComboBox<>(new String[]{"--","Fiction", "Data Science", "HCI", "Mathematics", "Language Arts", "Fine Arts", "Physical Education"});
         genreComboBox.setMaximumRowCount(5);
         genreComboBox.setBackground(Color.WHITE);
         genreComboBox.setBounds(149, 260, 309, 24);
@@ -227,10 +231,26 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         //super.setBookMarketButtonFalse();
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == searchButton) {
+
+            boolean noIsbn = (iSBNField.getText() == null || iSBNField.getText().isEmpty());
+            boolean noTitle = (titleField.getText() == null || titleField.getText().isEmpty());
+            boolean noAuthor = (authorField.getText() == null || authorField.getText().isEmpty());
+            boolean noGenre = (genreComboBox.getSelectedItem().equals("--"));
+            boolean noYear = (yearField.getText() == null ||yearField.getText().isEmpty());
+            boolean noEdition = (editionField.getText() == null || editionField.getText().isEmpty());
+            boolean noPublisher = (publisherField.getText() == null || publisherField.getText().isEmpty());
+            boolean emptyFields = (noIsbn && noTitle && noAuthor && noGenre && noYear && noEdition && noPublisher);
+            System.out.println(noGenre);
+            if (!emptyFields) {
+                controller.getSearchController().search(iSBNField.getText(), titleField.getText(), authorField.getText(),
+                        genreComboBox.getSelectedItem().toString(), yearField.getText(), editionField.getText(),
+                        publisherField.getText());
+            }
 
         }
 

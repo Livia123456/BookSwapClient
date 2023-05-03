@@ -73,6 +73,10 @@ public class ServerConnection extends Thread{
                     } else if (message instanceof Book) {
                         controller.getGui().bookReceived((Book) message);
                     }
+//                    else if (message instanceof ArrayList<Book>) {
+//
+//                    }
+
                     else if (message instanceof ArrayList<?>) {
                         System.out.println(message);        //todo: display i GUI
                     }
