@@ -15,7 +15,6 @@ public class MainFrame extends JFrame {
     private AdvancedSearch advancedSearch;
     private Search search;
     private MyWishList myWishList;
-
     private MyBooks myBooks;
     private UpLoadABook upLoadABook;
 

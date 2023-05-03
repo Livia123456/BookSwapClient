@@ -1,10 +1,6 @@
 package controller;
 
-import model.Book;
-import model.Email;
-import model.SearchAble;
-import model.SearchObject;
-import model.UserInfo;
+import model.*;
 import view.GUI.MainFrame;
 
 import javax.swing.*;
@@ -89,6 +85,12 @@ public class GUIController extends Thread {
     public void search(String search){
         controller.getSearchController().search(new SearchObject(search));
     }
+
+    public void chat() {
+       // controller.getChatController().sendMessage(new MessageObject());  //todo: gör klart
+    }
+
+    //todo: skapa även openChat() -> för ChatObjects
 
     public void advanceSearch() {
         view.advancedSearch();
