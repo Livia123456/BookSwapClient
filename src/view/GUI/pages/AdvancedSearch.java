@@ -51,7 +51,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
 
         titleField = new JTextField(20);
         titleField.setBorder(new LineBorder(Color.GRAY));
-        titleField.setBounds(153, 200, 300, 24);
+        titleField.setBounds(153, 139, 300, 24);
 
         JLabel author = new JLabel("Author:");
         author.setFont(new Font("Serif", Font.BOLD, 16));
@@ -59,7 +59,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
 
         authorField = new JTextField(20);
         authorField.setBorder(new LineBorder(Color.GRAY));
-        authorField.setBounds(153, 320, 300, 24);
+        authorField.setBounds(153, 199, 300, 24);
 
         JLabel genre = new JLabel("Genre:");
         genre.setFont(new Font("Serif", Font.BOLD, 16));
@@ -77,7 +77,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
 
         yearField = new JTextField(20);
         yearField.setBorder(new LineBorder(Color.GRAY));
-        yearField.setBounds(153, 379, 300, 24);
+        yearField.setBounds(153, 319, 300, 24);
 
         JLabel edition = new JLabel("Edition:");
         edition.setFont(new Font("Serif", Font.BOLD, 16));
@@ -85,7 +85,15 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
 
         editionField = new JTextField(20);
         editionField.setBorder(new LineBorder(Color.GRAY));
-        editionField.setBounds(153, 439, 300, 24);
+        editionField.setBounds(153, 379, 300, 24);
+
+        JLabel publisher = new JLabel("Publisher:");
+        publisher.setFont(new Font("Serif", Font.BOLD, 16));
+        publisher.setBounds(30, 440, 100, 20);
+
+        publisherField = new JTextField(20);
+        publisherField.setBorder(new LineBorder(Color.GRAY));
+        publisherField.setBounds(153, 439, 300, 24);
 
         JLabel iSBN = new JLabel("ISBN:");
         iSBN.setFont(new Font("Serif", Font.BOLD, 16));
@@ -94,15 +102,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         iSBNField = new JTextField(20);
         iSBNField.setEnabled(false);
         iSBNField.setBorder(new LineBorder(Color.GRAY));
-        iSBNField.setBounds(153, 138, 300, 24);
-
-        JLabel publisher = new JLabel("Publisher:");
-        publisher.setFont(new Font("Serif", Font.BOLD, 16));
-        publisher.setBounds(30, 440, 100, 20);
-
-        publisherField = new JTextField(20);
-        publisherField.setBorder(new LineBorder(Color.GRAY));
-        publisherField.setBounds(153, 499, 300, 24);
+        iSBNField.setBounds(153, 499, 300, 24);
 
         searchButton.setFont(new Font("Calibri", Font.PLAIN, 28));
         searchButton.setBounds(28, 540, 429, 80);
@@ -245,7 +245,6 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
             boolean noEdition = (editionField.getText() == null || editionField.getText().isEmpty());
             boolean noPublisher = (publisherField.getText() == null || publisherField.getText().isEmpty());
             boolean emptyFields = (noIsbn && noTitle && noAuthor && noGenre && noYear && noEdition && noPublisher);
-            System.out.println(noGenre);
             if (!emptyFields) {
                 controller.getSearchController().search(iSBNField.getText(), titleField.getText(), authorField.getText(),
                         genreComboBox.getSelectedItem().toString(), yearField.getText(), editionField.getText(),

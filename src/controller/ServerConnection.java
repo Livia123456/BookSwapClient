@@ -1,9 +1,6 @@
 package controller;
 
-import model.Book;
-import model.Email;
-import model.SearchAble;
-import model.UserInfo;
+import model.*;
 
 import java.io.*;
 import java.net.Socket;
@@ -62,20 +59,18 @@ public class ServerConnection extends Thread{
                 while ((message = ois.readObject()) != null) {
                     if (message instanceof UserInfo) {
                         controller.tryLoggingIn((UserInfo) message);
-                        //System.out.println("Userinfo received");
                     }
                     else if (message instanceof String) {
                         System.out.println(message);
                     }
                     else if (message instanceof Email) {
                         controller.getGui().showRegistrationPage((Email) message);
-                        System.out.println("You've got mail!");
                     } else if (message instanceof Book) {
                         controller.getGui().bookReceived((Book) message);
                     }
-//                    else if (message instanceof ArrayList<Book>) {
-//
-//                    }
+                    else if (message instanceof AdvancedSearchResult) {
+                        controller.getGui().displayAdvancedSearchResult((AdvancedSearchResult) message);
+                    }
 
                     else if (message instanceof ArrayList<?>) {
                         System.out.println(message);        //todo: display i GUI
