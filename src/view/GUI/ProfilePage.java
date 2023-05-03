@@ -133,7 +133,9 @@ public class ProfilePage extends PageWithMenu{
                 controller.myWishList();
             } else if (e.getSource() == myBooks) {
                 //controller.myBooks();
+                //Här printas bara arraylisten med användarens uppladdade böcker.
                 System.out.println(controller.getController().getCurrentUser().getCurrentUsersUploadedBooks());
+                //todo: Visa upp böckerna som lagras i listan i GUI.
             } else if (e.getSource() == signOut) {
                 System.out.println("SIGNOUT");
                 controller.signOut();
