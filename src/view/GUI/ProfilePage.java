@@ -132,7 +132,8 @@ public class ProfilePage extends PageWithMenu{
             } else if (e.getSource() == myWishList) {
                 controller.myWishList();
             } else if (e.getSource() == myBooks) {
-                controller.myBooks();
+                //controller.myBooks();
+                System.out.println(controller.getController().getCurrentUser().getCurrentUsersUploadedBooks());
             } else if (e.getSource() == signOut) {
                 System.out.println("SIGNOUT");
                 controller.signOut();

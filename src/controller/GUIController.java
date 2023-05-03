@@ -109,7 +109,12 @@ public class GUIController extends Thread {
     }
 
     public void myBooks() {
+
         view.myBooks();
+    }
+
+    public Controller getController() {
+        return controller;
     }
 
     public void signOut() {

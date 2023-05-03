@@ -1,12 +1,10 @@
 package controller;
 
-import model.AccountToDelete;
-import model.Email;
-import model.UserInfo;
-import model.UserInfoUpdate;
+import model.*;
 import view.TerminalUserInterface;
 
 import java.rmi.server.RMIClassLoaderSpi;
+import java.util.ArrayList;
 
 public class Controller {
     private GUIController gui;
@@ -25,6 +23,14 @@ public class Controller {
 
         searchController = new SearchController(this);
 
+    }
+
+    //Används bara för att testa att användarens upladdade böcker skickas från klient till server
+    public void printUsersBooksToTerminal() {
+        ArrayList<Book> books = currentUser.getCurrentUsersUploadedBooks();
+        for(Book book: books) {
+            System.out.println(book);
+        }
     }
 
     public static void main(String[] args) {

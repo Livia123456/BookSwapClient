@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Class to store information about a user.
@@ -15,10 +16,21 @@ public class UserInfo implements Serializable {
     private int userId;
     private boolean correctInfo = false;
 
+    public void setCurrentUsersUploadedBooks(ArrayList<Book> currentUsersUploadedBooks) {
+        this.currentUsersUploadedBooks = currentUsersUploadedBooks;
+    }
+
+    public ArrayList<Book> getCurrentUsersUploadedBooks() {
+        return currentUsersUploadedBooks;
+    }
+
+    private ArrayList<Book> currentUsersUploadedBooks;
+
 
     public UserInfo(Email email, String password) {
         this.email = email;
         this.password = password;
+        this.currentUsersUploadedBooks = new ArrayList<>();
     }
 
     public Email getEmail() {
