@@ -1,6 +1,7 @@
 package view.GUI.pages;
 
 import controller.Controller;
+import controller.GUIController;
 import view.GUI.PageWithMenu;
 
 import javax.imageio.ImageIO;
@@ -14,12 +15,15 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class AdvancedSearch extends PageWithMenu implements ActionListener {
     private JButton searchButton = new JButton("Search");
+    private Controller controller;
 
     public AdvancedSearch(Controller controller) {
         super(controller);
+        this.controller = controller;
         setUp();
     }
 
@@ -47,7 +51,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
 
         titleField = new JTextField(20);
         titleField.setBorder(new LineBorder(Color.GRAY));
-        titleField.setBounds(153, 200, 300, 24);
+        titleField.setBounds(153, 139, 300, 24);
 
         JLabel author = new JLabel("Author:");
         author.setFont(new Font("Serif", Font.BOLD, 16));
@@ -55,13 +59,13 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
 
         authorField = new JTextField(20);
         authorField.setBorder(new LineBorder(Color.GRAY));
-        authorField.setBounds(153, 320, 300, 24);
+        authorField.setBounds(153, 199, 300, 24);
 
         JLabel genre = new JLabel("Genre:");
         genre.setFont(new Font("Serif", Font.BOLD, 16));
         genre.setBounds(30, 260, 100, 20);
 
-        genreComboBox = new JComboBox<>(new String[]{"Fiction", "Data Science", "HCI", "Mathematics", "Language Arts", "Fine Arts", "Physical Education"});
+        genreComboBox = new JComboBox<>(new String[]{"--","Fiction", "Data Science", "HCI", "Mathematics", "Language Arts", "Fine Arts", "Physical Education"});
         genreComboBox.setMaximumRowCount(5);
         genreComboBox.setBackground(Color.WHITE);
         genreComboBox.setBounds(149, 260, 309, 24);
@@ -73,7 +77,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
 
         yearField = new JTextField(20);
         yearField.setBorder(new LineBorder(Color.GRAY));
-        yearField.setBounds(153, 379, 300, 24);
+        yearField.setBounds(153, 319, 300, 24);
 
         JLabel edition = new JLabel("Edition:");
         edition.setFont(new Font("Serif", Font.BOLD, 16));
@@ -81,7 +85,15 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
 
         editionField = new JTextField(20);
         editionField.setBorder(new LineBorder(Color.GRAY));
-        editionField.setBounds(153, 439, 300, 24);
+        editionField.setBounds(153, 379, 300, 24);
+
+        JLabel publisher = new JLabel("Publisher:");
+        publisher.setFont(new Font("Serif", Font.BOLD, 16));
+        publisher.setBounds(30, 440, 100, 20);
+
+        publisherField = new JTextField(20);
+        publisherField.setBorder(new LineBorder(Color.GRAY));
+        publisherField.setBounds(153, 439, 300, 24);
 
         JLabel iSBN = new JLabel("ISBN:");
         iSBN.setFont(new Font("Serif", Font.BOLD, 16));
@@ -90,15 +102,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         iSBNField = new JTextField(20);
         iSBNField.setEnabled(false);
         iSBNField.setBorder(new LineBorder(Color.GRAY));
-        iSBNField.setBounds(153, 138, 300, 24);
-
-        JLabel publisher = new JLabel("Publisher:");
-        publisher.setFont(new Font("Serif", Font.BOLD, 16));
-        publisher.setBounds(30, 440, 100, 20);
-
-        publisherField = new JTextField(20);
-        publisherField.setBorder(new LineBorder(Color.GRAY));
-        publisherField.setBounds(153, 499, 300, 24);
+        iSBNField.setBounds(153, 499, 300, 24);
 
         searchButton.setFont(new Font("Calibri", Font.PLAIN, 28));
         searchButton.setBounds(28, 540, 429, 80);
@@ -227,10 +231,25 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         //super.setBookMarketButtonFalse();
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == searchButton) {
+
+            boolean noIsbn = (iSBNField.getText() == null || iSBNField.getText().isEmpty());
+            boolean noTitle = (titleField.getText() == null || titleField.getText().isEmpty());
+            boolean noAuthor = (authorField.getText() == null || authorField.getText().isEmpty());
+            boolean noGenre = (genreComboBox.getSelectedItem().equals("--"));
+            boolean noYear = (yearField.getText() == null ||yearField.getText().isEmpty());
+            boolean noEdition = (editionField.getText() == null || editionField.getText().isEmpty());
+            boolean noPublisher = (publisherField.getText() == null || publisherField.getText().isEmpty());
+            boolean emptyFields = (noIsbn && noTitle && noAuthor && noGenre && noYear && noEdition && noPublisher);
+            if (!emptyFields) {
+                controller.getSearchController().search(iSBNField.getText(), titleField.getText(), authorField.getText(),
+                        genreComboBox.getSelectedItem().toString(), yearField.getText(), editionField.getText(),
+                        publisherField.getText());
+            }
 
         }
 

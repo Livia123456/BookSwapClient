@@ -1,10 +1,6 @@
 package controller;
 
-import model.Book;
-import model.Email;
-import model.SearchAble;
-import model.SearchObject;
-import model.UserInfo;
+import model.*;
 import view.GUI.MainFrame;
 
 import javax.swing.*;
@@ -21,8 +17,8 @@ public class GUIController extends Thread {
 
     public void tryLoggingIn(UserInfo message) {
         if(message.isCorrectInfo()) {
-            view.homePage();
             controller.setCurrentUser(message);
+            view.homePage();
         } else {
             view.getFirstPage().setErrorMessage("Incorrect email or password");
         }
@@ -122,5 +118,17 @@ public class GUIController extends Thread {
         } else {
             view.bookUnableToUpload();
         }
+    }
+
+
+    public void displayAdvancedSearchResult(AdvancedSearchResult result) {
+        System.out.println("Sökresultat mottaget");
+        if(result.getBooks().size() == 0) {
+            //show error message
+
+        } else {
+            //display books
+        }
+
     }
 }
