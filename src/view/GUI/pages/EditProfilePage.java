@@ -98,7 +98,7 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
             controller.checkNewPersonalInfo(newName, newPassword, newEmail);
 
         } else if (e.getSource() == deleteAccount) {
-           int yesNo = JOptionPane.showConfirmDialog(null, "Are you sure you want to " +
+            int yesNo = JOptionPane.showConfirmDialog(null, "Are you sure you want to " +
                    "delete your account?", "DELETE ACCOUNT", JOptionPane.YES_NO_OPTION);
            if (yesNo == 1) { //no
                System.out.println(1);
