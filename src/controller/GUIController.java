@@ -86,6 +86,12 @@ public class GUIController extends Thread {
         controller.getSearchController().search(new SearchObject(search));
     }
 
+    public void chat() {
+       // controller.getChatController().sendMessage(new MessageObject());  //todo: gör klart
+    }
+
+    //todo: skapa även openChat() -> för ChatObjects
+
     public void advanceSearch() {
         view.advancedSearch();
     }
