@@ -95,8 +95,6 @@ public class ChatGui extends JFrame {
         }
         profilePanel.add(Box.createVerticalGlue());
 
-
-
         JPanel chatPanel = new JPanel(new BorderLayout());
         chatArea = new JTextArea(20, 50);
         chatArea.setText("New chat with user.getName()?...\n\n");
