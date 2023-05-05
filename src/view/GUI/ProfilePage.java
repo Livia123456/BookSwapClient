@@ -2,6 +2,7 @@ package view.GUI;
 
 import controller.Controller;
 import controller.GUIController;
+import model.Book;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -11,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ProfilePage extends PageWithMenu{
  private GUIController controller;
@@ -133,7 +135,11 @@ public class ProfilePage extends PageWithMenu{
                 controller.myWishList();
             } else if (e.getSource() == myBooks) {
                 //controller.myBooks();
-                System.out.println(controller.getController().getCurrentUser().getCurrentUsersUploadedBooks());
+                ArrayList<Book> books = controller.getController().getCurrentUser().getCurrentUsersUploadedBooks();
+                //TODO: Böckerna som den inloggade användaren har laddat upp tidigare ska skickas till GUI.
+                for(int i = 0; i < books.size(); i++) {
+                    System.out.println(books.get(i).getTitle());
+                }
             } else if (e.getSource() == signOut) {
                 System.out.println("SIGNOUT");
                 controller.signOut();

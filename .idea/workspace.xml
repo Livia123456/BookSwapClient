@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UserInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/ProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/ProfilePage.java" afterDir="false" />
     </list>
@@ -187,7 +185,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/Controller.java</url>
-          <line>62</line>
+          <line>61</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

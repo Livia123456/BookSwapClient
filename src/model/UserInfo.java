@@ -15,6 +15,8 @@ public class UserInfo implements Serializable {
     private String name;
     private int userId;
     private boolean correctInfo = false;
+    private ArrayList<Book> currentUsersUploadedBooks;
+
 
     public void setCurrentUsersUploadedBooks(ArrayList<Book> currentUsersUploadedBooks) {
         this.currentUsersUploadedBooks = currentUsersUploadedBooks;
@@ -23,8 +25,6 @@ public class UserInfo implements Serializable {
     public ArrayList<Book> getCurrentUsersUploadedBooks() {
         return currentUsersUploadedBooks;
     }
-
-    private ArrayList<Book> currentUsersUploadedBooks;
 
 
     public UserInfo(Email email, String password) {
