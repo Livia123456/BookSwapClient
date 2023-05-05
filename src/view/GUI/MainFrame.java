@@ -22,14 +22,15 @@ public class MainFrame extends JFrame {
         this.controller = controller;
         firstPage = new FirstPage(controller, this);
         setUp();
-        //firstPage();
+        homePage();
+        // firstPage();
     }
 
     private void setUp() {
         setTitle("BookSwap");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-        setExtendedState(JFrame.MAXIMIZED_BOTH);//??
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);//??
         setSize(1200, 700);
         setLocationRelativeTo(null);
         setContentPane(firstPage);

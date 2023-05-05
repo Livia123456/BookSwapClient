@@ -73,7 +73,13 @@ public class ServerConnection extends Thread{
                     }
 
                     else if (message instanceof ArrayList<?>) {
-                        System.out.println(message);        //todo: display i GUI
+                        //System.out.println(message);        //todo: display i GUI
+                        ArrayList<SearchAble> s = new ArrayList<>();
+                        s.add((SearchAble) message);
+                        for (int i = 0; i < s.size(); i++) {
+                            System.out.println(s.get(i));
+
+                        }
                     }
 
                 }
