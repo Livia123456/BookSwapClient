@@ -15,7 +15,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 
 public class AdvancedSearch extends PageWithMenu implements ActionListener {
     private JButton searchButton = new JButton("Search");
@@ -34,6 +33,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
     private JTextField editionField;
     private JTextField iSBNField;
     private JTextField publisherField;
+    private JPanel bookPanel;
 
     public void setUp() {
 
@@ -65,7 +65,8 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         genre.setFont(new Font("Serif", Font.BOLD, 16));
         genre.setBounds(30, 260, 100, 20);
 
-        genreComboBox = new JComboBox<>(new String[]{"--","Fiction", "Data Science", "HCI", "Mathematics", "Language Arts", "Fine Arts", "Physical Education"});
+        genreComboBox = new JComboBox<>(new String[]{"--","Fiction", "Data Science", "HCI", "Mathematics",
+                "Language Arts", "Fine Arts", "Physical Education"});
         genreComboBox.setMaximumRowCount(5);
         genreComboBox.setBackground(Color.WHITE);
         genreComboBox.setBounds(149, 260, 309, 24);
