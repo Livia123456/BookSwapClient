@@ -2,6 +2,10 @@ package view.GUI;
 
 import controller.Controller;
 import view.GUI.pages.*;
+import view.GUI.pages.profile.EditProfilePage;
+import view.GUI.pages.profile.MyBooks;
+import view.GUI.pages.profile.MyWishList;
+import view.GUI.pages.profile.UpLoadABook;
 
 import javax.swing.*;
 
@@ -9,11 +13,11 @@ public class MainFrame extends JFrame {
     private Controller controller;
     private FirstPage firstPage;
     private HomePage homePage;
-    private UploadBookPage uploadBookPage;
+    private ChatPage chatPage;
     private RegistrationPage registrationPage;
     private EditProfilePage editProfilePage;
     private AdvancedSearch advancedSearch;
-    private Search search;
+    private SearchPage search;
     private MyWishList myWishList;
 
     private MyBooks myBooks;
@@ -50,6 +54,15 @@ public class MainFrame extends JFrame {
         setContentPane(homePage);
         getContentPane().revalidate();
         getContentPane().repaint();
+    }
+
+    public void chatPage() {
+        /*chatPage = new ChatPage(controller);
+        chatPage.setVisible(true);
+        getContentPane().removeAll();
+        setContentPane(chatPage);
+        getContentPane().revalidate();
+        getContentPane().repaint();*/
     }
 
     public void firstPage() {
@@ -96,7 +109,7 @@ public class MainFrame extends JFrame {
     }
 
     public void search() {
-        search = new Search(controller);
+        search = new SearchPage(controller);
         search.setVisible(true);
 
         setSize(1100, 700);
@@ -147,8 +160,6 @@ public class MainFrame extends JFrame {
         getContentPane().revalidate();
         getContentPane().repaint();
     }
-
-
 
     public void uploadABook() {
         upLoadABook = new UpLoadABook(controller);

@@ -2,6 +2,7 @@ package view.GUI;
 
 import controller.Controller;
 import controller.GUIController;
+import view.GUI.pages.ChatPage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -75,7 +76,7 @@ public class PageWithMenu extends JPanel {
             } else if (e.getSource() == profileButton) {
                 controller.profilePage();
             } else if (e.getSource() == chatButton) {
-                ChatGui cG = new ChatGui();
+                controller.chatPage();
             }
         }
     }
