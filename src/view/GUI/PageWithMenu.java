@@ -15,6 +15,7 @@ public class PageWithMenu extends JPanel {
     private JButton homeButton;
     private JButton bookMarketButton;
     private JButton profileButton;
+    private JButton chatButton;
 
     public PageWithMenu(Controller controller) {
         this.controller = controller.getGui();
@@ -39,10 +40,15 @@ public class PageWithMenu extends JPanel {
         //profileButton.setEnabled(false);
         profileButton.addActionListener(menuActionListener);
 
+        chatButton = new JButton("Chat");
+        chatButton.setBounds(356, 48, 60, 16);
+        chatButton.addActionListener(menuActionListener);
+
         add(bookSwap);
         add(homeButton);
         add(bookMarketButton);
         add(profileButton);
+        add(chatButton);
     }
 
     public void setHomeButtonFalse() {
@@ -68,6 +74,8 @@ public class PageWithMenu extends JPanel {
                 controller.bookMarket();
             } else if (e.getSource() == profileButton) {
                 controller.profilePage();
+            } else if (e.getSource() == chatButton) {
+                ChatGui cG = new ChatGui();
             }
         }
     }
