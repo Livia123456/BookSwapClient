@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UserInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/ProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/ProfilePage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +61,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Controller">
+  <component name="RunManager">
     <configuration name="BookController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.BookController" />
       <module name="BookSwapClient" />
@@ -185,7 +184,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/Controller.java</url>
-          <line>61</line>
+          <line>62</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

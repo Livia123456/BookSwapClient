@@ -12,6 +12,7 @@ public class Controller {
     private RegistrationController registrationController;
     private BookController bookController;
     private SearchController searchController;
+    private ChatController chatController;
     private UserInfo currentUser;
 
 
@@ -20,8 +21,8 @@ public class Controller {
         gui = new GUIController(this);
         registrationController = new RegistrationController(this);
         bookController = new BookController(this);
-
         searchController = new SearchController(this);
+        chatController = new ChatController(this);
 
     }
 
@@ -84,6 +85,10 @@ public class Controller {
 
     public SearchController getSearchController() {
         return searchController;
+    }
+
+    public ChatController getChatController(){
+        return chatController;
     }
 
     public RegistrationController getRegistrationController() {
