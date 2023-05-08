@@ -14,14 +14,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Search extends PageWithMenu implements ActionListener {
+public class SearchPage extends PageWithMenu implements ActionListener {
 
     private JButton searchButton = new JButton("Search");
     private JButton advancedSearchButton = new JButton("Advanced search");
     private JTextArea searchField;
     private GUIController controller;
 
-    public Search(Controller controller) {
+    public SearchPage(Controller controller) {
         super(controller);
         this.controller = controller.getGui();
         setUp();

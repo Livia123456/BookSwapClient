@@ -49,7 +49,6 @@ public class GUIController extends Thread {
         } else {
             view.getRegistrationPage().setErrorMessage("Email address already in use");
         }
-
     }
 
     public void newRegistration(String userName, char[] password) {
@@ -71,6 +70,10 @@ public class GUIController extends Thread {
 
     public void homePage() {
         view.homePage();
+    }
+
+    public void chatPage() {
+        view.chatPage();
     }
 
     public void bookMarket() {
