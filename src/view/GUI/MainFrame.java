@@ -188,6 +188,10 @@ public class MainFrame extends JFrame {
     public AdvancedSearch getAdvancedSearch() {
         return advancedSearch;
     }
+
+    public SearchPage getSearch() {
+        return search;
+    }
 }
 
 
