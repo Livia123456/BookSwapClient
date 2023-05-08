@@ -132,7 +132,8 @@ public class GUIController extends Thread {
     }
 
     public void removeBook(Book book) {
-        controller.getServer().sendMessage(book);
+        BookToDelete bookToDelete = new BookToDelete(book.getBook_id());
+        controller.getServer().sendMessage(bookToDelete);
     }
 
 
