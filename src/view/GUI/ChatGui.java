@@ -121,6 +121,7 @@ public class ChatGui extends JFrame {
         sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 sendMessage();
             }
         });

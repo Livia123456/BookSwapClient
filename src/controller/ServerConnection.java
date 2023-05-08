@@ -71,7 +71,6 @@ public class ServerConnection extends Thread{
                     else if (message instanceof AdvancedSearchResult) {
                         controller.getGui().displayAdvancedSearchResult((AdvancedSearchResult) message);
                     }
-
                     else if (message instanceof ArrayList<?>) {
                         System.out.println(message);        //todo: display i GUI
                     }
