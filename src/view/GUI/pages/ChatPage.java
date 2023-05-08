@@ -1,5 +1,8 @@
 package view.GUI.pages;
 
+import controller.Controller;
+import model.chat.ChatObject;
+import model.chat.ChatStatus;
 import view.GUI.ProfilePage;
 
 import javax.imageio.ImageIO;
@@ -12,6 +15,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ChatPage implements ActionListener{
 
@@ -19,13 +23,17 @@ public class ChatPage implements ActionListener{
     private HomePage homePage;
     private SearchPage bookMarket;
     private ProfilePage profile;
+    private Controller controller;
+
     private String name;
+    private int userId;
     private JTextArea chatArea;
     private JTextField inputField;
     private JButton sendButton;
     private JPanel profilePanel;
     private JPanel contactsPanel;
-    private String[] contacts;
+    //private String[] contacts;
+    private ArrayList<ChatObject> contacts;
     private String[] titleOfUsersBooks;
     private JButton homeButton = new JButton("Home");
     private JButton bookMarketButton = new JButton("Book market");
@@ -34,7 +42,9 @@ public class ChatPage implements ActionListener{
 
     public ChatPage() {
 
-        name = "Olle Bolle";
+        this.controller = controller;
+        name = controller.getCurrentUser().getName();
+        userId = controller.getCurrentUser().getUserId();
 
         JButton bookSwapButton = new JButton("BookSwap");
         bookSwapButton.setFont(new Font("Calibri", Font.PLAIN, 18));
@@ -71,13 +81,15 @@ public class ChatPage implements ActionListener{
         contactsPanel.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
         contactsPanel.setBackground(Color.WHITE);
 
-        contacts = new String[]{"Olle", "Livve", "Zulle", "Kappe", "Klas den fule"};
+        //todo: Ändra här
+        /*contacts = new String[]{"Olle", "Livve", "Zulle", "Kappe", "Klas den fule", "Jajja"};
         for (int i = 0; i < contacts.length; i++) {
             JButton button = new JButton(contacts[i]);
             button.setFont(new Font("Arial", Font.PLAIN, 16));
             button.setPreferredSize(new Dimension(180, 40));
             contactsPanel.add(button);
-        }
+        } */
+
 
         BufferedImage profilePicture;
         try {
@@ -160,6 +172,7 @@ public class ChatPage implements ActionListener{
         sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 sendMessage();
             }
         });
@@ -187,9 +200,22 @@ public class ChatPage implements ActionListener{
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
+
+    public void getActiveChats(){
+        contacts = new ArrayList<>();
+
+        controller.getChatController().sendMessage
+                (new ChatObject(controller.getCurrentUser().getUserId(), 0, ChatStatus.populate));
+
+        /*for (int i = 0; i < ; i++) {
+
+        } */
+    }
+
     private void sendMessage() {
 
         String message = inputField.getText();
+        //controller.getChatController().sendMessage(controller.getCurrentUser().getUserId()), );
 
         chatArea.append(name + ": " + message + "\n\n");
 
