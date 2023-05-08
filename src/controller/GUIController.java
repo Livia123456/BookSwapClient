@@ -150,4 +150,13 @@ public class GUIController extends Thread {
         }
 
     }
+
+    public void displaySearchResult(SearchResult result) {
+        if(result.getBooks().size() == 0) {
+            view.getSearch().displayErrorMessage();
+
+        } else {
+            view.getSearch().displayResults(result);
+        }
+    }
 }
