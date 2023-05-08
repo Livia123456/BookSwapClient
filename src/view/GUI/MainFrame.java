@@ -23,6 +23,7 @@ public class MainFrame extends JFrame {
         firstPage = new FirstPage(controller, this);
         setUp();
         //firstPage();
+        //advancedSearch();
     }
 
     private void setUp() {
@@ -171,6 +172,10 @@ public class MainFrame extends JFrame {
 
     public void bookUnableToUpload() {
         upLoadABook.uploadUnsuccessful();
+    }
+
+    public AdvancedSearch getAdvancedSearch() {
+        return advancedSearch;
     }
 }
 

@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/ProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/ProfilePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/AdvancedSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/AdvancedSearch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +64,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Controller">
     <configuration name="BookController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.BookController" />
       <module name="BookSwapClient" />
@@ -124,10 +127,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Controller" />
+        <item itemvalue="Application.BookController" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.UpLoadABook" />
         <item itemvalue="Application.Profile" />
-        <item itemvalue="Application.BookController" />
       </list>
     </recent_temporary>
   </component>
@@ -168,11 +171,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/GUI/pages/Search.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/GUI/pages/UpLoadABook.java</url>
           <line>194</line>
           <option name="timeStamp" value="24" />
@@ -191,6 +189,11 @@
           <url>file://$PROJECT_DIR$/src/view/GUI/pages/EditProfilePage.java</url>
           <line>93</line>
           <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/GUI/pages/AdvancedSearch.java</url>
+          <line>476</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
         <breakpoint type="java-exception">
           <properties class="java.lang.IllegalArgumentException" package="java.lang" />
