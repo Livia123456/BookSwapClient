@@ -143,10 +143,10 @@ public class GUIController extends Thread {
     public void displayAdvancedSearchResult(AdvancedSearchResult result) {
         System.out.println("Sökresultat mottaget");
         if(result.getBooks().size() == 0) {
-            //show error message
+            view.getAdvancedSearch().displayErrorMessage();
 
         } else {
-            //display books
+            view.getAdvancedSearch().displayResults(result);
         }
 
     }

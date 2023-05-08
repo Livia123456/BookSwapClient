@@ -2,6 +2,8 @@ package view.GUI.pages;
 
 import controller.Controller;
 import controller.GUIController;
+import model.AdvancedSearchResult;
+import model.Book;
 import view.GUI.PageWithMenu;
 
 import javax.imageio.ImageIO;
@@ -19,6 +21,7 @@ import java.io.IOException;
 public class AdvancedSearch extends PageWithMenu implements ActionListener {
     private JButton searchButton = new JButton("Search");
     private Controller controller;
+    private JScrollPane scrollPane;
 
     public AdvancedSearch(Controller controller) {
         super(controller);
@@ -115,94 +118,8 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         bookMarket.setBorder(border);
         bookMarket.setBounds(495, 40, 116, 30);
 
-        /**
-         * PANEL1 STARTS
-         */
 
-        JPanel panel1 = new JPanel();
-        panel1.setLayout(null);
-
-        JTextField resultISBN = new JTextField(20);
-        resultISBN.setText(" ISBN");
-        resultISBN.setEnabled(false);
-        resultISBN.setBorder(new LineBorder(Color.GRAY));
-        resultISBN.setBounds(250, 20, 295, 24);
-
-        JTextField resultTitle = new JTextField(20);
-        resultTitle.setText(" Title");
-        resultTitle.setEnabled(false);
-        resultTitle.setBorder(new LineBorder(Color.GRAY));
-        resultTitle.setBounds(250, 60, 295, 24);
-
-        JTextField resultAuthor = new JTextField(20);
-        resultAuthor.setText(" Author");
-        resultAuthor.setEnabled(false);
-        resultAuthor.setBorder(new LineBorder(Color.GRAY));
-        resultAuthor.setBounds(250, 100, 295, 24);
-
-        JTextField resultGenre = new JTextField(20);
-        resultGenre.setText(" Genre");
-        resultGenre.setEnabled(false);
-        resultGenre.setBorder(new LineBorder(Color.GRAY));
-        resultGenre.setBounds(250, 140, 295, 24);
-
-        JTextField resultYear = new JTextField(20);
-        resultYear.setText(" Year");
-        resultYear.setEnabled(false);
-        resultYear.setBorder(new LineBorder(Color.GRAY));
-        resultYear.setBounds(250, 180, 295, 24);
-
-        JTextField resultEdition = new JTextField(20);
-        resultEdition.setText(" Edition");
-        resultEdition.setEnabled(false);
-        resultEdition.setBorder(new LineBorder(Color.GRAY));
-        resultEdition.setBounds(250, 220, 295, 24);
-
-        JTextField resultPublisher = new JTextField(20);
-        resultPublisher.setText(" Publisher");
-        resultPublisher.setEnabled(false);
-        resultPublisher.setBorder(new LineBorder(Color.GRAY));
-        resultPublisher.setBounds(250, 260, 295, 24);
-
-        BufferedImage bookToUplad = null;
-        try {
-            bookToUplad = ImageIO.read(new File("files/Book3.png"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        // Calculate the new width and height
-        int newWidth1 = 200; // Set your desired width
-        int newHeight1 = (int) Math.round((double) bookToUplad.getHeight() / bookToUplad.getWidth() * newWidth1);
-
-        // Create a new image with the new dimensions
-        BufferedImage bookToUploadResized = new BufferedImage(newWidth1, newHeight1, bookToUplad.getType());
-
-        // Scale the original image onto the new image
-        Graphics2D g2d1 = bookToUploadResized.createGraphics();
-        g2d1.drawImage(bookToUplad, 0, 0, newWidth1, newHeight1, null);
-        g2d1.dispose();
-
-        JLabel bookToUploadLabel = new JLabel(new ImageIcon(bookToUploadResized));
-        bookToUploadLabel.setHorizontalAlignment(JLabel.CENTER);
-        bookToUploadLabel.setVerticalAlignment(JLabel.CENTER);
-
-        JPanel bookPanel = new JPanel();
-        bookPanel.setBackground(Color.WHITE);
-        bookPanel.setBorder(new LineBorder(Color.GRAY, 2, true));
-        bookPanel.setBounds(505, 98, newWidth1+10, newHeight1+10);
-
-        panel1.add(resultISBN);
-        panel1.add(resultTitle);
-        panel1.add(resultAuthor);
-        panel1.add(resultGenre);
-        panel1.add(resultYear);
-        panel1.add(resultEdition);
-        panel1.add(resultPublisher);
-        bookPanel.add(bookToUploadLabel, BorderLayout.CENTER);
-        add(bookPanel);
-
-        JScrollPane scrollPane = new JScrollPane(panel1);
+        scrollPane = new JScrollPane();
         scrollPane.setBackground(Color.WHITE);
         scrollPane.setBorder(new LineBorder(Color.PINK));
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -228,15 +145,155 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         add(bookMarket);
         add(scrollPane);
         add(searchButton);
+
         super.menuSetUp();
-        //super.setBookMarketButtonFalse();
     }
+
+    private void displaySearchResult() {
+        remove(scrollPane);
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        //panel.setBounds(490, 76, 570, 554);
+        panel.setBackground(Color.WHITE);
+        JButton button = new JButton("Hello");
+        //panel.add(button);
+
+        Book book = new Book();
+        book.setTitle("Bibeln");
+        book.setAuthor("gud");
+        book.setIsbn("123356");
+        book.setRelease_date("2000");
+        book.setGenre("fiction");
+        book.setEdition("first edition");
+        book.setPublisher("Verbum");
+        panel.add(addBook(book));
+        for (int i = 0; i < 10; i++) {
+            panel.add(addBook(book));
+        }
+        book = new Book();
+        book.setTitle("Gamla testamentet");
+        book.setAuthor("Gud");
+        panel.add(addBook(book));
+
+
+        panel.add(Box.createHorizontalGlue());
+        panel.add(Box.createVerticalGlue());
+
+        scrollPane = new JScrollPane(panel);
+        scrollPane.setBackground(Color.WHITE);
+        scrollPane.setBorder(new LineBorder(Color.PINK));
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPane.setBounds(486, 76, 570, 554);
+
+        scrollPane.revalidate();
+        scrollPane.repaint();
+        add(scrollPane);
+        revalidate();
+        repaint();
+    }
+
+
+    public void displayResults(AdvancedSearchResult result) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.setBackground(Color.WHITE);
+
+        for (Book book : result.getBooks()) {
+            panel.add(addBook(book));
+        }
+
+        panel.add(Box.createHorizontalGlue());
+        panel.add(Box.createVerticalGlue());
+
+        scrollPane = new JScrollPane(panel);
+        scrollPane.setBackground(Color.WHITE);
+        scrollPane.setBorder(new LineBorder(Color.PINK));
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPane.setBounds(486, 76, 570, 554);
+
+        scrollPane.revalidate();
+        scrollPane.repaint();
+        add(scrollPane);
+        revalidate();
+        repaint();
+
+    }
+
+    private JPanel addBook(Book book) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.setBackground(Color.WHITE);
+
+        JLabel title = new JLabel(book.getTitle());
+        title.setFont(new Font("Calibri", Font.ITALIC,18));
+        title.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JPanel textPanel = new JPanel();
+        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.LINE_AXIS));
+        textPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        textPanel.setBackground(Color.WHITE);
+
+        JPanel text = new JPanel();
+        text.setLayout(new BoxLayout(text, BoxLayout.PAGE_AXIS));
+        text.setAlignmentX(Component.LEFT_ALIGNMENT);
+        text.setBackground(Color.WHITE);
+
+        if(book.getIsbn() != null && !book.getIsbn().isEmpty()) {
+            JLabel ISBN = new JLabel(" ISBN: " + book.getIsbn());
+            ISBN.setFont(new Font("Serif", Font.PLAIN, 14));
+            ISBN.setForeground(Color.GRAY);
+            text.add(ISBN);
+            text.add(Box.createRigidArea(new Dimension(0,3)));
+        }
+
+        String string = " av " + book.getAuthor();
+        if(book.getRelease_date() != null && !book.getRelease_date().isEmpty()) {
+            string += ", " + book.getRelease_date();
+        }
+        if(book.getGenre() != null && !book.getGenre().isEmpty()) {
+            string += ", " + book.getGenre();
+        }
+        if(book.getEdition() != null && !book.getEdition().isEmpty()) {
+            string += ", " + book.getEdition();
+        }
+        if(book.getPublisher() != null && !book.getPublisher().isEmpty()) {
+            string += ", " + book.getPublisher();
+        }
+
+        JLabel description = new JLabel(string);
+        description.setFont(new Font("Serif", Font.PLAIN, 14));
+        text.add(description);
+
+
+        JButton button = new JButton("Start chat");
+        button.setSize(100, 20);
+
+        panel.add(Box.createRigidArea(new Dimension(0,5)));
+        panel.add(title);
+        panel.add(Box.createRigidArea(new Dimension(0,7)));
+        textPanel.add(text);
+        textPanel.add(Box.createHorizontalGlue());
+        textPanel.add(button);
+        panel.add(textPanel);
+        panel.setBorder(new MatteBorder(0, 0, 1, 0, Color.BLACK));
+
+
+        return panel;
+    }
+
+
+
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == searchButton) {
+            remove(scrollPane);
+            //displaySearchResult();
+            //displayErrorMessage();
 
             boolean noIsbn = (iSBNField.getText() == null || iSBNField.getText().isEmpty());
             boolean noTitle = (titleField.getText() == null || titleField.getText().isEmpty());
@@ -252,7 +309,30 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
                         publisherField.getText());
             }
 
+
+
         }
 
+    }
+
+    public void displayErrorMessage() {
+        JLabel message = new JLabel(" No matching books found");
+        message.setAlignmentY(Component.TOP_ALIGNMENT);
+        message.setFont(new Font("Calibri", Font.PLAIN, 18));
+
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.WHITE);
+        panel.add(message);
+
+        scrollPane = new JScrollPane(panel);
+        scrollPane.setBackground(Color.WHITE);
+        scrollPane.setBorder(new LineBorder(Color.PINK));
+        scrollPane.setBounds(486, 76, 570, 554);
+
+        scrollPane.revalidate();
+        scrollPane.repaint();
+        add(scrollPane);
+        revalidate();
+        repaint();
     }
 }
