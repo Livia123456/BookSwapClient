@@ -1,4 +1,6 @@
-package view.GUI;
+package view.GUI.pages;
+
+import view.GUI.ProfilePage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -11,8 +13,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class ChatGui extends JFrame {
+public class ChatPage implements ActionListener{
 
+    private JFrame mainFrame = new JFrame("Book Swap");
+    private HomePage homePage;
+    private SearchPage bookMarket;
+    private ProfilePage profile;
     private String name;
     private JTextArea chatArea;
     private JTextField inputField;
@@ -21,39 +27,61 @@ public class ChatGui extends JFrame {
     private JPanel contactsPanel;
     private String[] contacts;
     private String[] titleOfUsersBooks;
+    private JButton homeButton = new JButton("Home");
+    private JButton bookMarketButton = new JButton("Book market");
+    private JButton profileButton = new JButton("Profile");
+    private JButton chatButton = new JButton("Chat");
 
-    public ChatGui() {
+    public ChatPage() {
 
         name = "Olle Bolle";
 
-        setTitle("Chat");
+        JButton bookSwapButton = new JButton("BookSwap");
+        bookSwapButton.setFont(new Font("Calibri", Font.PLAIN, 18));
+        bookSwapButton.setBounds(18, 46, 90, 22);
+        bookSwapButton.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        bookSwapButton.addActionListener(this);
+
+        homeButton.setBounds(116, 48, 60, 16);
+        homeButton.addActionListener(this);
+
+        bookMarketButton.setBounds(183, 48, 100, 16);
+        bookMarketButton.addActionListener(this);
+
+        profileButton.setBounds(289, 48, 60, 16);
+        profileButton.addActionListener(this);
+
+        chatButton.setBounds(356, 48, 60, 16);
+        chatButton.setEnabled(false);
+        chatButton.addActionListener(this);
+
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setPreferredSize(new Dimension(600, 40));
+        buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.X_AXIS));
+        buttonsPanel.setBackground(Color.WHITE);
 
         profilePanel = new JPanel();
         profilePanel.setPreferredSize(new Dimension(200, profilePanel.getHeight()));
-        profilePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        profilePanel.setBorder(BorderFactory.createEmptyBorder(100, 10, 10, 10));
         profilePanel.setLayout(new BoxLayout(profilePanel, BoxLayout.Y_AXIS));
+        profilePanel.setBackground(Color.WHITE);
 
         contactsPanel = new JPanel();
         contactsPanel.setPreferredSize(new Dimension(200, profilePanel.getHeight()));
-        contactsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        //contactsPanel.setLayout(new BoxLayout(contactsPanel, BoxLayout.Y_AXIS));
-
-        /*JScrollPane contactsScroll = new JScrollPane();
-        contactsScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        contactsScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        contactsPanel.add(contactsScroll, BorderLayout.CENTER);*/
+        contactsPanel.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
+        contactsPanel.setBackground(Color.WHITE);
 
         contacts = new String[]{"Olle", "Livve", "Zulle", "Kappe", "Klas den fule"};
         for (int i = 0; i < contacts.length; i++) {
             JButton button = new JButton(contacts[i]);
-            button.setFont(new Font("Arial", Font.BOLD, 16));
+            button.setFont(new Font("Arial", Font.PLAIN, 16));
             button.setPreferredSize(new Dimension(180, 40));
             contactsPanel.add(button);
         }
 
         BufferedImage profilePicture;
         try {
-            profilePicture = ImageIO.read(new File("files/PP1.JPG"));
+            profilePicture = ImageIO.read(new File("files/Avatar.jpg"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -87,7 +115,7 @@ public class ChatGui extends JFrame {
 
         profilePanel.add(theUsersBooksLabel);
 
-        titleOfUsersBooks = new String[]{"Sagan om kingen", "Bilbo", "Snabba Cash", "Fågeln Roger"};
+        titleOfUsersBooks = new String[]{"Sagan om ringen", "Bilbo", "Snabba Cash", "Fågeln Roger"};
         for (int i = 0; i < titleOfUsersBooks.length; i++) {
             JLabel bookTitle = new JLabel(titleOfUsersBooks[i]);
             bookTitle.setFont(new Font("Calibri", Font.ITALIC, 16));
@@ -95,14 +123,17 @@ public class ChatGui extends JFrame {
         }
         profilePanel.add(Box.createVerticalGlue());
 
+
+
         JPanel chatPanel = new JPanel(new BorderLayout());
         chatArea = new JTextArea(20, 50);
         chatArea.setText("New chat with user.getName()?...\n\n");
         chatArea.setEditable(false);
 
         JScrollPane chatScroll = new JScrollPane(chatArea);
-        chatScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        chatScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        chatScroll.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
+        chatScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        chatScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         chatPanel.add(chatScroll, BorderLayout.CENTER);
 
         JPanel inputPanel = new JPanel(new BorderLayout());
@@ -112,11 +143,19 @@ public class ChatGui extends JFrame {
         inputPanel.add(sendButton, BorderLayout.EAST);
 
         JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.add(buttonsPanel, BorderLayout.NORTH);
+        mainPanel.add(bookSwapButton);
+        mainPanel.add(homeButton);
+        mainPanel.add(bookMarketButton);
+        mainPanel.add(profileButton);
+        mainPanel.add(chatButton);
         mainPanel.add(profilePanel, BorderLayout.EAST);
         mainPanel.add(chatPanel, BorderLayout.CENTER);
         mainPanel.add(inputPanel, BorderLayout.SOUTH);
         mainPanel.add(contactsPanel, BorderLayout.WEST);
-        getContentPane().add(mainPanel);
+
+
+        mainFrame.getContentPane().add(mainPanel);
 
         sendButton.addActionListener(new ActionListener() {
             @Override
@@ -142,11 +181,11 @@ public class ChatGui extends JFrame {
             }
         });
 
-        setSize(800, 800);
-        setLocationRelativeTo(null);
-        setResizable(true);
-        setVisible(true);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        mainFrame.setSize(1100, 700);
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setResizable(true);
+        mainFrame.setVisible(true);
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     private void sendMessage() {
@@ -159,6 +198,12 @@ public class ChatGui extends JFrame {
     }
 
     public static void main(String[] args) {
-        ChatGui gui = new ChatGui();
+        ChatPage cP = new ChatPage();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+       //Måste fixas men fattar ej hur...
     }
 }

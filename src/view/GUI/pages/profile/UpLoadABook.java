@@ -1,4 +1,4 @@
-package view.GUI.pages;
+package view.GUI.pages.profile;
 
 import controller.Controller;
 import model.Book;

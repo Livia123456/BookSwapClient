@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ProfilePage extends PageWithMenu{
  private GUIController controller;
@@ -122,6 +123,17 @@ public class ProfilePage extends PageWithMenu{
         this.signOut = signOut;
     }
 
+    //TESTMETOD: Testa att ta bort bok. Kommunikation sker via terminalen.
+    public Book askWhichBookToRemove() {
+        Scanner input = new Scanner(System.in);
+        ArrayList<Book> books = controller.getController().getCurrentUser().getCurrentUsersUploadedBooks();
+        for(int i = 0; i < books.size(); i++) {
+            System.out.println(i + ": " + books.get(i).getTitle());
+        }
+        System.out.print("Enter book: ");
+        return books.get(input.nextInt());
+    }
+
     public class ProfilePageListener implements ActionListener {
 
         @Override
@@ -135,11 +147,10 @@ public class ProfilePage extends PageWithMenu{
                 controller.myWishList();
             } else if (e.getSource() == myBooks) {
                 //controller.myBooks();
-                ArrayList<Book> books = controller.getController().getCurrentUser().getCurrentUsersUploadedBooks();
                 //TODO: Böckerna som den inloggade användaren har laddat upp tidigare ska skickas till GUI.
-                for(int i = 0; i < books.size(); i++) {
-                    System.out.println(books.get(i).getTitle());
-                }
+                Book bookToRemove = askWhichBookToRemove();
+                controller.removeBook(bookToRemove);
+
             } else if (e.getSource() == signOut) {
                 System.out.println("SIGNOUT");
                 controller.signOut();
