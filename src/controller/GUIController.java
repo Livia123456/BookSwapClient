@@ -131,6 +131,10 @@ public class GUIController extends Thread {
         }
     }
 
+    public void removeBook(Book book) {
+        controller.getServer().sendMessage(book);
+    }
+
 
     public void displayAdvancedSearchResult(AdvancedSearchResult result) {
         System.out.println("Sökresultat mottaget");
