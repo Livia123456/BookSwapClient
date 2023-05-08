@@ -1,6 +1,9 @@
 package controller;
 
 import model.*;
+import model.chat.ChatObject;
+import model.chat.ChatsWith;
+import model.chat.MessageObject;
 
 import java.io.*;
 import java.net.Socket;
@@ -79,6 +82,18 @@ public class ServerConnection extends Thread{
                             System.out.println(s.get(i));
 
                         }
+                    }
+
+                    else if (message instanceof ChatsWith){
+                        //todo
+                    }
+
+                    else if (message instanceof MessageObject){
+                        //todo
+                    }
+
+                    else if (message instanceof ChatObject){
+                        //todo
                     }
 
                 }

@@ -56,12 +56,12 @@ public class MainFrame extends JFrame {
     }
 
     public void chatPage() {
-        /*chatPage = new ChatPage(controller);
+     /*   chatPage = new ChatPage(controller);
         chatPage.setVisible(true);
         getContentPane().removeAll();
         setContentPane(chatPage);
         getContentPane().revalidate();
-        getContentPane().repaint();*/
+        getContentPane().repaint(); */
     }
 
     public void firstPage() {
