@@ -4,6 +4,7 @@ import controller.Controller;
 import model.chat.ChatObject;
 import model.chat.ChatStatus;
 import model.chat.ChatsWith;
+import view.GUI.PageWithMenu;
 import view.GUI.ProfilePage;
 
 import javax.imageio.ImageIO;
@@ -18,7 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ChatPage implements ActionListener{
+public class ChatPage extends PageWithMenu implements ActionListener{
 
     private JFrame mainFrame = new JFrame("Book Swap");
     private HomePage homePage;
@@ -33,7 +34,6 @@ public class ChatPage implements ActionListener{
     private JButton sendButton;
     private JPanel profilePanel;
     private JPanel contactsPanel;
-    //private String[] contactsString;
     private ArrayList<ChatsWith> contacts;
     private String[] titleOfUsersBooks;
     private JButton homeButton = new JButton("Home");
@@ -42,6 +42,7 @@ public class ChatPage implements ActionListener{
     private JButton chatButton = new JButton("Chat");
 
     public ChatPage(Controller controller) {
+        super(controller);
 
         this.controller = controller;
         name = controller.getCurrentUser().getName();
@@ -82,16 +83,24 @@ public class ChatPage implements ActionListener{
         contactsPanel.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
         contactsPanel.setBackground(Color.WHITE);
 
-        //todo: Ändra här
+
+        contacts = controller.getCurrentUser().getChatsWith();
+
+        for (int i = 0; i < contacts.size(); i++) {
+            JButton button = new JButton(contacts.get(i).getName());
+            button.setFont(new Font("Arial", Font.PLAIN, 16));
+            button.setPreferredSize(new Dimension(180, 40));
+            contactsPanel.add(button);
+        }
+
         /*contacts = new String[]{"Olle", "Livve", "Zulle", "Kappe", "Klas den fule", "Jajja"};
         for (int i = 0; i < contacts.length; i++) {
             JButton button = new JButton(contacts[i]);
             button.setFont(new Font("Arial", Font.PLAIN, 16));
             button.setPreferredSize(new Dimension(180, 40));
             contactsPanel.add(button);
-        } */
+        }  */
 
-        contacts = new ArrayList<>();
         getActiveChats();
 
 
@@ -212,18 +221,6 @@ public class ChatPage implements ActionListener{
 
     }
 
-    public void uploadActiveChats(ArrayList<ChatsWith> chatsWith){
-
-        contacts = chatsWith;
-
-        for (int i = 0; i < contacts.size(); i++) {
-            JButton button = new JButton(contacts.get(i).getName());
-            button.setFont(new Font("Arial", Font.PLAIN, 16));
-            button.setPreferredSize(new Dimension(180, 40));
-            contactsPanel.add(button);
-        }
-
-    }
 
     private void sendMessage() {
 

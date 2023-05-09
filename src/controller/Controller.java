@@ -34,10 +34,6 @@ public class Controller {
         }
     }
 
-    public static void main(String[] args) {
-        new Controller();
-    }
-
     public void logIn(UserInfo userInfo) {
         server.sendMessage(userInfo);
     }
@@ -98,4 +94,8 @@ public class Controller {
 
     public UserInfo getCurrentUser() { return currentUser; }
     public void setCurrentUser(UserInfo userInfo) { this.currentUser = userInfo; }
+
+    public static void main(String[] args) {
+        new Controller();
+    }
 }

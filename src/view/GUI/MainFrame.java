@@ -28,8 +28,8 @@ public class MainFrame extends JFrame {
         this.controller = controller;
         firstPage = new FirstPage(controller, this);
         setUp();
-        homePage();
-        // firstPage();
+        //homePage();
+        //firstPage();
     }
 
     private void setUp() {
@@ -58,12 +58,12 @@ public class MainFrame extends JFrame {
     }
 
     public void chatPage() {
-     /*   chatPage = new ChatPage(controller);
+        chatPage = new ChatPage(controller);
         chatPage.setVisible(true);
         getContentPane().removeAll();
         setContentPane(chatPage);
         getContentPane().revalidate();
-        getContentPane().repaint(); */
+        getContentPane().repaint();
     }
 
     public void firstPage() {
@@ -175,9 +175,6 @@ public class MainFrame extends JFrame {
         getContentPane().repaint();
     }
 
-    public void uploadChats(ArrayList<ChatsWith> chatsWith){
-        chatPage.uploadActiveChats(chatsWith);
-    }
 
     public RegistrationPage getRegistrationPage() {
         return registrationPage;

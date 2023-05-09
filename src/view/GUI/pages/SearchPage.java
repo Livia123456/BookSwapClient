@@ -2,7 +2,6 @@ package view.GUI.pages;
 
 import controller.Controller;
 import controller.GUIController;
-import model.AdvancedSearchResult;
 import model.Book;
 import model.SearchResult;
 import view.GUI.PageWithMenu;

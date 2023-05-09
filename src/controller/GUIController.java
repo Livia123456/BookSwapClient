@@ -1,6 +1,8 @@
 package controller;
 
 import model.*;
+import model.chat.ChatObject;
+import model.chat.ChatStatus;
 import model.chat.ChatsWith;
 import model.search.AdvancedSearchResult;
 import model.search.SearchObject;
@@ -77,7 +79,7 @@ public class GUIController extends Thread {
     }
 
     public void chatPage() {
-        view.chatPage();
+        controller.getServer().sendMessage(new ChatObject(controller.getCurrentUser().getUserId(), 0, ChatStatus.populate));
     }
 
     public void bookMarket() {
@@ -129,6 +131,10 @@ public class GUIController extends Thread {
         return controller;
     }
 
+    public MainFrame getView() {
+        return view;
+    }
+
     public void signOut() {
         controller.getGui().firstPage();
     }
@@ -156,9 +162,9 @@ public class GUIController extends Thread {
             view.getAdvancedSearch().displayResults(result);
         }
     }
-    public void uploadActiveChats(ArrayList<ChatsWith> message) {
+    /*public void uploadActiveChats(ArrayList<ChatsWith> message) {
         view.uploadChats(message);
-    }
+    } */
 
 
     public void displaySearchResult(SearchResult result) {
