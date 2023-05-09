@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import model.chat.*;
 
 /**
  * Class to store information about a user.
@@ -16,7 +17,24 @@ public class UserInfo implements Serializable {
     private int userId;
     private boolean correctInfo = false;
     private ArrayList<Book> currentUsersUploadedBooks;
+    private ArrayList<ChatsWith> chatsWith;
 
+
+
+    public UserInfo(Email email, String password) {
+        this.email = email;
+        this.password = password;
+        this.currentUsersUploadedBooks = new ArrayList<>();
+        this.chatsWith = new ArrayList<>();
+    }
+
+    public ArrayList<ChatsWith> getChatsWith() {
+        return chatsWith;
+    }
+
+    public void setChatsWith(ArrayList<ChatsWith> chatsWith) {
+        this.chatsWith = chatsWith;
+    }
 
     public void setCurrentUsersUploadedBooks(ArrayList<Book> currentUsersUploadedBooks) {
         this.currentUsersUploadedBooks = currentUsersUploadedBooks;
@@ -27,11 +45,6 @@ public class UserInfo implements Serializable {
     }
 
 
-    public UserInfo(Email email, String password) {
-        this.email = email;
-        this.password = password;
-        this.currentUsersUploadedBooks = new ArrayList<>();
-    }
 
     public Email getEmail() {
         return email;

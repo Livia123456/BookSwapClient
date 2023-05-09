@@ -4,6 +4,7 @@ import controller.Controller;
 import model.chat.ChatObject;
 import model.chat.ChatStatus;
 import model.chat.ChatsWith;
+import view.GUI.PageWithMenu;
 import view.GUI.ProfilePage;
 
 import javax.imageio.ImageIO;
@@ -18,10 +19,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ChatPage implements ActionListener{
+public class ChatPage extends PageWithMenu implements ActionListener{
+
 
     private Controller controller;
-
     private String name;
     private int userId;
     private JTextArea chatArea;
@@ -29,7 +30,6 @@ public class ChatPage implements ActionListener{
     private JButton sendButton;
     private JPanel profilePanel;
     private JPanel contactsPanel;
-    //private String[] contactsString;
     private ArrayList<ChatsWith> contacts;
     private String[] titleOfUsersBooks;
     private JButton homeButton = new JButton("Home");
@@ -38,11 +38,13 @@ public class ChatPage implements ActionListener{
     private JButton chatButton = new JButton("Chat");
 
     public ChatPage(Controller controller) {
+        super(controller);
 
         this.controller = controller;
         name = controller.getCurrentUser().getName();
         userId = controller.getCurrentUser().getUserId();
 
+        
         JButton bookSwapButton = new JButton("BookSwap");
         bookSwapButton.setFont(new Font("Calibri", Font.PLAIN, 18));
         bookSwapButton.setBounds(18, 46, 90, 22);
@@ -62,6 +64,14 @@ public class ChatPage implements ActionListener{
         chatButton.setEnabled(false);
         chatButton.addActionListener(this);
 
+        add(bookSwapButton);
+        add(homeButton);
+        add(bookMarketButton);
+        add(profileButton);
+        add(chatButton);
+        
+         
+
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setPreferredSize(new Dimension(600, 40));
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.X_AXIS));
@@ -78,11 +88,12 @@ public class ChatPage implements ActionListener{
         contactsPanel.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
         contactsPanel.setBackground(Color.WHITE);
 
-<<<<<<< Updated upstream
+
         //todo: Ändra här
-=======
+
 
        /* contacts = controller.getCurrentUser().getChatsWith();
+
 
         for (int i = 0; i < contacts.size(); i++) {
             JButton button = new JButton(contacts.get(i).getName());
@@ -93,17 +104,16 @@ public class ChatPage implements ActionListener{
         
         */
 
->>>>>>> Stashed changes
+
         /*contacts = new String[]{"Olle", "Livve", "Zulle", "Kappe", "Klas den fule", "Jajja"};
         for (int i = 0; i < contacts.length; i++) {
             JButton button = new JButton(contacts[i]);
             button.setFont(new Font("Arial", Font.PLAIN, 16));
             button.setPreferredSize(new Dimension(180, 40));
             contactsPanel.add(button);
-        } */
+        }  */
 
-        contacts = new ArrayList<>();
-        getActiveChats();
+        //getActiveChats();
 
 
         BufferedImage profilePicture;
@@ -176,6 +186,7 @@ public class ChatPage implements ActionListener{
         add(bookMarketButton);
         add(profileButton);
         add(chatButton);
+
         add(profilePanel, BorderLayout.EAST);
         add(chatPanel, BorderLayout.CENTER);
         add(inputPanel, BorderLayout.SOUTH);
@@ -207,12 +218,6 @@ public class ChatPage implements ActionListener{
                 }
             }
         });
-
-       // mainFrame.setSize(1100, 700);
-       // mainFrame.setLocationRelativeTo(null);
-       // mainFrame.setResizable(true);
-       // mainFrame.setVisible(true);
-       // mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
 
@@ -223,18 +228,6 @@ public class ChatPage implements ActionListener{
 
     }
 
-    public void uploadActiveChats(ArrayList<ChatsWith> chatsWith){
-
-        contacts = chatsWith;
-
-        for (int i = 0; i < contacts.size(); i++) {
-            JButton button = new JButton(contacts.get(i).getName());
-            button.setFont(new Font("Arial", Font.PLAIN, 16));
-            button.setPreferredSize(new Dimension(180, 40));
-            contactsPanel.add(button);
-        }
-
-    }
 
     private void sendMessage() {
 

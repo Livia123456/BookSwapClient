@@ -38,8 +38,6 @@ public class ServerConnection extends Thread{
             oos.flush();
             new receiverThread().start();
 
-        } catch (UnknownHostException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -64,6 +62,7 @@ public class ServerConnection extends Thread{
                 while ((message = ois.readObject()) != null) {
                     if (message instanceof UserInfo) {
                         controller.tryLoggingIn((UserInfo) message);
+
                     }
                     else if (message instanceof String) {
                         System.out.println(message);
@@ -83,21 +82,9 @@ public class ServerConnection extends Thread{
 
 
                     else if (message instanceof ArrayList<?>) {
-                        ArrayList<?> list = (ArrayList<?>) message;
 
-                        for (Object element : list) {
-                            if (element instanceof SearchAble) { //todo: display i GUI
-                                ArrayList<SearchAble> s = new ArrayList<>();
-                                s.add((SearchAble) message);
-                                for (int i = 0; i < s.size(); i++) {
-                                    System.out.println(s.get(i));
-                                }
-                            }
-                            else if (element instanceof ChatsWith){
-                                controller.getGui().uploadActiveChats((ArrayList<ChatsWith>) message);
+                        controller.getChatController().populateChat((ArrayList<ChatsWith>) message);
 
-                            }
-                        }
                     }
 
                     else if (message instanceof MessageObject){

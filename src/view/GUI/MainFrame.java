@@ -59,7 +59,7 @@ public class MainFrame extends JFrame {
     }
 
     public void chatPage() {
-     /*   chatPage = new ChatPage(controller);
+        chatPage = new ChatPage(controller);
         chatPage.setVisible(true);
         setSize(1100, 700);
         setLocationRelativeTo(null);
@@ -69,7 +69,7 @@ public class MainFrame extends JFrame {
         getContentPane().removeAll();
         setContentPane(chatPage);
         getContentPane().revalidate();
-        getContentPane().repaint(); */
+        getContentPane().repaint();
     }
 
     public void firstPage() {
@@ -181,9 +181,6 @@ public class MainFrame extends JFrame {
         getContentPane().repaint();
     }
 
-    public void uploadChats(ArrayList<ChatsWith> chatsWith){
-        chatPage.uploadActiveChats(chatsWith);
-    }
 
     public RegistrationPage getRegistrationPage() {
         return registrationPage;

@@ -1,6 +1,9 @@
 package controller;
 
 
+import model.chat.ChatsWith;
+
+import java.util.ArrayList;
 
 public class ChatController {
 
@@ -13,5 +16,16 @@ public class ChatController {
 
     public void sendMessage(Object message){
         controller.getServer().sendMessage(message);
+    }
+
+    public void populateChat(ArrayList<ChatsWith> list) {
+
+
+        if (list.size() == 0) {
+            controller.getGui().getView().chatPage();
+        }
+        controller.getCurrentUser().setChatsWith(list);
+        controller.getGui().getView().chatPage();
+
     }
 }

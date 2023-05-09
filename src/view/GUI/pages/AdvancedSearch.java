@@ -5,7 +5,6 @@ import controller.GUIController;
 import model.*;
 import model.Book;
 import model.search.AdvancedSearchResult;
-import view.GUI.DisplayBooks;
 import view.GUI.PageWithMenu;
 
 import javax.imageio.ImageIO;
