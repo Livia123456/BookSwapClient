@@ -4,6 +4,8 @@ import model.*;
 import model.chat.ChatObject;
 import model.chat.ChatsWith;
 import model.chat.MessageObject;
+import model.search.AdvancedSearchResult;
+import model.search.SearchAble;
 
 import java.io.*;
 import java.net.Socket;
@@ -79,18 +81,23 @@ public class ServerConnection extends Thread{
                         controller.getGui().displaySearchResult((SearchResult) message);
                     }
 
+
                     else if (message instanceof ArrayList<?>) {
-                        //System.out.println(message);        //todo: display i GUI
-                        ArrayList<SearchAble> s = new ArrayList<>();
-                        s.add((SearchAble) message);
-                        for (int i = 0; i < s.size(); i++) {
-                            System.out.println(s.get(i));
+                        ArrayList<?> list = (ArrayList<?>) message;
 
+                        for (Object element : list) {
+                            if (element instanceof SearchAble) { //todo: display i GUI
+                                ArrayList<SearchAble> s = new ArrayList<>();
+                                s.add((SearchAble) message);
+                                for (int i = 0; i < s.size(); i++) {
+                                    System.out.println(s.get(i));
+                                }
+                            }
+                            else if (element instanceof ChatsWith){
+                                controller.getGui().uploadActiveChats((ArrayList<ChatsWith>) message);
+
+                            }
                         }
-                    }
-
-                    else if (message instanceof ChatsWith){
-                        //todo
                     }
 
                     else if (message instanceof MessageObject){
