@@ -60,6 +60,11 @@ public class MainFrame extends JFrame {
     public void chatPage() {
         chatPage = new ChatPage(controller);
         chatPage.setVisible(true);
+        setSize(1100, 700);
+        setLocationRelativeTo(null);
+        setResizable(true);
+        setVisible(true);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getContentPane().removeAll();
         setContentPane(chatPage);
         getContentPane().revalidate();
