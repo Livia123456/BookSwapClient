@@ -2,7 +2,7 @@ package view.GUI.pages;
 
 import controller.Controller;
 import controller.GUIController;
-import model.AdvancedSearchResult;
+import model.*;
 import model.Book;
 import model.SearchResult;
 import view.GUI.DisplayBooks;
@@ -107,7 +107,7 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         panel.setBackground(Color.WHITE);
 
         for (Book book : result.getBooks()) {
-            panel.add(DisplayBooks.addBook(book));
+            panel.add(addBook(book));
         }
 
         panel.add(Box.createHorizontalGlue());
