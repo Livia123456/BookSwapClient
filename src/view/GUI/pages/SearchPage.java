@@ -28,12 +28,15 @@ public class SearchPage extends PageWithMenu implements ActionListener {
     private JLabel error;
     private JLabel bookLabel1;
     private JLabel bookLabel2;
-
     private JScrollPane scrollPane;
+    private Book[] books;
+    private JButton[] startChatButtons;
+    private StartChatListener startChatListener;
 
     public SearchPage(Controller controller) {
         super(controller);
         this.controller = controller.getGui();
+        this.startChatListener = new StartChatListener();
         setUp();
     }
 
@@ -106,8 +109,12 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBackground(Color.WHITE);
 
-        for (Book book : result.getBooks()) {
-            panel.add(addBook(book));
+        books = new Book[result.getBooks().size()];
+        books = result.getBooks().toArray(new Book[0]);
+        startChatButtons = new JButton[books.length];
+
+        for (int i = 0; i < books.length; i++) {
+            panel.add(addBook(books[i], i));
         }
 
         panel.add(Box.createHorizontalGlue());
@@ -128,7 +135,7 @@ public class SearchPage extends PageWithMenu implements ActionListener {
 
     }
 
-    private JPanel addBook(Book book) {
+    private JPanel addBook(Book book, int i) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBackground(Color.WHITE);
@@ -176,6 +183,8 @@ public class SearchPage extends PageWithMenu implements ActionListener {
 
         JButton button = new JButton("Start chat");
         button.setSize(100, 20);
+        button.addActionListener(startChatListener);
+        startChatButtons[i] = button;
 
         panel.add(Box.createRigidArea(new Dimension(0,5)));
         panel.add(title);
@@ -205,5 +214,18 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         add(error);
         revalidate();
         repaint();
+    }
+
+    private class StartChatListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for (int i = 0; i < startChatButtons.length; i++) {
+                if (e.getSource() == startChatButtons[i]) {
+                    //TODO starta chat
+                    //books[i].getUploadedBy(); nånting sånt
+                }
+            }
+        }
     }
 }

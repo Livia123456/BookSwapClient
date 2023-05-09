@@ -23,10 +23,14 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
     private JButton searchButton = new JButton("Search");
     private Controller controller;
     private JScrollPane scrollPane;
+    private Book[] books;
+    private JButton[] startChatButtons;
+    private StartChatListener startChatListener;
 
     public AdvancedSearch(Controller controller) {
         super(controller);
         this.controller = controller;
+        startChatListener = new StartChatListener();
         setUp();
     }
 
@@ -150,58 +154,18 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         super.menuSetUp();
     }
 
-    private void displaySearchResult() {
-        remove(scrollPane);
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-        //panel.setBounds(490, 76, 570, 554);
-        panel.setBackground(Color.WHITE);
-        JButton button = new JButton("Hello");
-        //panel.add(button);
-
-        Book book = new Book();
-        book.setTitle("Bibeln");
-        book.setAuthor("gud");
-        book.setIsbn("123356");
-        book.setRelease_date("2000");
-        book.setGenre("fiction");
-        book.setEdition("first edition");
-        book.setPublisher("Verbum");
-        panel.add(addBook(book));
-        for (int i = 0; i < 10; i++) {
-            panel.add(addBook(book));
-        }
-        book = new Book();
-        book.setTitle("Gamla testamentet");
-        book.setAuthor("Gud");
-        panel.add(addBook(book));
-
-
-        panel.add(Box.createHorizontalGlue());
-        panel.add(Box.createVerticalGlue());
-
-        scrollPane = new JScrollPane(panel);
-        scrollPane.setBackground(Color.WHITE);
-        scrollPane.setBorder(new LineBorder(Color.PINK));
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollPane.setBounds(486, 76, 570, 554);
-
-        scrollPane.revalidate();
-        scrollPane.repaint();
-        add(scrollPane);
-        revalidate();
-        repaint();
-    }
-
 
     public void displayResults(AdvancedSearchResult result) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBackground(Color.WHITE);
 
-        for (Book book : result.getBooks()) {
-            panel.add(addBook(book));
+        books = new Book[result.getBooks().size()];
+        books = result.getBooks().toArray(new Book[0]);
+        startChatButtons = new JButton[books.length];
+
+        for (int i = 0; i < books.length; i++) {
+            panel.add(addBook(books[i], i));
         }
 
         panel.add(Box.createHorizontalGlue());
@@ -222,7 +186,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
 
     }
 
-    private JPanel addBook(Book book) {
+    private JPanel addBook(Book book, int i) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBackground(Color.WHITE);
@@ -270,6 +234,8 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
 
         JButton button = new JButton("Start chat");
         button.setSize(100, 20);
+        button.addActionListener(startChatListener);
+        startChatButtons[i] = button;
 
         panel.add(Box.createRigidArea(new Dimension(0,5)));
         panel.add(title);
@@ -335,5 +301,17 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         add(scrollPane);
         revalidate();
         repaint();
+    }
+
+    private class StartChatListener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for (int i = 0; i < startChatButtons.length; i++) {
+                if (e.getSource() == startChatButtons[i]) {
+                    //TODO starta chat
+                    //books[i].getUploadedBy(); nånting sånt
+                }
+            }
+        }
     }
 }
