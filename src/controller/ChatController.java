@@ -2,6 +2,7 @@ package controller;
 
 
 import model.chat.ChatsWith;
+import model.chat.MessageObject;
 
 import java.util.ArrayList;
 
@@ -27,5 +28,9 @@ public class ChatController {
         controller.getCurrentUser().setChatsWith(list);
         controller.getGui().getView().chatPage();
 
+    }
+
+    public void getChatHistory(ArrayList<MessageObject> list) {
+        controller.getGui().getView().getChatPage().addChatHistory(list);
     }
 }

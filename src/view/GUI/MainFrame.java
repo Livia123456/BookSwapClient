@@ -200,6 +200,10 @@ public class MainFrame extends JFrame {
     public SearchPage getSearch() {
         return search;
     }
+
+    public ChatPage getChatPage() {
+        return chatPage;
+    }
 }
 
 

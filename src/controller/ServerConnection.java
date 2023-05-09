@@ -82,9 +82,26 @@ public class ServerConnection extends Thread{
 
 
                     else if (message instanceof ArrayList<?>) {
+                        ArrayList<?> list = (ArrayList<?>) message;
+                        if (!list.isEmpty()) {
+                            Object obj = list.get(0);
 
+                            if (obj instanceof ChatsWith) {
+                                controller.getChatController().populateChat((ArrayList<ChatsWith>) message);
+                            }
+                            else if (obj instanceof MessageObject) {
+                                controller.getChatController().getChatHistory((ArrayList<MessageObject>) message);
+                            }
+                        }
+
+                        /*
+                        if (message instanceof (ArrayList<ChatsWith>)){
+
+                        }
                         controller.getChatController().populateChat((ArrayList<ChatsWith>) message);
 
+                        controller.getChatController().getChatHistory((ArrayList<MessageObject>) message);
+*/
                     }
 
                     else if (message instanceof MessageObject){
@@ -96,9 +113,7 @@ public class ServerConnection extends Thread{
                     }
 
                 }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (ClassNotFoundException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
 

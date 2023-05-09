@@ -1,11 +1,12 @@
 package view.GUI.pages;
 
 import controller.Controller;
+import model.UserInfo;
 import model.chat.ChatObject;
 import model.chat.ChatStatus;
 import model.chat.ChatsWith;
+import model.chat.MessageObject;
 import view.GUI.PageWithMenu;
-import view.GUI.ProfilePage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -24,6 +25,7 @@ public class ChatPage extends PageWithMenu implements ActionListener{
 
     private Controller controller;
     private String name;
+    private ChatsWith chatsWith;
     private int userId;
     private JTextArea chatArea;
     private JTextField inputField;
@@ -32,6 +34,8 @@ public class ChatPage extends PageWithMenu implements ActionListener{
     private JPanel contactsPanel;
     private ArrayList<ChatsWith> contacts;
     private String[] titleOfUsersBooks;
+    private ArrayList<JButton> buttons;
+    private JButton but;
     private JButton homeButton = new JButton("Home");
     private JButton bookMarketButton = new JButton("Book market");
     private JButton profileButton = new JButton("Profile");
@@ -41,6 +45,7 @@ public class ChatPage extends PageWithMenu implements ActionListener{
         super(controller);
 
         this.controller = controller;
+        this.buttons = new ArrayList<>();
         name = controller.getCurrentUser().getName();
         userId = controller.getCurrentUser().getUserId();
 
@@ -83,21 +88,14 @@ public class ChatPage extends PageWithMenu implements ActionListener{
         contacts = controller.getCurrentUser().getChatsWith();
 
         for (int i = 0; i < contacts.size(); i++) {
-            JButton button = new JButton(contacts.get(i).getName());
-            button.setFont(new Font("Arial", Font.PLAIN, 16));
-            button.setPreferredSize(new Dimension(180, 40));
-            contactsPanel.add(button);
+
+            but = new JButton(contacts.get(i).getName());
+            but.addActionListener(this);
+            but.setFont(new Font("Arial", Font.PLAIN, 16));
+            but.setPreferredSize(new Dimension(180, 40));
+            buttons.add(but);
+            contactsPanel.add(buttons.get(i));
         }
-
-        /*contacts = new String[]{"Olle", "Livve", "Zulle", "Kappe", "Klas den fule", "Jajja"};
-        for (int i = 0; i < contacts.length; i++) {
-            JButton button = new JButton(contacts[i]);
-            button.setFont(new Font("Arial", Font.PLAIN, 16));
-            button.setPreferredSize(new Dimension(180, 40));
-            contactsPanel.add(button);
-        }  */
-
-        //getActiveChats();
 
 
         BufferedImage profilePicture;
@@ -147,14 +145,15 @@ public class ChatPage extends PageWithMenu implements ActionListener{
 
 
         JPanel chatPanel = new JPanel(new BorderLayout());
+        //chatPanel.setBorder(new LineBorder(Color.BLUE));
         chatArea = new JTextArea(20, 50);
-        chatArea.setText("New chat with user.getName()?...\n\n");
         chatArea.setEditable(false);
 
         JScrollPane chatScroll = new JScrollPane(chatArea);
         chatScroll.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
-        chatScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        chatScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        //chatScroll.setBorder(new LineBorder(Color.BLUE));
+        chatScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        chatScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         chatPanel.add(chatScroll, BorderLayout.CENTER);
 
         JPanel inputPanel = new JPanel(new BorderLayout());
@@ -205,14 +204,6 @@ public class ChatPage extends PageWithMenu implements ActionListener{
     }
 
 
-    public void getActiveChats(){
-
-        controller.getChatController().sendMessage
-                (new ChatObject(controller.getCurrentUser().getUserId(), 0, ChatStatus.populate));
-
-    }
-
-
     private void sendMessage() {
 
         String message = inputField.getText();
@@ -223,13 +214,28 @@ public class ChatPage extends PageWithMenu implements ActionListener{
         inputField.setText("");
     }
 
-    public static void main(String[] args) {
-       // ChatPage cP = new ChatPage();
+    public void addChatHistory(ArrayList<MessageObject> list){
+        for (int i = list.size() - 1; i >= 0; i--) {
+            if (list.get(i).getSender() == controller.getCurrentUser().getUserId()) {
+                chatArea.append(name + ": " + list.get(i).getMessage() + "\n");
+            }
+            else {
+                chatArea.append("    " + chatsWith.getName() + ": " + list.get(i).getMessage() + "\n");
+            }
+        }
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-       //Måste fixas men fattar ej hur...
+        for (int i = 0; i < buttons.size(); i++) {
+            if (e.getSource() == buttons.get(i)) {
+                chatArea.setText(String.format("New chat with %s\n\n", contacts.get(i).getName()));
+                chatsWith = contacts.get(i);
+                controller.getChatController().sendMessage(new ChatObject(userId, contacts.get(i).getUserId(), ChatStatus.open));
+            }
+        }
+
     }
 }
