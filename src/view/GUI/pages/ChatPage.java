@@ -3,6 +3,7 @@ package view.GUI.pages;
 import controller.Controller;
 import model.chat.ChatObject;
 import model.chat.ChatStatus;
+import model.chat.ChatsWith;
 import view.GUI.ProfilePage;
 
 import javax.imageio.ImageIO;
@@ -32,15 +33,15 @@ public class ChatPage implements ActionListener{
     private JButton sendButton;
     private JPanel profilePanel;
     private JPanel contactsPanel;
-    //private String[] contacts;
-    private ArrayList<ChatObject> contacts;
+    //private String[] contactsString;
+    private ArrayList<ChatsWith> contacts;
     private String[] titleOfUsersBooks;
     private JButton homeButton = new JButton("Home");
     private JButton bookMarketButton = new JButton("Book market");
     private JButton profileButton = new JButton("Profile");
     private JButton chatButton = new JButton("Chat");
 
-    public ChatPage() {
+    public ChatPage(Controller controller) {
 
         this.controller = controller;
         name = controller.getCurrentUser().getName();
@@ -89,6 +90,9 @@ public class ChatPage implements ActionListener{
             button.setPreferredSize(new Dimension(180, 40));
             contactsPanel.add(button);
         } */
+
+        contacts = new ArrayList<>();
+        getActiveChats();
 
 
         BufferedImage profilePicture;
@@ -202,20 +206,29 @@ public class ChatPage implements ActionListener{
 
 
     public void getActiveChats(){
-        contacts = new ArrayList<>();
 
         controller.getChatController().sendMessage
                 (new ChatObject(controller.getCurrentUser().getUserId(), 0, ChatStatus.populate));
 
-        /*for (int i = 0; i < ; i++) {
+    }
 
-        } */
+    public void uploadActiveChats(ArrayList<ChatsWith> chatsWith){
+
+        contacts = chatsWith;
+
+        for (int i = 0; i < contacts.size(); i++) {
+            JButton button = new JButton(contacts.get(i).getName());
+            button.setFont(new Font("Arial", Font.PLAIN, 16));
+            button.setPreferredSize(new Dimension(180, 40));
+            contactsPanel.add(button);
+        }
+
     }
 
     private void sendMessage() {
 
         String message = inputField.getText();
-        //controller.getChatController().sendMessage(controller.getCurrentUser().getUserId()), );
+        // controller.getChatController().sendMessage(controller.getCurrentUser().getUserId()), );
 
         chatArea.append(name + ": " + message + "\n\n");
 
@@ -223,7 +236,7 @@ public class ChatPage implements ActionListener{
     }
 
     public static void main(String[] args) {
-        ChatPage cP = new ChatPage();
+       // ChatPage cP = new ChatPage();
     }
 
     @Override

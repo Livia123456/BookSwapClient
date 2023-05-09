@@ -1,7 +1,7 @@
 package controller;
 
-import model.AdvancedSearchObject;
-import model.SearchObject;
+import model.search.AdvancedSearchObject;
+import model.search.SearchObject;
 
 
 /**

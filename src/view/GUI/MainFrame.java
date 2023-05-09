@@ -1,6 +1,7 @@
 package view.GUI;
 
 import controller.Controller;
+import model.chat.ChatsWith;
 import view.GUI.pages.*;
 import view.GUI.pages.profile.EditProfilePage;
 import view.GUI.pages.profile.MyBooks;
@@ -8,6 +9,7 @@ import view.GUI.pages.profile.MyWishList;
 import view.GUI.pages.profile.UpLoadABook;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
     private Controller controller;
@@ -171,6 +173,10 @@ public class MainFrame extends JFrame {
         setContentPane(upLoadABook);
         getContentPane().revalidate();
         getContentPane().repaint();
+    }
+
+    public void uploadChats(ArrayList<ChatsWith> chatsWith){
+        chatPage.uploadActiveChats(chatsWith);
     }
 
     public RegistrationPage getRegistrationPage() {

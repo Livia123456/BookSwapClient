@@ -1,9 +1,13 @@
 package controller;
 
 import model.*;
+import model.chat.ChatsWith;
+import model.search.AdvancedSearchResult;
+import model.search.SearchObject;
 import view.GUI.MainFrame;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class GUIController extends Thread {
     private MainFrame view;
@@ -152,5 +156,9 @@ public class GUIController extends Thread {
             //display books
         }
 
+    }
+
+    public void uploadActiveChats(ArrayList<ChatsWith> message) {
+        view.uploadChats(message);
     }
 }
