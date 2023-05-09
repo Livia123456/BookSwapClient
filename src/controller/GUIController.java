@@ -118,7 +118,7 @@ public class GUIController extends Thread {
 
     public void myBooks() {
 
-        view.myBooks();
+        view.myBooks(controller.getCurrentUser().getCurrentUsersUploadedBooks());
     }
 
     public Controller getController() {

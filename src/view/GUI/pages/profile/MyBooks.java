@@ -1,9 +1,10 @@
 package view.GUI.pages.profile;
 
 import controller.Controller;
+import model.AdvancedSearchResult;
+import model.Book;
 import view.GUI.ProfilePage;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -11,18 +12,17 @@ import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 
 public class MyBooks extends ProfilePage implements ActionListener {
+    private JScrollPane scrollPane;
 
-    public MyBooks(Controller controller) {
+    public MyBooks(Controller controller, ArrayList<Book> currentUsersUploadedBooks) {
         super(controller);
-        setUp();
+        setUp(currentUsersUploadedBooks);
     }
 
-    public void setUp() {
+    public void setUp(ArrayList<Book> currentUsersUploadedBooks) {
 
         JLabel bookMarket = new JLabel(" My books");
         bookMarket.setFont(new Font("Calibri", Font.ITALIC,18));
@@ -33,7 +33,7 @@ public class MyBooks extends ProfilePage implements ActionListener {
         /**
          * PANEL1 STARTS
          */
-
+        /*
         JPanel panel1 = new JPanel();
         panel1.setLayout(null);
 
@@ -126,9 +126,100 @@ public class MyBooks extends ProfilePage implements ActionListener {
 
         add(bookMarket);
         add(scrollPane);
+
+         */
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.setBackground(Color.WHITE);
+
+        for (Book book : currentUsersUploadedBooks) {
+            panel.add(addBook(book));
+        }
+
+        panel.add(Box.createHorizontalGlue());
+        panel.add(Box.createVerticalGlue());
+
+        scrollPane = new JScrollPane(panel);
+        scrollPane.setBackground(Color.WHITE);
+        scrollPane.setBorder(new LineBorder(Color.PINK));
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPane.setBounds(486, 76, 570, 554);
+
+        scrollPane.revalidate();
+        scrollPane.repaint();
+        add(scrollPane);
+        revalidate();
+        repaint();
+
         super.setUp();
         super.setMyBooksFalse();
     }
+
+
+    private JPanel addBook(Book book) {
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.setBackground(Color.WHITE);
+
+        JLabel title = new JLabel(book.getTitle() + " ");
+        title.setFont(new Font("Calibri", Font.ITALIC,18));
+        title.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        JPanel textPanel = new JPanel();
+        textPanel.setLayout(new BoxLayout(textPanel, BoxLayout.LINE_AXIS));
+        textPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        textPanel.setBackground(Color.WHITE);
+
+        JPanel text = new JPanel();
+        text.setLayout(new BoxLayout(text, BoxLayout.PAGE_AXIS));
+        text.setAlignmentX(Component.LEFT_ALIGNMENT);
+        text.setBackground(Color.WHITE);
+
+        if(book.getIsbn() != null && !book.getIsbn().isEmpty()) {
+            JLabel ISBN = new JLabel(" ISBN: " + book.getIsbn());
+            ISBN.setFont(new Font("Serif", Font.PLAIN, 14));
+            ISBN.setForeground(Color.GRAY);
+            text.add(ISBN);
+            text.add(Box.createRigidArea(new Dimension(0,3)));
+        }
+
+        String string = " av " + book.getAuthor();
+        if(book.getRelease_date() != null && !book.getRelease_date().isEmpty()) {
+            string += ", " + book.getRelease_date();
+        }
+        if(book.getGenre() != null && !book.getGenre().isEmpty()) {
+            string += ", " + book.getGenre();
+        }
+        if(book.getEdition() != null && !book.getEdition().isEmpty()) {
+            string += ", " + book.getEdition();
+        }
+        if(book.getPublisher() != null && !book.getPublisher().isEmpty()) {
+            string += ", " + book.getPublisher();
+        }
+
+        JLabel description = new JLabel(string);
+        description.setFont(new Font("Serif", Font.PLAIN, 14));
+        text.add(description);
+
+
+        JButton button = new JButton("Start chat");
+        button.setSize(100, 20);
+
+        panel.add(Box.createRigidArea(new Dimension(0,5)));
+        panel.add(title);
+        panel.add(Box.createRigidArea(new Dimension(0,7)));
+        textPanel.add(text);
+        textPanel.add(Box.createHorizontalGlue());
+        textPanel.add(button);
+        panel.add(textPanel);
+        panel.setBorder(new MatteBorder(0, 0, 1, 0, Color.BLACK));
+
+
+        return panel;
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

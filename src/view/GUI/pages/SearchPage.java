@@ -5,6 +5,7 @@ import controller.GUIController;
 import model.AdvancedSearchResult;
 import model.Book;
 import model.SearchResult;
+import view.GUI.DisplayBooks;
 import view.GUI.PageWithMenu;
 
 import javax.imageio.ImageIO;
@@ -106,7 +107,7 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         panel.setBackground(Color.WHITE);
 
         for (Book book : result.getBooks()) {
-            panel.add(addBook(book));
+            panel.add(DisplayBooks.addBook(book));
         }
 
         panel.add(Box.createHorizontalGlue());
@@ -132,7 +133,7 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBackground(Color.WHITE);
 
-        JLabel title = new JLabel(book.getTitle());
+        JLabel title = new JLabel(book.getTitle() + " ");
         title.setFont(new Font("Calibri", Font.ITALIC,18));
         title.setAlignmentX(Component.LEFT_ALIGNMENT);
 

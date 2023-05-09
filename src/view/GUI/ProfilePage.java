@@ -146,10 +146,10 @@ public class ProfilePage extends PageWithMenu{
             } else if (e.getSource() == myWishList) {
                 controller.myWishList();
             } else if (e.getSource() == myBooks) {
-                //controller.myBooks();
+                controller.myBooks();
                 //TODO: Böckerna som den inloggade användaren har laddat upp tidigare ska skickas till GUI.
-                Book bookToRemove = askWhichBookToRemove();
-                controller.removeBook(bookToRemove);
+                //Book bookToRemove = askWhichBookToRemove();
+                //controller.removeBook(bookToRemove);
 
             } else if (e.getSource() == signOut) {
                 System.out.println("SIGNOUT");
