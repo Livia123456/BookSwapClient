@@ -139,6 +139,12 @@ public class MyBooks extends ProfilePage implements ActionListener {
         for (int i = 0; i < buttons.length; i++) {
             if (e.getSource() == buttons[i]) {
                 controller.removeBook(myBooks[i]);
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
+                controller.myBooks();
             }
         }
 

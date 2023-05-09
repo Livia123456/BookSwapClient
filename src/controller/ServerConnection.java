@@ -94,6 +94,14 @@ public class ServerConnection extends Thread{
                     else if (message instanceof ChatObject){
                         //todo
                     }
+                    else if (message instanceof UpdateBookList) {
+                        ArrayList<Book> books = ((UpdateBookList) message).getBooks();
+                        for (Book b :
+                                books) {
+                            System.out.println(b.getTitle());
+                        }
+                        controller.getCurrentUser().setCurrentUsersUploadedBooks(books);
+                    }
 
                 }
             } catch (IOException e) {
