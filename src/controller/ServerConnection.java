@@ -82,22 +82,9 @@ public class ServerConnection extends Thread{
 
 
                     else if (message instanceof ArrayList<?>) {
-                        ArrayList<?> list = (ArrayList<?>) message;
 
-                        for (Object element : list) {
-                            if (element instanceof SearchAble) { //todo: display i GUI
-                                ArrayList<SearchAble> s = new ArrayList<>();
-                                s.add((SearchAble) message);
-                                for (int i = 0; i < s.size(); i++) {
-                                    System.out.println(s.get(i));
-                                }
-                            }
-                            else if (element instanceof ChatsWith){
-                                controller.getCurrentUser().setChatsWith((ArrayList<ChatsWith>) element);
-                                controller.getGui().getView().chatPage();
+                        controller.getChatController().populateChat((ArrayList<ChatsWith>) message);
 
-                            }
-                        }
                     }
 
                     else if (message instanceof MessageObject){

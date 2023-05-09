@@ -101,7 +101,7 @@ public class ChatPage extends PageWithMenu implements ActionListener{
             contactsPanel.add(button);
         }  */
 
-        getActiveChats();
+        //getActiveChats();
 
 
         BufferedImage profilePicture;
