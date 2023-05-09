@@ -77,7 +77,12 @@ public class GUIController extends Thread {
     }
 
     public void chatPage() {
+<<<<<<< Updated upstream
         view.chatPage();
+=======
+        //view.chatPage();
+        controller.getServer().sendMessage(new ChatObject(controller.getCurrentUser().getUserId(), 0, ChatStatus.populate));
+>>>>>>> Stashed changes
     }
 
     public void bookMarket() {

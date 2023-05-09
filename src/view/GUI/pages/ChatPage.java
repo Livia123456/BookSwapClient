@@ -20,10 +20,6 @@ import java.util.ArrayList;
 
 public class ChatPage implements ActionListener{
 
-    private JFrame mainFrame = new JFrame("Book Swap");
-    private HomePage homePage;
-    private SearchPage bookMarket;
-    private ProfilePage profile;
     private Controller controller;
 
     private String name;
@@ -82,7 +78,22 @@ public class ChatPage implements ActionListener{
         contactsPanel.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
         contactsPanel.setBackground(Color.WHITE);
 
+<<<<<<< Updated upstream
         //todo: Ändra här
+=======
+
+       /* contacts = controller.getCurrentUser().getChatsWith();
+
+        for (int i = 0; i < contacts.size(); i++) {
+            JButton button = new JButton(contacts.get(i).getName());
+            button.setFont(new Font("Arial", Font.PLAIN, 16));
+            button.setPreferredSize(new Dimension(180, 40));
+            contactsPanel.add(button);
+        }
+        
+        */
+
+>>>>>>> Stashed changes
         /*contacts = new String[]{"Olle", "Livve", "Zulle", "Kappe", "Klas den fule", "Jajja"};
         for (int i = 0; i < contacts.length; i++) {
             JButton button = new JButton(contacts[i]);
@@ -158,20 +169,20 @@ public class ChatPage implements ActionListener{
         inputPanel.add(inputField, BorderLayout.CENTER);
         inputPanel.add(sendButton, BorderLayout.EAST);
 
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.add(buttonsPanel, BorderLayout.NORTH);
-        mainPanel.add(bookSwapButton);
-        mainPanel.add(homeButton);
-        mainPanel.add(bookMarketButton);
-        mainPanel.add(profileButton);
-        mainPanel.add(chatButton);
-        mainPanel.add(profilePanel, BorderLayout.EAST);
-        mainPanel.add(chatPanel, BorderLayout.CENTER);
-        mainPanel.add(inputPanel, BorderLayout.SOUTH);
-        mainPanel.add(contactsPanel, BorderLayout.WEST);
+        setLayout(new BorderLayout());
+        add(buttonsPanel, BorderLayout.NORTH);
+        add(bookSwapButton);
+        add(homeButton);
+        add(bookMarketButton);
+        add(profileButton);
+        add(chatButton);
+        add(profilePanel, BorderLayout.EAST);
+        add(chatPanel, BorderLayout.CENTER);
+        add(inputPanel, BorderLayout.SOUTH);
+        add(contactsPanel, BorderLayout.WEST);
 
 
-        mainFrame.getContentPane().add(mainPanel);
+        //mainFrame.getContentPane().add(mainPanel);
 
         sendButton.addActionListener(new ActionListener() {
             @Override
@@ -197,11 +208,11 @@ public class ChatPage implements ActionListener{
             }
         });
 
-        mainFrame.setSize(1100, 700);
-        mainFrame.setLocationRelativeTo(null);
-        mainFrame.setResizable(true);
-        mainFrame.setVisible(true);
-        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+       // mainFrame.setSize(1100, 700);
+       // mainFrame.setLocationRelativeTo(null);
+       // mainFrame.setResizable(true);
+       // mainFrame.setVisible(true);
+       // mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
 
