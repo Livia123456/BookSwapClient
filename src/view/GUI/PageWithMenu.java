@@ -64,6 +64,9 @@ public class PageWithMenu extends JPanel {
         this.profileButton.setEnabled(false);
     }
 
+    protected void setChatButtonFalse() { this.chatButton.setEnabled(false);
+    }
+
     public class MenuActionListener implements ActionListener {
 
         @Override

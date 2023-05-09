@@ -9,8 +9,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/PageWithMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/PageWithMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

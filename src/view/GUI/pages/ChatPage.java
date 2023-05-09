@@ -44,6 +44,7 @@ public class ChatPage extends PageWithMenu implements ActionListener{
         name = controller.getCurrentUser().getName();
         userId = controller.getCurrentUser().getUserId();
 
+        /*
         JButton bookSwapButton = new JButton("BookSwap");
         bookSwapButton.setFont(new Font("Calibri", Font.PLAIN, 18));
         bookSwapButton.setBounds(18, 46, 90, 22);
@@ -62,6 +63,14 @@ public class ChatPage extends PageWithMenu implements ActionListener{
         chatButton.setBounds(356, 48, 60, 16);
         chatButton.setEnabled(false);
         chatButton.addActionListener(this);
+
+        add(bookSwapButton);
+        add(homeButton);
+        add(bookMarketButton);
+        add(profileButton);
+        add(chatButton);
+        
+         */
 
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setPreferredSize(new Dimension(600, 40));
@@ -165,11 +174,7 @@ public class ChatPage extends PageWithMenu implements ActionListener{
 
         setLayout(new BorderLayout());
         add(buttonsPanel, BorderLayout.NORTH);
-        add(bookSwapButton);
-        add(homeButton);
-        add(bookMarketButton);
-        add(profileButton);
-        add(chatButton);
+
         add(profilePanel, BorderLayout.EAST);
         add(chatPanel, BorderLayout.CENTER);
         add(inputPanel, BorderLayout.SOUTH);
@@ -201,7 +206,8 @@ public class ChatPage extends PageWithMenu implements ActionListener{
                 }
             }
         });
-
+        super.menuSetUp();
+        super.setChatButtonFalse();
     }
 
 
