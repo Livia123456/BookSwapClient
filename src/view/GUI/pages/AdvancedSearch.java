@@ -308,11 +308,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
                         genreComboBox.getSelectedItem().toString(), yearField.getText(), editionField.getText(),
                         publisherField.getText());
             }
-
-
-
         }
-
     }
 
     public void displayErrorMessage() {
