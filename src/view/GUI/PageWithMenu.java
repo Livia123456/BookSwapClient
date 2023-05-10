@@ -13,6 +13,7 @@ public class PageWithMenu extends JPanel {
 
     private GUIController controller;
     private MenuActionListener menuActionListener;
+    private JButton bookSwapButton;
     private JButton homeButton;
     private JButton bookMarketButton;
     private JButton profileButton;
@@ -27,6 +28,12 @@ public class PageWithMenu extends JPanel {
         JLabel bookSwap = new JLabel("BookSwap");
         bookSwap.setFont(new Font("Calibri", Font.PLAIN, 18));
         bookSwap.setBounds(24, 46, 100, 20);
+
+        bookSwapButton = new JButton("BookSwap");
+        bookSwapButton.setFont(new Font("Calibri", Font.PLAIN, 18));
+        bookSwapButton.setBounds(18, 46, 90, 22);
+        bookSwapButton.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        bookSwapButton.addActionListener(menuActionListener);
 
         homeButton = new JButton("Home");
         homeButton.setBounds(116, 48, 60, 16);
@@ -71,10 +78,9 @@ public class PageWithMenu extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == homeButton) {
+            if (e.getSource() == homeButton || e.getSource() == bookSwapButton) {
                 controller.homePage();
             } else if (e.getSource() == bookMarketButton) {
-                System.out.println("BOOKMARKET");
                 controller.bookMarket();
             } else if (e.getSource() == profileButton) {
                 controller.profilePage();
