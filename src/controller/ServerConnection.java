@@ -69,6 +69,7 @@ public class ServerConnection extends Thread{
                     }
                     else if (message instanceof Email) {
                         controller.getGui().showRegistrationPage((Email) message);
+
                     } else if (message instanceof Book) {
                         controller.getGui().bookReceived((Book) message);
                     }
@@ -94,14 +95,6 @@ public class ServerConnection extends Thread{
                             }
                         }
 
-                        /*
-                        if (message instanceof (ArrayList<ChatsWith>)){
-
-                        }
-                        controller.getChatController().populateChat((ArrayList<ChatsWith>) message);
-
-                        controller.getChatController().getChatHistory((ArrayList<MessageObject>) message);
-*/
                     }
 
                     else if (message instanceof MessageObject){

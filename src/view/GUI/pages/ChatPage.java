@@ -97,7 +97,7 @@ public class ChatPage extends PageWithMenu implements ActionListener{
         //todo: Ändra här
 
 
-       /* contacts = controller.getCurrentUser().getChatsWith();
+        contacts = controller.getCurrentUser().getChatsWith();
 
 
         for (int i = 0; i < contacts.size(); i++) {
@@ -110,7 +110,7 @@ public class ChatPage extends PageWithMenu implements ActionListener{
             contactsPanel.add(buttons.get(i));
         }
         
-        */
+
 
 
 
@@ -150,7 +150,7 @@ public class ChatPage extends PageWithMenu implements ActionListener{
 
         profilePanel.add(theUsersBooksLabel);
 
-        titleOfUsersBooks = new String[]{"Sagan om ringen", "Bilbo", "Snabba Cash", "Fågeln Roger"};
+        titleOfUsersBooks = new String[0];
         for (int i = 0; i < titleOfUsersBooks.length; i++) {
             JLabel bookTitle = new JLabel(titleOfUsersBooks[i]);
             bookTitle.setFont(new Font("Calibri", Font.ITALIC, 16));
@@ -223,15 +223,16 @@ public class ChatPage extends PageWithMenu implements ActionListener{
     private void sendMessage() {
 
         String message = inputField.getText();
-        // controller.getChatController().sendMessage(controller.getCurrentUser().getUserId()), );
+        controller.getChatController().sendMessage(new MessageObject(userId, chatsWith.getUserId(), message));
 
-        chatArea.append(name + ": " + message + "\n\n");
+        chatArea.append(name + ": " + message + "\n");
 
         inputField.setText("");
     }
 
     public void addChatHistory(ArrayList<MessageObject> list){
         for (int i = list.size() - 1; i >= 0; i--) {
+
             if (list.get(i).getSender() == controller.getCurrentUser().getUserId()) {
                 chatArea.append(name + ": " + list.get(i).getMessage() + "\n");
             }
@@ -246,12 +247,29 @@ public class ChatPage extends PageWithMenu implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         for (int i = 0; i < buttons.size(); i++) {
+
             if (e.getSource() == buttons.get(i)) {
                 chatArea.setText(String.format("New chat with %s\n\n", contacts.get(i).getName()));
                 chatsWith = contacts.get(i);
-                controller.getChatController().sendMessage(new ChatObject(userId, contacts.get(i).getUserId(), ChatStatus.open));
+                controller.getChatController().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
+                updateAvailableBooks();
             }
         }
 
     }
+
+    private void updateAvailableBooks() {
+        titleOfUsersBooks = new String[]{"hej", "hejdå"};
+        for (int i = 0; i < titleOfUsersBooks.length; i++) {
+            JLabel bookTitle = new JLabel(titleOfUsersBooks[i]);
+            bookTitle.setFont(new Font("Calibri", Font.ITALIC, 16));
+            profilePanel.add(bookTitle);
+        }
+        profilePanel.add(Box.createVerticalGlue());
+        profilePanel.revalidate();
+        profilePanel.repaint();
+
+    }
+
+
 }
