@@ -74,7 +74,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         genre.setBounds(30, 260, 100, 20);
 
         genreComboBox = new JComboBox<>(new String[]{"--","Fiction", "Data Science", "HCI", "Mathematics",
-                "Language Arts", "Fine Arts", "Physical Education"});
+                "Language Arts", "Fine Arts", "Physical Education", "Religion"});
         genreComboBox.setMaximumRowCount(5);
         genreComboBox.setBackground(Color.WHITE);
         genreComboBox.setBounds(149, 260, 309, 24);

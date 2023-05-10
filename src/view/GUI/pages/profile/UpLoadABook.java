@@ -102,7 +102,8 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
         genre.setForeground(Color.GRAY);
         genre.setBounds(640, 360, 100, 20);
 
-        genreComboBox = new JComboBox<>(new String[]{"-","Fiction", "Data Science", "HCI", "Mathematics", "Language Arts", "Fine Arts", "Physical Education"});
+        genreComboBox = new JComboBox<>(new String[]{"-","Fiction", "Data Science", "HCI", "Mathematics",
+                "Language Arts", "Fine Arts", "Physical Education", "Religion"});
         genreComboBox.setMaximumRowCount(5);
         genreComboBox.setBackground(Color.WHITE);
         genreComboBox.setBounds(735, 360, 272, 24);
@@ -112,55 +113,12 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
         errorMessage.setFont(new Font("Calibri", Font.ITALIC, 14));
         errorMessage.setBounds(660, 400, 340, 50);
 
-
-        //bilden ligger här
-        /*
-        BufferedImage bookToUpload = null;
-        try {
-            bookToUpload = ImageIO.read(new File("files/upLoadedBook.png"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        // Calculate the new width and height
-        int newWidth1 = 140; // Set your desired width
-        int newHeight1 = (int) Math.round((double) bookToUpload.getHeight() / bookToUpload.getWidth() * newWidth1);
-
-        // Create a new image with the new dimensions
-        BufferedImage bookToUploadResized = new BufferedImage(newWidth1, newHeight1, bookToUpload.getType());
-
-        // Scale the original image onto the new image
-        Graphics2D g2d1 = bookToUploadResized.createGraphics();
-        g2d1.drawImage(bookToUpload, 0, 0, newWidth1, newHeight1, null);
-        g2d1.dispose();
-
-        JLabel bookToUpladLabel = new JLabel(new ImageIcon(bookToUploadResized));
-        bookToUpladLabel.setHorizontalAlignment(JLabel.CENTER);
-        bookToUpladLabel.setVerticalAlignment(JLabel.CENTER);
-
-        JPanel bookPanel = new JPanel();
-        bookPanel.setBackground(Color.WHITE);
-        bookPanel.setBorder(new LineBorder(Color.GRAY, 2, true));
-        bookPanel.setBounds(794, 400, newWidth1+10, newHeight1+10);
-
-        uploadImage = new JButton("Add image");
-        uploadImage.setBounds(816, 590, 112, 26);
-
-        bookPanel.add(bookToUpladLabel, BorderLayout.CENTER);
-        add(bookPanel);
-
-        uploadImage.addActionListener(this);
-
-        add(uploadImage);
-        */
-
         uploadToBookMarket = new JButton("Upload to book market");
         uploadToBookMarket.setFont(new Font("Calibri", Font.PLAIN, 14));
         uploadToBookMarket.setBounds(783, 624, 180, 34);
 
 
         uploadToBookMarket.addActionListener(this);
-
 
         add(iSBN);
         add(iSBNField);
@@ -197,7 +155,9 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
             boolean hasAuthor = (authorField.getText() != null && !authorField.getText().isEmpty());
             if(hasTitle && hasAuthor) {
                 Book book = new Book.BookBuilder().title(titleField.getText()).author(authorField.getText())
-                        .release_date(yearField.getText()).genre(genreComboBox.getSelectedItem().toString()).build();
+                        .release_date(yearField.getText()).genre(genreComboBox.getSelectedItem().toString())
+                        .isbn(iSBNField.getText()).edition(editionField.getText()).
+                        publisher(publisherField.getText()).build();
                 controller.getBookController().uploadBook(book);
             } else {
                 errorMessage.setText("You need to enter both title and author");
