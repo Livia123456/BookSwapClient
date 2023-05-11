@@ -14,6 +14,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * This class inheritates from the Profile page and lets the user see its uploaded books.
+ * @author, Livia Tengelin, Olle Huss
+ */
+
 public class MyBooks extends ProfilePage implements ActionListener {
     private JScrollPane scrollPane;
     private Book[] myBooks;

@@ -9,6 +9,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Starting class for the GUI. This class is responsible for setting up the GUI making it possible for the user to sign in.
+ * @author, Livia Tengelin, Olle Huss
+ */
+
 public class FirstPage extends JPanel implements ActionListener {
     private Controller controller;
     private MainFrame mainFrame;

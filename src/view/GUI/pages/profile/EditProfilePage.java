@@ -16,6 +16,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * This class is a part of the Profile page and lets the user change its personal information like username, e-mail and password.
+ * @author, Livia Tengelin, Olle Huss
+ */
+
 public class EditProfilePage extends ProfilePage implements ActionListener {
 
     private Controller controller;

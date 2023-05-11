@@ -9,6 +9,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Class responsible for setting the main panel for each class in the GUI.
+ * @author, Livia Tengelin, Olle Huss
+ */
+
 public class PageWithMenu extends JPanel {
 
     private GUIController controller;
