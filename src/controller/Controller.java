@@ -29,18 +29,6 @@ public class Controller {
         gui.tryLoggingIn(message);
     }
 
-    public void checkNewPersonalInfo(String newName, String newPassword, String newEmail) {
-        char[] newPasswordArray = newPassword.toCharArray();
-        boolean newPasswordIsValid = registrationController.validPassword(newPasswordArray);
-        boolean newEmailIsValid = registrationController.validEmail(newEmail);
-
-        if(newEmailIsValid && newPasswordIsValid) {
-            UserInfoUpdate newUserInfo = new UserInfoUpdate(new Email(newEmail), newPassword, newName);
-            server.sendMessage(newUserInfo);
-        } else {
-            gui.showErrorMessage("Invalid e-mail or password.");
-        }
-    }
 
     public void tellServerToDeleteAccount(AccountToDelete accountToDelete) {
         server.sendMessage(accountToDelete);

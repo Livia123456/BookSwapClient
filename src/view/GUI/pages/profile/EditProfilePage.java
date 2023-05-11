@@ -95,7 +95,13 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
             String newName = userNameField.getText();
             String newPassword = passWordField.getText();
             String newEmail = eMailField.getText();
-            controller.checkNewPersonalInfo(newName, newPassword, newEmail);
+            boolean changeIsOk = controller.getRegistrationController().
+                    checkNewPersonalInfo(newName, newPassword, newEmail);
+
+            if (!changeIsOk) {
+                controller.getGui().showErrorMessage("new e-mail or password not valid.");
+            }
+
 
         } else if (e.getSource() == deleteAccount) {
             int yesNo = JOptionPane.showConfirmDialog(null, "Are you sure you want to " +

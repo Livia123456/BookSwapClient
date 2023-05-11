@@ -2,6 +2,7 @@ package controller;
 
 import model.Email;
 import model.UserInfo;
+import model.UserInfoUpdate;
 
 public class RegistrationController {
 
@@ -52,5 +53,19 @@ public class RegistrationController {
             }
         }
         return (hasAtSymbol && hasFullStop);
+    }
+
+    public boolean checkNewPersonalInfo(String newName, String newPassword, String newEmail) {
+        char[] newPasswordArray = newPassword.toCharArray();
+        boolean newPasswordIsValid = validPassword(newPasswordArray);
+        boolean newEmailIsValid = validEmail(newEmail);
+
+        if(newEmailIsValid && newPasswordIsValid) {
+            UserInfoUpdate newUserInfo = new UserInfoUpdate(new Email(newEmail), newPassword, newName);
+            controller.getServer().sendMessage(newUserInfo);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
