@@ -2,6 +2,12 @@ package model.chat;
 
 import java.io.Serializable;
 
+/**
+ * Class to store information about a chat between two users,
+ * the status instance variable is used to communicate instructions to the server.
+ * @author Kasper Lindberg
+ */
+
 public class ChatObject implements Serializable {
 
     private final static long serialVersionUID = 7L;

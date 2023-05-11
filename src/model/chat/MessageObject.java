@@ -2,6 +2,11 @@ package model.chat;
 
 import java.io.Serializable;
 
+/**
+ * Class to store information about a specific chat message.
+ * @author Kasper Lindberg
+ */
+
 public class MessageObject implements Serializable {
 
     private final static long serialVersionUID = 10L;

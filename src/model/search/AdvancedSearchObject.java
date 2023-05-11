@@ -2,6 +2,11 @@ package model.search;
 
 import java.io.Serializable;
 
+/**
+ * Class to store information relating to an advanced search query.
+ * @author Livia Tengelin
+ */
+
 public class AdvancedSearchObject implements Serializable {
 
     private final static long serialVersionUID = 99L;

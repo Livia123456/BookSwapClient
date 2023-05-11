@@ -2,6 +2,12 @@ package model.chat;
 
 import java.io.Serializable;
 
+/**
+ * Class to store information linking the current user to a chat and the
+ * recipient user of the chat.
+ * @author Kasper Lindberg
+ */
+
 public class ChatsWith implements Serializable {
 
     private final static long serialVersionUID = 14L;
