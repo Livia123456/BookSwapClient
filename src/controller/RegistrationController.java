@@ -4,6 +4,12 @@ import model.Email;
 import model.UserInfo;
 import model.UserInfoUpdate;
 
+
+/**
+ * This class is responsible for the methods associated with the registration and log-in methods
+ * of the program.
+ * @author Livia Tengelin, Olle Huss, Sebastian Zulj
+ */
 public class RegistrationController {
 
     private Controller controller;

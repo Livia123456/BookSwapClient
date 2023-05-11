@@ -6,6 +6,10 @@ import model.chat.MessageObject;
 
 import java.util.ArrayList;
 
+/**
+ * This class is responsible for the methods associated with the chat-function.
+ * @author Kasper Lindberg
+ */
 public class ChatController {
 
     private Controller controller;

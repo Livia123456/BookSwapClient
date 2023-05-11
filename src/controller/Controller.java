@@ -3,6 +3,11 @@ package controller;
 import model.*;
 import java.util.ArrayList;
 
+/**
+ * This class holds all the instances of classes that is associated with the client-side
+ * of the program. It also provides methods to reach these classes and thereby their methods.
+ * @author Livia Tengelin, Olle Huss, Sebastian Zulj, Kasper Lindberg
+ */
 public class Controller {
 
     private GUIController gui;

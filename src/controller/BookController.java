@@ -2,6 +2,10 @@ package controller;
 
 import model.Book;
 
+/**
+ * This class is responsible for handling methods concerning book objects on the client-side.
+ * @author Kasper Lindberg
+ */
 public class BookController {
 
     private Controller controller;
