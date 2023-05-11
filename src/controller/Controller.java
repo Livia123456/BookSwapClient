@@ -1,12 +1,10 @@
 package controller;
 
 import model.*;
-import view.TerminalUserInterface;
-
-import java.rmi.server.RMIClassLoaderSpi;
 import java.util.ArrayList;
 
 public class Controller {
+
     private GUIController gui;
     private ServerConnection server;
     private RegistrationController registrationController;
@@ -26,30 +24,11 @@ public class Controller {
 
     }
 
-    //Används bara för att testa att användarens upladdade böcker skickas från klient till server
-    public void printUsersBooksToTerminal() {
-        ArrayList<Book> books = currentUser.getCurrentUsersUploadedBooks();
-        for(Book book: books) {
-            System.out.println(book);
-        }
-    }
-
-    public void logIn(UserInfo userInfo) {
-        server.sendMessage(userInfo);
-    }
 
     public void tryLoggingIn(UserInfo message) {
         gui.tryLoggingIn(message);
     }
 
-    /**
-     * Method that checks if new account credentials are valid. If not, error message is displayed.
-     * If valid, a newUserInfo instance is sent to system server. Once it reaches the server
-     * the database will be updated.
-     * @param newName
-     * @param newPassword
-     * @param newEmail
-     */
     public void checkNewPersonalInfo(String newName, String newPassword, String newEmail) {
         char[] newPasswordArray = newPassword.toCharArray();
         boolean newPasswordIsValid = registrationController.validPassword(newPasswordArray);

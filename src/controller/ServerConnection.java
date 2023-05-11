@@ -1,15 +1,11 @@
 package controller;
 
 import model.*;
-import model.chat.ChatObject;
-import model.chat.ChatsWith;
-import model.chat.MessageObject;
-import model.search.AdvancedSearchResult;
-import model.search.SearchAble;
+import model.chat.*;
+import model.search.*;
 
 import java.io.*;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 public class ServerConnection extends Thread{
@@ -56,13 +52,11 @@ public class ServerConnection extends Thread{
     private class receiverThread extends Thread {
         @Override
         public void run() {
-
             try {
                 Object message;
                 while ((message = ois.readObject()) != null) {
                     if (message instanceof UserInfo) {
                         controller.tryLoggingIn((UserInfo) message);
-
                     }
                     else if (message instanceof String) {
                         System.out.println(message);
@@ -81,7 +75,6 @@ public class ServerConnection extends Thread{
                         controller.getGui().displaySearchResult((SearchResult) message);
                     }
 
-
                     else if (message instanceof ArrayList<?>) {
                         ArrayList<?> list = (ArrayList<?>) message;
                         if (!list.isEmpty()) {
@@ -94,7 +87,6 @@ public class ServerConnection extends Thread{
                                 controller.getChatController().getChatHistory((ArrayList<MessageObject>) message);
                             }
                         }
-
                     }
 
                     else if (message instanceof MessageObject){
@@ -112,12 +104,10 @@ public class ServerConnection extends Thread{
                         }
                         controller.getCurrentUser().setCurrentUsersUploadedBooks(books);
                     }
-
                 }
             } catch (IOException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
             }
-
         }
     }
 }

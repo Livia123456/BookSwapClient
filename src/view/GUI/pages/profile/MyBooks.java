@@ -2,9 +2,7 @@ package view.GUI.pages.profile;
 
 import controller.Controller;
 import controller.GUIController;
-import model.*;
 import model.Book;
-import view.GUI.DisplayBooks;
 import view.GUI.ProfilePage;
 
 import javax.swing.*;

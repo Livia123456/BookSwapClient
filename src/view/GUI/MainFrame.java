@@ -2,12 +2,8 @@ package view.GUI;
 
 import controller.Controller;
 import model.Book;
-import model.chat.ChatsWith;
 import view.GUI.pages.*;
-import view.GUI.pages.profile.EditProfilePage;
-import view.GUI.pages.profile.MyBooks;
-import view.GUI.pages.profile.MyWishList;
-import view.GUI.pages.profile.UpLoadABook;
+import view.GUI.pages.profile.*;
 
 import javax.swing.*;
 import java.util.ArrayList;

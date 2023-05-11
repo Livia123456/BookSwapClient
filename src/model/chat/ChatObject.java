@@ -9,8 +9,7 @@ public class ChatObject implements Serializable {
     private int user2;
     private ChatStatus status;
 
-
-    public ChatObject(int user1, int user2, ChatStatus status){
+    public ChatObject(int user1, int user2, ChatStatus status) {
         this.user1 = user1;
         this.user2 = user2;
         this.status = status;

@@ -1,13 +1,11 @@
 package model.search;
 
 import model.Book;
-
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class AdvancedSearchResult implements Serializable {
-    @Serial
+
     private final static long serialVersionUID = 7000L;
     private ArrayList<Book> books;
 

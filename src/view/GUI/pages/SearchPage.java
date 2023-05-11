@@ -2,10 +2,8 @@ package view.GUI.pages;
 
 import controller.Controller;
 import controller.GUIController;
-import model.*;
 import model.Book;
-import model.SearchResult;
-import view.GUI.DisplayBooks;
+import model.search.SearchResult;
 import view.GUI.PageWithMenu;
 
 import javax.imageio.ImageIO;

@@ -1,11 +1,9 @@
 package model;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class UpdateBookList implements Serializable {
-    @Serial
     private final static long serialVersionUID = 777L;
     private ArrayList<Book> books;
 

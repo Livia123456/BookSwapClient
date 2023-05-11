@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class ChatController {
 
-
     private Controller controller;
 
     public ChatController(Controller controller){
@@ -20,14 +19,11 @@ public class ChatController {
     }
 
     public void populateChat(ArrayList<ChatsWith> list) {
-
-
         if (list.size() == 0) {
             controller.getGui().getView().chatPage();
         }
         controller.getCurrentUser().setChatsWith(list);
         controller.getGui().getView().chatPage();
-
     }
 
     public void getChatHistory(ArrayList<MessageObject> list) {

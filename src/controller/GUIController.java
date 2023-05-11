@@ -3,13 +3,11 @@ package controller;
 import model.*;
 import model.chat.ChatObject;
 import model.chat.ChatStatus;
-import model.chat.ChatsWith;
 import model.search.AdvancedSearchResult;
 import model.search.SearchObject;
+import model.search.SearchResult;
 import view.GUI.MainFrame;
-
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class GUIController extends Thread {
     private MainFrame view;
@@ -33,7 +31,6 @@ public class GUIController extends Thread {
     @Override
     public void run() {
         this.view  = new MainFrame(controller);
-        //view.uploadBookPage(); //todo detta är tillfälligt för att jag inte pallar logga in hela tiden :P
     }
 
     public void newUser(String email) {
@@ -44,9 +41,7 @@ public class GUIController extends Thread {
 
     public void logIn(String email, char[] password) {
         UserInfo userInfo = new UserInfo(new Email(email.trim()), new String(password));
-        System.out.println(userInfo.getEmail() + "\n" + userInfo.getPassword());
         controller.getServer().sendMessage(userInfo);
-        //controller.logIn(userInfo);
     }
     public void showRegistrationPage(Email email) {
         if(email.isRegistered()) {
@@ -79,10 +74,8 @@ public class GUIController extends Thread {
     }
 
     public void chatPage() {
-
-        //view.chatPage();
-
-        controller.getServer().sendMessage(new ChatObject(2, 0, ChatStatus.populate));
+        controller.getServer().sendMessage(new ChatObject(controller.getCurrentUser().getUserId(),
+                0, ChatStatus.populate));
     }
 
     public void bookMarket() {
@@ -165,6 +158,7 @@ public class GUIController extends Thread {
             view.getAdvancedSearch().displayResults(result);
         }
     }
+    // todo: Kasper fixar
     /*public void uploadActiveChats(ArrayList<ChatsWith> message) {
         view.uploadChats(message);
     } */
@@ -178,5 +172,4 @@ public class GUIController extends Thread {
             view.getSearch().displayResults(result);
         }
     }
-
 }

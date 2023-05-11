@@ -3,10 +3,10 @@ package controller;
 import model.Email;
 import model.UserInfo;
 
-import java.util.Arrays;
-
 public class RegistrationController {
+
     private Controller controller;
+
     public RegistrationController(Controller controller) {
         this.controller = controller;
     }
@@ -32,14 +32,6 @@ public class RegistrationController {
         return (hasLetter && hasDigit);
     }
 
-//    public static void main(String[] args) {
-//        RegistrationController rc = new RegistrationController();
-//        System.out.println(rc.validEmail("hej@gmail.com"));
-//        System.out.println(rc.validEmail("hej.gamil.com"));
-//        System.out.println(rc.validEmail("hej@g@mail.com"));
-//        System.out.println(rc.validEmail("hej@hejdå"));
-//        System.out.println(rc.validEmail(""));
-//    }
 
     public void newUser(String currentEmail, String userName, char[] password) {
         System.out.println(new String(password));

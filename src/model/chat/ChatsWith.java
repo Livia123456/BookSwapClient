@@ -9,7 +9,7 @@ public class ChatsWith implements Serializable {
     private String name;
     private int userId;
 
-    public ChatsWith(int chatId, String name, int userId){
+    public ChatsWith(int chatId, String name, int userId) {
         this.chatId = chatId;
         this.name = name;
         this.userId = userId;
