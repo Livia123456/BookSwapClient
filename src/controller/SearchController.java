@@ -4,8 +4,8 @@ import model.search.AdvancedSearchObject;
 import model.search.SearchObject;
 
 /**
- * Passes the search object to the sendMessage method (in serverConnection).
- * @author Kasper Lindberg
+ * Responsible for search object to be sent to the sendMessage method (in serverConnection).
+ * @author Kasper Lindberg, Livia Tengelin, Olle Huss
  */
 public class SearchController {
 

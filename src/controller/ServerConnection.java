@@ -8,6 +8,12 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
+
+/**
+ * This class is responsible for the connection to the server-side of the program. It provides
+ * methods to both send and retrieve objects, and for directing these objects to where they belong.
+ * @author Livia Tengelin, Kasper Lindberg
+ */
 public class ServerConnection extends Thread{
     private String ip;
     private int port;
@@ -42,7 +48,6 @@ public class ServerConnection extends Thread{
     public void sendMessage(Object object) {
         try {
             oos.writeObject(object);
-            //oos.writeObject("hello");
             oos.flush();
         } catch (IOException e) {
             throw new RuntimeException(e);

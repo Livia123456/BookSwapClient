@@ -9,6 +9,11 @@ import model.search.SearchResult;
 import view.GUI.MainFrame;
 import javax.swing.*;
 
+
+/**
+ * This class is responsible for populating and for communicating with the GUI of the program.
+ * @author Livia Tengelin, Olle Huss, Sebastian Zulj, Kasper Lindberg
+ */
 public class GUIController extends Thread {
     private MainFrame view;
     private Controller controller;
