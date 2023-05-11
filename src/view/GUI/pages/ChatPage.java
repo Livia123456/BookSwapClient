@@ -20,8 +20,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ChatPage extends PageWithMenu implements ActionListener{
+/**
+ * Class responsible for the chat-GUI.
+ * @author, Livia Tengelin, Olle Huss
+ */
 
+public class ChatPage extends PageWithMenu implements ActionListener {
 
     private Controller controller;
     private String name;
@@ -74,8 +78,6 @@ public class ChatPage extends PageWithMenu implements ActionListener{
         add(bookMarketButton);
         add(profileButton);
         add(chatButton);
-        
-         
 
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setPreferredSize(new Dimension(600, 40));

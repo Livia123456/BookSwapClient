@@ -19,6 +19,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Class responsible for setting up the components for the Advanced Search.
+ * @author, Livia Tengelin, Olle Huss
+ */
+
 public class AdvancedSearch extends PageWithMenu implements ActionListener {
     private JButton searchButton = new JButton("Search");
     private Controller controller;

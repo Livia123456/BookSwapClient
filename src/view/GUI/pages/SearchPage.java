@@ -17,6 +17,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * This class sets uo the GUI for the simple-search function.
+ * @author, Livia Tengelin, Olle Huss
+ */
+
 public class SearchPage extends PageWithMenu implements ActionListener {
 
     private JButton searchButton = new JButton("Search");

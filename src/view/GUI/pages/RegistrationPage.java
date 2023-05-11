@@ -10,6 +10,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * This class generates the GUI for the sign-up page, letting the user creat an account.
+ * @author, Livia Tengelin
+ */
+
 public class RegistrationPage extends JPanel implements ActionListener {
 
     private GUIController controller;

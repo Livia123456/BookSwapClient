@@ -8,6 +8,11 @@ import view.GUI.pages.profile.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
+/**
+ * Class responsible for setting the Main Frame for the GUI.
+ * @author, Livia Tengelin, Olle Huss
+ */
+
 public class MainFrame extends JFrame {
     private Controller controller;
     private FirstPage firstPage;

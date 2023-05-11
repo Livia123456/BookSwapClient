@@ -14,6 +14,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * This class sets up the Home page in the application.
+ * @author, Livia Tengelin, Olle Huss
+ */
+
 public class HomePage extends PageWithMenu implements ActionListener
 {
     private Controller controller;

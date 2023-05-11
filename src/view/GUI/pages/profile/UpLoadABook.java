@@ -17,6 +17,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
+/**
+ * The class sets up the GUI and letting the user insert info about a book it wants to upload.
+ * @author, Livia Tengelin, Olle Huss
+ */
+
 public class UpLoadABook extends ProfilePage implements ActionListener {
     private JTextField iSBNField;
     private JTextField titleField;

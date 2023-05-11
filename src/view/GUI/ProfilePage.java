@@ -15,6 +15,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Class responsible for setting up the main components for the Profile page.
+ * @author, Livia Tengelin, Olle Huss
+ */
+
 public class ProfilePage extends PageWithMenu{
  private GUIController controller;
 
