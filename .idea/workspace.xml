@@ -4,27 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
     <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< Updated upstream
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/AdvancedSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/AdvancedSearch.java" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" afterDir="false" />
->>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/profile/MyBooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/profile/MyBooks.java" afterDir="false" />
-=======
-    <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/SearchResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/PageWithMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/PageWithMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/AdvancedSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/AdvancedSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" afterDir="false" />
->>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
