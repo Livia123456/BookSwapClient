@@ -26,7 +26,7 @@ import java.util.ArrayList;
  * @author, Livia Tengelin, Olle Huss
  */
 
-public class ChatPage extends PageWithMenu implements ActionListener {
+public class ChatPage extends JPanel implements ActionListener {
 
     private Controller controller;
     private String name;
@@ -41,45 +41,49 @@ public class ChatPage extends PageWithMenu implements ActionListener {
     private String[] titleOfUsersBooks;
     private ArrayList<JButton> buttons;
     private JButton but;
+
     private JButton homeButton = new JButton("Home");
     private JButton bookMarketButton = new JButton("Book market");
     private JButton profileButton = new JButton("Profile");
     private JButton chatButton = new JButton("Chat");
+    private JButton bookSwapButton;
     private UpdateChatThread chatThread;
 
     public ChatPage(Controller controller) {
-        super(controller);
+        //super(controller);
 
         this.controller = controller;
         this.buttons = new ArrayList<>();
         name = controller.getCurrentUser().getName();
         userId = controller.getCurrentUser().getUserId();
 
+        MenuActionListener mal = new MenuActionListener();
         
-        JButton bookSwapButton = new JButton("BookSwap");
+        bookSwapButton = new JButton("BookSwap");
         bookSwapButton.setFont(new Font("Calibri", Font.PLAIN, 18));
         bookSwapButton.setBounds(18, 46, 90, 22);
         bookSwapButton.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        bookSwapButton.addActionListener(this);
+        bookSwapButton.addActionListener(mal);
 
         homeButton.setBounds(116, 48, 60, 16);
-        homeButton.addActionListener(this);
+        homeButton.addActionListener(mal);
 
         bookMarketButton.setBounds(183, 48, 100, 16);
-        bookMarketButton.addActionListener(this);
+        bookMarketButton.addActionListener(mal);
 
         profileButton.setBounds(289, 48, 60, 16);
-        profileButton.addActionListener(this);
+        profileButton.addActionListener(mal);
 
         chatButton.setBounds(356, 48, 60, 16);
         chatButton.setEnabled(false);
-        chatButton.addActionListener(this);
+        //chatButton.addActionListener(mal);
 
         add(bookSwapButton);
         add(homeButton);
         add(bookMarketButton);
         add(profileButton);
         add(chatButton);
+
 
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setPreferredSize(new Dimension(600, 40));
@@ -185,10 +189,7 @@ public class ChatPage extends PageWithMenu implements ActionListener {
         setLayout(new BorderLayout());
         add(buttonsPanel, BorderLayout.NORTH);
         add(bookSwapButton);
-        add(homeButton);
-        add(bookMarketButton);
-        add(profileButton);
-        add(chatButton);
+
 
         add(profilePanel, BorderLayout.EAST);
         add(chatPanel, BorderLayout.CENTER);
@@ -257,7 +258,7 @@ public class ChatPage extends PageWithMenu implements ActionListener {
         for (int i = 0; i < buttons.size(); i++) {
 
             if (e.getSource() == buttons.get(i)) {
-                chatArea.setText(String.format("New chat with %s\n\n", contacts.get(i).getName()));
+                //chatArea.setText(String.format("New chat with %s\n\n", contacts.get(i).getName()));
                 chatsWith = contacts.get(i);
                 controller.getChatController().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
                 updateAvailableBooks();
@@ -282,5 +283,23 @@ public class ChatPage extends PageWithMenu implements ActionListener {
 
     }
 
+    public class MenuActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                chatThread.stopThread();
+            } catch (NullPointerException ex) {}
+            if (e.getSource() == homeButton || e.getSource() == bookSwapButton) {
+                controller.getGui().homePage();
+            } else if (e.getSource() == bookMarketButton) {
+                controller.getGui().bookMarket();
+            } else if (e.getSource() == profileButton) {
+                controller.getGui().profilePage();
+            } else if (e.getSource() == chatButton) {
+                controller.getGui().chatPage();
+            }
+        }
+    }
 
 }
