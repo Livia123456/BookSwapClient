@@ -31,6 +31,7 @@ public class ChatController {
     }
 
     public void getChatHistory(ArrayList<MessageObject> list) {
+
         controller.getGui().getView().getChatPage().addChatHistory(list);
     }
 }

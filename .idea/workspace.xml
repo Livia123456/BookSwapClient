@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ChatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -205,9 +206,19 @@
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/GUI/PageWithMenu.java</url>
-          <line>91</line>
-          <option name="timeStamp" value="32" />
+          <url>file://$PROJECT_DIR$/src/controller/ServerConnection.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java</url>
+          <line>241</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
         <breakpoint type="java-exception">
           <properties class="java.lang.IllegalArgumentException" package="java.lang" />

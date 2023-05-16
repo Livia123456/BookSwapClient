@@ -47,7 +47,9 @@ public class ChatPage extends JPanel implements ActionListener {
     private JButton profileButton = new JButton("Profile");
     private JButton chatButton = new JButton("Chat");
     private JButton bookSwapButton;
-    private UpdateChatThread chatThread;
+    private JLabel profilePictureLabel;
+    private JLabel profileNameLabel;
+
 
     public ChatPage(Controller controller) {
         //super(controller);
@@ -138,13 +140,14 @@ public class ChatPage extends JPanel implements ActionListener {
         g2d.drawImage(profilePicture, 0, 0, newWidth, newHeight, null);
         g2d.dispose();
 
-        JLabel profilePictureLabel = new JLabel(new ImageIcon(resizedImage));
+        profilePictureLabel = new JLabel(new ImageIcon(resizedImage));
         profilePictureLabel.setAlignmentY(Component.TOP_ALIGNMENT);
         profilePanel.add(profilePictureLabel);
 
         profilePanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-        JLabel profileNameLabel = new JLabel(name, SwingConstants.CENTER);
+
+        profileNameLabel = new JLabel(name, SwingConstants.CENTER);
         profileNameLabel.setAlignmentY(Component.TOP_ALIGNMENT);
         profileNameLabel.setFont(new Font("Arial", Font.BOLD, 24));
         profilePanel.add(profileNameLabel);
@@ -251,9 +254,6 @@ public class ChatPage extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        try {
-            chatThread.stopThread();
-        } catch (NullPointerException ex) {}
 
         for (int i = 0; i < buttons.size(); i++) {
 
@@ -262,9 +262,8 @@ public class ChatPage extends JPanel implements ActionListener {
                 chatsWith = contacts.get(i);
                 controller.getChatController().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
                 updateAvailableBooks();
+                return;
 
-                chatThread = new UpdateChatThread(userId, chatsWith.getUserId(), controller);
-                chatThread.start();
             }
         }
 
@@ -287,9 +286,6 @@ public class ChatPage extends JPanel implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                chatThread.stopThread();
-            } catch (NullPointerException ex) {}
             if (e.getSource() == homeButton || e.getSource() == bookSwapButton) {
                 controller.getGui().homePage();
             } else if (e.getSource() == bookMarketButton) {
