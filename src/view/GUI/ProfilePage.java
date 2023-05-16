@@ -31,6 +31,7 @@ public class ProfilePage extends PageWithMenu{
     private JButton myBooks;
     private JButton signOut;
     private JButton changePicture;
+    private JLabel bookLabel1;
 
 
     public ProfilePage(Controller controller) {
@@ -64,12 +65,13 @@ public class ProfilePage extends PageWithMenu{
         g2d.drawImage(book1, 0, 0, newWidth, newHeight, null);
         g2d.dispose();
 
-        JLabel bookLabel1 = new JLabel(new ImageIcon(resizedImage));
+        bookLabel1 = new JLabel(new ImageIcon(resizedImage));
         bookLabel1.setBounds(-5, 80, 250, 250);
 
 
         changePicture = new JButton("Change picture"); //????
         changePicture.setBounds(46, 340, 150, 26);
+        changePicture.addActionListener(profilePageListener);
 
         add(bookLabel1);
         add(changePicture);
@@ -107,6 +109,7 @@ public class ProfilePage extends PageWithMenu{
         add(myBooks);
         add(signOut);
     }
+
 
     public void setEditPersonalInformationFalse() {
         this.editPersonalInformation.setEnabled(false);
@@ -159,6 +162,35 @@ public class ProfilePage extends PageWithMenu{
             } else if (e.getSource() == signOut) {
                 System.out.println("SIGNOUT");
                 controller.signOut();
+            }
+            else if (e.getSource() == changePicture) {
+
+                JFileChooser fileChooser = new JFileChooser();
+                BufferedImage image = null;
+                int returnVal = fileChooser.showOpenDialog(controller.getView());
+
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    File file = fileChooser.getSelectedFile();
+                    System.out.println(file);
+                    try {
+                        image = ImageIO.read(file);
+                        int width = 200;
+                        int height = 200;
+                        ImageIcon img = new ImageIcon(image.getScaledInstance(width, height, Image.SCALE_SMOOTH));
+                        bookLabel1.setIcon(img);
+                        add(bookLabel1);
+                        revalidate();
+                        repaint();
+
+                        controller.getController().getServer().sendMessage(img);
+
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+
+
+
             }
         }
     }

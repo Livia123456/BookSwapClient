@@ -177,4 +177,5 @@ public class GUIController extends Thread {
             view.getSearch().displayResults(result);
         }
     }
+
 }

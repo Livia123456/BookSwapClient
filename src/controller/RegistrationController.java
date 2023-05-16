@@ -4,6 +4,12 @@ import model.Email;
 import model.UserInfo;
 import model.UserInfoUpdate;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
 
 /**
  * This class is responsible for the methods associated with the registration and log-in methods
@@ -74,4 +80,5 @@ public class RegistrationController {
             return false;
         }
     }
+
 }
