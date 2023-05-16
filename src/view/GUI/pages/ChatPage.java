@@ -1,13 +1,8 @@
 package view.GUI.pages;
 
+import controller.ChatController;
 import controller.Controller;
-import controller.UpdateChatThread;
-import model.UserInfo;
-import model.chat.ChatObject;
-import model.chat.ChatStatus;
-import model.chat.ChatsWith;
 import model.chat.MessageObject;
-import view.GUI.PageWithMenu;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -23,22 +18,26 @@ import java.util.ArrayList;
 
 /**
  * Class responsible for the chat-GUI.
- * @author, Livia Tengelin, Olle Huss
+ * @author Livia Tengelin, Olle Huss
  */
 
 public class ChatPage extends JPanel implements ActionListener {
 
     private Controller controller;
-    private String name;
-    private ChatsWith chatsWith;
-    private int userId;
+    private ChatController chatController;
+    //private String name;
+    //private ChatsWith chatsWith;
+    //private int userId;
+
+    //private ArrayList<ChatsWith> contacts;
+    //private String[] titleOfUsersBooks;
     private JTextArea chatArea;
     private JTextField inputField;
     private JButton sendButton;
     private JPanel profilePanel;
+    private JLabel bookTitle;
+    private Component glue = Box.createVerticalGlue();
     private JPanel contactsPanel;
-    private ArrayList<ChatsWith> contacts;
-    private String[] titleOfUsersBooks;
     private ArrayList<JButton> buttons;
     private JButton but;
 
@@ -55,12 +54,12 @@ public class ChatPage extends JPanel implements ActionListener {
         //super(controller);
 
         this.controller = controller;
+        this.chatController = controller.getChatController();
         this.buttons = new ArrayList<>();
-        name = controller.getCurrentUser().getName();
-        userId = controller.getCurrentUser().getUserId();
 
+    }
+    public void setUp(ArrayList<String> contacts, String name) {
         MenuActionListener mal = new MenuActionListener();
-        
         bookSwapButton = new JButton("BookSwap");
         bookSwapButton.setFont(new Font("Calibri", Font.PLAIN, 18));
         bookSwapButton.setBounds(18, 46, 90, 22);
@@ -103,27 +102,20 @@ public class ChatPage extends JPanel implements ActionListener {
         contactsPanel.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
         contactsPanel.setBackground(Color.WHITE);
 
-
-        //todo: Ändra här
-
-
-        contacts = controller.getCurrentUser().getChatsWith();
-
-
         for (int i = 0; i < contacts.size(); i++) {
 
-            but = new JButton(contacts.get(i).getName());
+            but = new JButton(contacts.get(i));
             but.addActionListener(this);
             but.setFont(new Font("Arial", Font.PLAIN, 16));
             but.setPreferredSize(new Dimension(180, 40));
             buttons.add(but);
             contactsPanel.add(buttons.get(i));
         }
-        
 
 
 
 
+        //Profilepic
         BufferedImage profilePicture;
         try {
             profilePicture = ImageIO.read(new File("files/Avatar.jpg"));
@@ -161,24 +153,24 @@ public class ChatPage extends JPanel implements ActionListener {
 
         profilePanel.add(theUsersBooksLabel);
 
-        titleOfUsersBooks = new String[0];
+        //titleOfUsersBooks = new String[0];
+        /*
         for (int i = 0; i < titleOfUsersBooks.length; i++) {
             JLabel bookTitle = new JLabel(titleOfUsersBooks[i]);
             bookTitle.setFont(new Font("Calibri", Font.ITALIC, 16));
             profilePanel.add(bookTitle);
         }
+        */
         profilePanel.add(Box.createVerticalGlue());
 
 
 
         JPanel chatPanel = new JPanel(new BorderLayout());
-        //chatPanel.setBorder(new LineBorder(Color.BLUE));
         chatArea = new JTextArea(20, 50);
         chatArea.setEditable(false);
 
         JScrollPane chatScroll = new JScrollPane(chatArea);
         chatScroll.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
-        //chatScroll.setBorder(new LineBorder(Color.BLUE));
         chatScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         chatScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         chatPanel.add(chatScroll, BorderLayout.CENTER);
@@ -193,20 +185,16 @@ public class ChatPage extends JPanel implements ActionListener {
         add(buttonsPanel, BorderLayout.NORTH);
         add(bookSwapButton);
 
-
         add(profilePanel, BorderLayout.EAST);
         add(chatPanel, BorderLayout.CENTER);
         add(inputPanel, BorderLayout.SOUTH);
         add(contactsPanel, BorderLayout.WEST);
 
-
-        //mainFrame.getContentPane().add(mainPanel);
-
         sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                sendMessage();
+                chatController.sendMessage(inputField.getText());
             }
         });
 
@@ -220,35 +208,18 @@ public class ChatPage extends JPanel implements ActionListener {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    sendMessage();
+                boolean validMessage = inputField.getText() != null && !inputField.getText().isEmpty()
+                                        && !inputField.getText().isBlank();
+                if (e.getKeyCode() == KeyEvent.VK_ENTER && validMessage) {
+                    chatController.sendMessage(inputField.getText());
                 }
             }
         });
     }
 
-
-    private void sendMessage() {
-
-        String message = inputField.getText();
-        controller.getChatController().sendMessage(new MessageObject(userId, chatsWith.getUserId(), message));
-
-        chatArea.append(name + ": " + message + "\n");
-
-        inputField.setText("");
-    }
-
-    public void addChatHistory(ArrayList<MessageObject> list){
-        chatArea.setText("");
-        for (int i = list.size() - 1; i >= 0; i--) {
-
-            if (list.get(i).getSender() == controller.getCurrentUser().getUserId()) {
-                chatArea.append(name + ": " + list.get(i).getMessage() + "\n");
-            }
-            else {
-                chatArea.append("    " + chatsWith.getName() + ": " + list.get(i).getMessage() + "\n");
-            }
-        }
+    //public void addChatHistory(ArrayList<MessageObject> list){
+    public void addChatHistory(String chat){
+        chatArea.setText(chat);
     }
 
 
@@ -258,10 +229,7 @@ public class ChatPage extends JPanel implements ActionListener {
         for (int i = 0; i < buttons.size(); i++) {
 
             if (e.getSource() == buttons.get(i)) {
-                //chatArea.setText(String.format("New chat with %s\n\n", contacts.get(i).getName()));
-                chatsWith = contacts.get(i);
-                controller.getChatController().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
-                updateAvailableBooks();
+                chatController.openChatWith(i);
                 return;
 
             }
@@ -269,18 +237,24 @@ public class ChatPage extends JPanel implements ActionListener {
 
     }
 
-    private void updateAvailableBooks() {
-        titleOfUsersBooks = new String[]{"hej", "hejdå"};
-        for (int i = 0; i < titleOfUsersBooks.length; i++) {
-            JLabel bookTitle = new JLabel(titleOfUsersBooks[i]);
-            bookTitle.setFont(new Font("Calibri", Font.ITALIC, 16));
-            profilePanel.add(bookTitle);
-        }
-        profilePanel.add(Box.createVerticalGlue());
+    public void messageSent(String name, String message) {
+        chatArea.append(name + ": " + message + "\n");
+        inputField.setText("");
+    }
+
+    public void updateBooks(String books) {
+        try {
+            profilePanel.remove(bookTitle);
+            profilePanel.remove(glue);
+        } catch (Exception e) {}
+        bookTitle = new JLabel(books);
+        bookTitle.setFont(new Font("Calibri", Font.ITALIC, 16));
+        profilePanel.add(bookTitle);
+        profilePanel.add(glue);
         profilePanel.revalidate();
         profilePanel.repaint();
-
     }
+
 
     public class MenuActionListener implements ActionListener {
 
