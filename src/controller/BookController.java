@@ -6,7 +6,7 @@ import model.Book;
  * This class is responsible for handling methods concerning book objects on the client-side.
  * @author Kasper Lindberg
  */
-public class BookController {
+public class BookController { //TODO fixa så att null aldrig visas (eller sparas) när böcker listas
 
     private Controller controller;
 

@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
+    <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/controller/UpdateChatThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/profile/MyBooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/profile/MyBooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +77,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Controller" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Controller" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.Controller" />
       <module name="BookSwapClient" />
       <extension name="coverage">
@@ -122,6 +123,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.BookController" />
+      <item itemvalue="Application.Controller" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Profile" />
+      <item itemvalue="Application.UpLoadABook" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Controller" />
@@ -185,7 +193,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/Controller.java</url>
-          <line>58</line>
+          <line>63</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -195,8 +203,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/GUIController.java</url>
-          <line>81</line>
+          <line>86</line>
           <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/view/GUI/PageWithMenu.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
         <breakpoint type="java-exception">
           <properties class="java.lang.IllegalArgumentException" package="java.lang" />

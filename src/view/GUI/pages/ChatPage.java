@@ -1,6 +1,7 @@
 package view.GUI.pages;
 
 import controller.Controller;
+import controller.UpdateChatThread;
 import model.UserInfo;
 import model.chat.ChatObject;
 import model.chat.ChatStatus;
@@ -44,6 +45,7 @@ public class ChatPage extends PageWithMenu implements ActionListener {
     private JButton bookMarketButton = new JButton("Book market");
     private JButton profileButton = new JButton("Profile");
     private JButton chatButton = new JButton("Chat");
+    private UpdateChatThread chatThread;
 
     public ChatPage(Controller controller) {
         super(controller);
@@ -233,6 +235,7 @@ public class ChatPage extends PageWithMenu implements ActionListener {
     }
 
     public void addChatHistory(ArrayList<MessageObject> list){
+        chatArea.setText("");
         for (int i = list.size() - 1; i >= 0; i--) {
 
             if (list.get(i).getSender() == controller.getCurrentUser().getUserId()) {
@@ -247,6 +250,9 @@ public class ChatPage extends PageWithMenu implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        try {
+            chatThread.stopThread();
+        } catch (NullPointerException ex) {}
 
         for (int i = 0; i < buttons.size(); i++) {
 
@@ -255,6 +261,9 @@ public class ChatPage extends PageWithMenu implements ActionListener {
                 chatsWith = contacts.get(i);
                 controller.getChatController().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
                 updateAvailableBooks();
+
+                chatThread = new UpdateChatThread(userId, chatsWith.getUserId(), controller);
+                chatThread.start();
             }
         }
 
