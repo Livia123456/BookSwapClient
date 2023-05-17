@@ -59,7 +59,7 @@ public class ChatController {
     public void addChatHistory(ArrayList<MessageObject> list) {
         String chatArea = "";
         if (list.size() == 0) {
-            chatArea = "      New chat with " + chatsWith.getName();
+            chatArea = "      New chat with " + chatsWith.getName() + "\n";
         }
         for (int i = list.size() -1; i >= 0; i--) {
             if (list.get(i).getSender() == controller.getCurrentUser().getUserId()) {
@@ -89,9 +89,8 @@ public class ChatController {
 
     public void startChatFromSearch(StartChat message) {
         populateChat(message.getContacts());
-        for (ChatsWith cw : contacts) {
-
-        }
-        chatsWith = contacts
+        chatsWith = message.getChatsWith();
+        addChatHistory(message.getMessages());
+        updateAvailableBooks();
     }
 }
