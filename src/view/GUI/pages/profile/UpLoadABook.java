@@ -156,17 +156,17 @@ public class UpLoadABook extends ProfilePage implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == uploadToBookMarket) {
+
             boolean hasTitle = (titleField.getText() != null && !titleField.getText().isEmpty());
             boolean hasAuthor = (authorField.getText() != null && !authorField.getText().isEmpty());
             if(hasTitle && hasAuthor) {
                 Book book = new Book.BookBuilder().title(titleField.getText()).author(authorField.getText())
                         .release_date(yearField.getText()).genre(genreComboBox.getSelectedItem().toString())
                         .isbn(iSBNField.getText()).edition(editionField.getText()).
-                        publisher(publisherField.getText()).build();
+                        publisher(publisherField.getText()).uploadedBy(controller.getCurrentUser()).build();
                 controller.getBookController().uploadBook(book);
             } else {
                 errorMessage.setText("You need to enter both title and author");
-                //JOptionPane.showMessageDialog(null, "You need to enter both title and author");
             }
 
         } else if (e.getSource() == uploadImage) {
