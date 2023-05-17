@@ -31,6 +31,7 @@ public class ProfilePage extends PageWithMenu{
     private JButton myBooks;
     private JButton signOut;
     private JButton changePicture;
+    private JLabel profileImage;
 
 
     public ProfilePage(Controller controller) {
@@ -45,33 +46,39 @@ public class ProfilePage extends PageWithMenu{
         setBackground(Color.WHITE);
         setLayout(null);
 
-        BufferedImage book1;
+        profileImage = new JLabel();
+        profileImage.setBounds(10, 80, 250, 250);
+
         try {
-            book1 = ImageIO.read(new File("files/gubbe.jpg"));
+            if (controller.getController().getCurrentUser().getProfileImage() == null){
+                BufferedImage defaultImage = ImageIO.read(new File("files/gubbe.jpg"));
+
+                int newWidth = 200;
+                int newHeight = (int) Math.round((double) defaultImage.getHeight() / defaultImage.getWidth() * newWidth);
+
+                BufferedImage resizedImage = new BufferedImage(newWidth, newHeight, defaultImage.getType());
+
+                Graphics2D g2d = resizedImage.createGraphics();
+                g2d.drawImage(defaultImage, 0, 0, newWidth, newHeight, null);
+                g2d.dispose();
+
+                profileImage = new JLabel(new ImageIcon(resizedImage));
+            }
+            else {
+                ImageIcon image = new ImageIcon(controller.getController().getCurrentUser().getProfileImage().getImage());
+                profileImage.setIcon(image);
+            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        // Calculate the new width and height
-        int newWidth = 200; // Set your desired width
-        int newHeight = (int) Math.round((double) book1.getHeight() / book1.getWidth() * newWidth);
-
-        // Create a new image with the new dimensions
-        BufferedImage resizedImage = new BufferedImage(newWidth, newHeight, book1.getType());
-
-        // Scale the original image onto the new image
-        Graphics2D g2d = resizedImage.createGraphics();
-        g2d.drawImage(book1, 0, 0, newWidth, newHeight, null);
-        g2d.dispose();
-
-        JLabel bookLabel1 = new JLabel(new ImageIcon(resizedImage));
-        bookLabel1.setBounds(-5, 80, 250, 250);
-
 
         changePicture = new JButton("Change picture"); //????
         changePicture.setBounds(46, 340, 150, 26);
+        changePicture.addActionListener(profilePageListener);
 
-        add(bookLabel1);
+        add(profileImage);
         add(changePicture);
 
         profilePageButtonsSetUp();
@@ -107,6 +114,7 @@ public class ProfilePage extends PageWithMenu{
         add(myBooks);
         add(signOut);
     }
+
 
     public void setEditPersonalInformationFalse() {
         this.editPersonalInformation.setEnabled(false);
@@ -152,10 +160,38 @@ public class ProfilePage extends PageWithMenu{
                 controller.myWishList();
             } else if (e.getSource() == myBooks) {
                 controller.myBooks();
-
             } else if (e.getSource() == signOut) {
                 System.out.println("SIGNOUT");
                 controller.signOut();
+            }
+            else if (e.getSource() == changePicture) {
+
+                JFileChooser fileChooser = new JFileChooser();
+                BufferedImage image = null;
+                int returnVal = fileChooser.showOpenDialog(controller.getView());
+
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    File file = fileChooser.getSelectedFile();
+                    System.out.println(file);
+                    try {
+                        image = ImageIO.read(file);
+                        int width = 200;
+                        int height = 200;
+                        ImageIcon img = new ImageIcon(image.getScaledInstance(width, height, Image.SCALE_SMOOTH));
+                        profileImage.setIcon(img);
+                        add(profileImage);
+                        revalidate();
+                        repaint();
+
+                        controller.getController().getServer().sendMessage(img);
+
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+
+
+
             }
         }
     }
