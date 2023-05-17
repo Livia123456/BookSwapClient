@@ -9,6 +9,7 @@
       <change beforePath="$PROJECT_DIR$/src/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ChatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/chat/ChatObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/chat/ChatObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/chat/StartChat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/chat/StartChat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

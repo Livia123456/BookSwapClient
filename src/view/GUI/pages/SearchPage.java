@@ -4,7 +4,6 @@ import controller.Controller;
 import controller.GUIController;
 import controller.SearchController;
 import model.Book;
-import model.search.SearchResult;
 import view.GUI.PageWithMenu;
 
 import javax.imageio.ImageIO;
@@ -28,19 +27,19 @@ public class SearchPage extends PageWithMenu implements ActionListener {
     private JButton searchButton = new JButton("Search");
     private JButton advancedSearchButton = new JButton("Advanced search");
     private JTextArea searchField;
-    private SearchController controller;
+    private SearchController searchController;
     private JLabel error;
     private JLabel bookLabel1;
     private JLabel bookLabel2;
     private JScrollPane scrollPane;
     private JButton[] startChatButtons;
     private StartChatListener startChatListener;
-    private GUIController guiController;
+    private Controller controller;
 
     public SearchPage(Controller controller) {
         super(controller);
-        this.controller = controller.getSearchController();
-        this.guiController = controller.getGui();
+        this.searchController = controller.getSearchController();
+        this.controller = controller;
         this.startChatListener = new StartChatListener();
         setUp();
     }
@@ -95,10 +94,10 @@ public class SearchPage extends PageWithMenu implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == searchButton) {
-            controller.search(searchField.getText());
+            searchController.search(searchField.getText());
 
         } else if (e.getSource() == advancedSearchButton) {
-            guiController.advanceSearch();
+            controller.getGui().advanceSearch();
         }
     }
 
@@ -185,11 +184,13 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         description.setFont(new Font("Serif", Font.PLAIN, 14));
         text.add(description);
 
-
         JButton button = new JButton("Start chat");
         button.setSize(100, 20);
         button.addActionListener(startChatListener);
         startChatButtons[i] = button;
+        if (book.getUploadedBy().getUserId() == controller.getCurrentUser().getUserId()) {
+            button.setEnabled(false);
+        }
 
         panel.add(Box.createRigidArea(new Dimension(0,5)));
         panel.add(title);
@@ -227,7 +228,7 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (int i = 0; i < startChatButtons.length; i++) {
                 if (e.getSource() == startChatButtons[i]) {
-                    controller.startChatWith(i);
+                    searchController.startChatWith(i);
                 }
             }
         }
