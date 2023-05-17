@@ -4,8 +4,6 @@ package controller;
 import model.chat.*;
 import view.GUI.pages.ChatPage;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -37,8 +35,6 @@ public class ChatController {
         for (ChatsWith cw : contacts) {
             contactStringList.add(cw.getName());
         }
-
-
 
         chatPage.setUp(contactStringList, controller.getCurrentUser().getName());
     }
@@ -75,22 +71,22 @@ public class ChatController {
     public void openChatWith(int i) {
         chatsWith = contacts.get(i);
         controller.getServer().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
-        updateAvailableBooks();
+        updateAvailableBooks(contacts.get(i).getName());//TODO
     }
 
-    private void updateAvailableBooks() {
+    private void updateAvailableBooks(String name) {
         titleOfUsersBooks = new String[]{"hej", "hejdå"};
         String books = "";
         for (int i = 0; i < titleOfUsersBooks.length; i++) {
             books += titleOfUsersBooks[i] + "\n";
         }
-        chatPage.updateBooks(books);
+        chatPage.updateProfilePanel(books, name);
     }
 
     public void startChatFromSearch(StartChat message) {
         populateChat(message.getContacts());
         chatsWith = message.getChatsWith();
         addChatHistory(message.getMessages());
-        updateAvailableBooks();
+        updateAvailableBooks(message.getChatsWith().getName());
     }
 }

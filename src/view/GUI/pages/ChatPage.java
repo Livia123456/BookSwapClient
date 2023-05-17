@@ -2,7 +2,6 @@ package view.GUI.pages;
 
 import controller.ChatController;
 import controller.Controller;
-import model.chat.MessageObject;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -36,6 +35,7 @@ public class ChatPage extends JPanel implements ActionListener {
     private JButton sendButton;
     private JPanel profilePanel;
     private JLabel bookTitle;
+    private JLabel theUsersBooksLabel;
     private Component glue = Box.createVerticalGlue();
     private JPanel contactsPanel;
     private ArrayList<JButton> buttons;
@@ -144,11 +144,11 @@ public class ChatPage extends JPanel implements ActionListener {
         profileNameLabel.setFont(new Font("Arial", Font.BOLD, 24));
         profilePanel.add(profileNameLabel);
 
-        JLabel space = new JLabel(" ");
+        //JLabel space = new JLabel(" ");
 
-        profilePanel.add(space);
+        profilePanel.add(glue);
 
-        JLabel theUsersBooksLabel = new JLabel("Books available:");
+        theUsersBooksLabel = new JLabel("Books available:");
         theUsersBooksLabel.setFont(new Font("Calibri", Font.BOLD, 18));
 
         profilePanel.add(theUsersBooksLabel);
@@ -161,7 +161,7 @@ public class ChatPage extends JPanel implements ActionListener {
             profilePanel.add(bookTitle);
         }
         */
-        profilePanel.add(Box.createVerticalGlue());
+        profilePanel.add(glue);
 
 
 
@@ -242,11 +242,20 @@ public class ChatPage extends JPanel implements ActionListener {
         inputField.setText("");
     }
 
-    public void updateBooks(String books) {
+    public void updateProfilePanel(String books, String name) {
         try {
+            profilePanel.remove(theUsersBooksLabel);
+            profilePanel.remove(profileNameLabel);
             profilePanel.remove(bookTitle);
             profilePanel.remove(glue);
         } catch (Exception e) {}
+
+        profileNameLabel = new JLabel(name, SwingConstants.CENTER);
+        profileNameLabel.setAlignmentY(Component.TOP_ALIGNMENT);
+        profileNameLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        profilePanel.add(profileNameLabel);
+        profilePanel.add(theUsersBooksLabel);
+
         bookTitle = new JLabel(books);
         bookTitle.setFont(new Font("Calibri", Font.ITALIC, 16));
         profilePanel.add(bookTitle);
