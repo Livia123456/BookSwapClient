@@ -89,7 +89,7 @@ public class ServerConnection extends Thread{
                                 controller.getChatController().populateChat((ArrayList<ChatsWith>) message);
                             }
                             else if (obj instanceof MessageObject) {
-                                controller.getChatController().getChatHistory((ArrayList<MessageObject>) message);
+                                controller.getChatController().addChatHistory((ArrayList<MessageObject>) message);
                             }
                         }
                     }

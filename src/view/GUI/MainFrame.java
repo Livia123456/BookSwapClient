@@ -61,6 +61,7 @@ public class MainFrame extends JFrame {
 
     public void chatPage() {
         chatPage = new ChatPage(controller);
+        controller.getChatController().chatPageOpened(chatPage);
         chatPage.setVisible(true);
         setSize(1100, 700);
         setLocationRelativeTo(null);
