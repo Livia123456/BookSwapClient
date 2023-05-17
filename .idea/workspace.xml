@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
+      <change afterPath="$PROJECT_DIR$/src/model/chat/StartChat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/UpdateChatThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/chat/ChatsWith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/chat/ChatsWith.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/ProfilePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/ProfilePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,13 +206,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/GUIController.java</url>
-          <line>86</line>
+          <line>89</line>
           <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/controller/ServerConnection.java</url>
-          <line>88</line>
-          <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java</url>
@@ -222,9 +215,24 @@
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/GUI/MainFrame.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="36" />
+          <url>file://$PROJECT_DIR$/src/controller/ChatController.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/ServerConnection.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/ChatController.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/ServerConnection.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
         <breakpoint type="java-exception">
           <properties class="java.lang.IllegalArgumentException" package="java.lang" />

@@ -77,7 +77,8 @@ public class ServerConnection extends Thread{
                     }
 
                     else if (message instanceof SearchResult) {
-                        controller.getGui().displaySearchResult((SearchResult) message);
+                        //controller.getGui().displaySearchResult((SearchResult) message);
+                        controller.getSearchController().displaySearchResult((SearchResult) message);
                     }
 
                     else if (message instanceof ArrayList<?>) {
@@ -93,7 +94,9 @@ public class ServerConnection extends Thread{
                             }
                         }
                     }
-
+                    else if (message instanceof StartChat){
+                        controller.getChatController().startChatFromSearch((StartChat) message);
+                    }
                     else if (message instanceof MessageObject){
                         //todo
                     }

@@ -3,11 +3,14 @@ package controller;
 import model.*;
 import model.chat.ChatObject;
 import model.chat.ChatStatus;
+import model.chat.MessageObject;
 import model.search.AdvancedSearchResult;
 import model.search.SearchObject;
-import model.search.SearchResult;
 import view.GUI.MainFrame;
+import view.GUI.pages.ChatPage;
+
 import javax.swing.*;
+import java.util.ArrayList;
 
 
 /**
@@ -92,9 +95,9 @@ public class GUIController extends Thread {
         view.editProfile();
     }
 
-    public void search(String search){
-        controller.getSearchController().search(new SearchObject(search));
-    }
+//    public void search(String search){
+//        controller.getSearchController().search(new SearchObject(search));
+//    }
 
     public void chat() {  //todo: gör klart koppling till gui
       //  controller.getChatController().sendMessage(new MessageObject());
@@ -169,12 +172,18 @@ public class GUIController extends Thread {
     } */
 
 
-    public void displaySearchResult(SearchResult result) {
-        if(result.getBooks().size() == 0) {
+    public void displaySearchResult(Book[] books) {
+        if(books.length == 0) {
             view.getSearch().displayErrorMessage();
 
         } else {
-            view.getSearch().displayResults(result);
+            view.getSearch().displayResults(books);
+        }
+    }
+
+    public void chatHistory(ArrayList<MessageObject> messages) {
+        if (!(view.getContentPane() instanceof ChatPage)) { //TODO fuckar detta??
+
         }
     }
 }

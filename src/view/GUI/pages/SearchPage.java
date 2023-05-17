@@ -2,6 +2,7 @@ package view.GUI.pages;
 
 import controller.Controller;
 import controller.GUIController;
+import controller.SearchController;
 import model.Book;
 import model.search.SearchResult;
 import view.GUI.PageWithMenu;
@@ -27,18 +28,19 @@ public class SearchPage extends PageWithMenu implements ActionListener {
     private JButton searchButton = new JButton("Search");
     private JButton advancedSearchButton = new JButton("Advanced search");
     private JTextArea searchField;
-    private GUIController controller;
+    private SearchController controller;
     private JLabel error;
     private JLabel bookLabel1;
     private JLabel bookLabel2;
     private JScrollPane scrollPane;
-    private Book[] books;
     private JButton[] startChatButtons;
     private StartChatListener startChatListener;
+    private GUIController guiController;
 
     public SearchPage(Controller controller) {
         super(controller);
-        this.controller = controller.getGui();
+        this.controller = controller.getSearchController();
+        this.guiController = controller.getGui();
         this.startChatListener = new StartChatListener();
         setUp();
     }
@@ -96,11 +98,11 @@ public class SearchPage extends PageWithMenu implements ActionListener {
             controller.search(searchField.getText());
 
         } else if (e.getSource() == advancedSearchButton) {
-            controller.advanceSearch();
+            guiController.advanceSearch();
         }
     }
 
-    public void displayResults(SearchResult result) {
+    public void displayResults(Book[] books) {
         try {
             remove(bookLabel1);
             remove(bookLabel2);
@@ -112,8 +114,8 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBackground(Color.WHITE);
 
-        books = new Book[result.getBooks().size()];
-        books = result.getBooks().toArray(new Book[0]);
+//        books = new Book[result.getBooks().size()];
+//        books = result.getBooks().toArray(new Book[0]);
         startChatButtons = new JButton[books.length];
 
         for (int i = 0; i < books.length; i++) {
@@ -225,8 +227,7 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (int i = 0; i < startChatButtons.length; i++) {
                 if (e.getSource() == startChatButtons[i]) {
-                    //TODO starta chat
-                    //books[i].getUploadedBy(); nånting sånt
+                    controller.startChatWith(i);
                 }
             }
         }

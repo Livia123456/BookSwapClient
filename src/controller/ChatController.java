@@ -1,10 +1,7 @@
 package controller;
 
 
-import model.chat.ChatObject;
-import model.chat.ChatStatus;
-import model.chat.ChatsWith;
-import model.chat.MessageObject;
+import model.chat.*;
 import view.GUI.pages.ChatPage;
 
 import javax.swing.*;
@@ -53,15 +50,17 @@ public class ChatController {
     }
 
     public void populateChat(ArrayList<ChatsWith> list) {
-        if (list.size() == 0) {
-            controller.getGui().getView().chatPage();
+        if (list.size() != 0) {
+            controller.getCurrentUser().setChatsWith(list);
         }
-        controller.getCurrentUser().setChatsWith(list);
         controller.getGui().getView().chatPage();
     }
 
     public void addChatHistory(ArrayList<MessageObject> list) {
         String chatArea = "";
+        if (list.size() == 0) {
+            chatArea = "      New chat with " + chatsWith.getName();
+        }
         for (int i = list.size() -1; i >= 0; i--) {
             if (list.get(i).getSender() == controller.getCurrentUser().getUserId()) {
                 chatArea += (name + ": " + list.get(i).getMessage() + "\n");
@@ -86,5 +85,13 @@ public class ChatController {
             books += titleOfUsersBooks[i] + "\n";
         }
         chatPage.updateBooks(books);
+    }
+
+    public void startChatFromSearch(StartChat message) {
+        populateChat(message.getContacts());
+        for (ChatsWith cw : contacts) {
+
+        }
+        chatsWith = contacts
     }
 }
