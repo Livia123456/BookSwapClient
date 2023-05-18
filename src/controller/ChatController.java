@@ -89,4 +89,8 @@ public class ChatController {
         addChatHistory(message.getMessages());
         updateAvailableBooks(message.getChatsWith().getName());
     }
+
+    public void addProfileImage(ImageIcon message) {
+        chatPage.setProfileImage(message);
+    }
 }

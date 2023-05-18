@@ -222,6 +222,9 @@ public class ChatPage extends JPanel implements ActionListener {
         chatArea.setText(chat);
     }
 
+    public void setProfileImage(ImageIcon message) {
+        profilePictureLabel.setIcon(message);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -263,6 +266,7 @@ public class ChatPage extends JPanel implements ActionListener {
         profilePanel.revalidate();
         profilePanel.repaint();
     }
+
 
 
     public class MenuActionListener implements ActionListener {
