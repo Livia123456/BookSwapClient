@@ -4,6 +4,7 @@ package controller;
 import model.chat.*;
 import view.GUI.pages.ChatPage;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
