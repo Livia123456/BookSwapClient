@@ -87,4 +87,8 @@ public class ChatController {
         }
         chatPage.updateBooks(books);
     }
+
+    public void addProfileImage(ImageIcon message) {
+        chatPage.setProfileImage(message);
+    }
 }

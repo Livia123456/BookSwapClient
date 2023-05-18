@@ -4,6 +4,7 @@ import model.*;
 import model.chat.*;
 import model.search.*;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -63,7 +64,6 @@ public class ServerConnection extends Thread{
                     if (message instanceof UserInfo) {
                         controller.tryLoggingIn((UserInfo) message);
                         controller.getCurrentUser().setProfileImage(((UserInfo) message).getProfileImage());
-                        System.out.println(((UserInfo) message).getProfileImage());
                     }
                     else if (message instanceof String) {
                         System.out.println(message);
@@ -96,13 +96,10 @@ public class ServerConnection extends Thread{
                         }
                     }
 
-                    else if (message instanceof MessageObject){
-                        //todo
+                    else if (message instanceof ImageIcon) {
+                        controller.getChatController().addProfileImage((ImageIcon) message);
                     }
 
-                    else if (message instanceof ChatObject){
-                        //todo
-                    }
                     else if (message instanceof UpdateBookList) {
                         ArrayList<Book> books = ((UpdateBookList) message).getBooks();
                         for (Book b :
