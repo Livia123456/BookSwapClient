@@ -8,6 +8,9 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  * Starting class for the GUI. This class is responsible for setting up the GUI making it possible for the user to sign in.

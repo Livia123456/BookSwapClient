@@ -26,6 +26,7 @@ public class SearchPage extends PageWithMenu implements ActionListener {
 
     private JButton searchButton = new JButton("Search");
     private JButton advancedSearchButton = new JButton("Advanced search");
+    private JButton myWishList = new JButton("My wish list");
     private JTextArea searchField;
     private SearchController searchController;
     private JLabel error;
