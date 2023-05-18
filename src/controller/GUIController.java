@@ -82,6 +82,7 @@ public class GUIController extends Thread {
     }
 
     public void chatPage() {
+        view.chatPage();
         controller.getServer().sendMessage(new ChatObject(controller.getCurrentUser().getUserId(),
                 0, ChatStatus.populate));
     }

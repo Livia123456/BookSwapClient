@@ -4,6 +4,7 @@ package controller;
 import model.chat.*;
 import view.GUI.pages.ChatPage;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,7 @@ public class ChatController {
     private ArrayList<ChatsWith> contacts;
     private int userId;
     private String name;
-
+    private int currentContactId;
     private String[] titleOfUsersBooks;
     private ChatPage chatPage;
 
@@ -70,8 +71,14 @@ public class ChatController {
 
     public void openChatWith(int i) {
         chatsWith = contacts.get(i);
+        currentContactId = contacts.get(i).getUserId();
         controller.getServer().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
         updateAvailableBooks(contacts.get(i).getName());//TODO
+        uploadProfileImage();
+    }
+
+    private void uploadProfileImage() {
+        chatPage.setProfileImage(contacts.get(currentContactId).getUser().getProfileImage());
     }
 
     private void updateAvailableBooks(String name) {
@@ -90,7 +97,7 @@ public class ChatController {
         updateAvailableBooks(message.getChatsWith().getName());
     }
 
-    public void addProfileImage(ImageIcon message) {
-        chatPage.setProfileImage(message);
+    public void addProfileImage(ImageIcon image) {
+        contacts.get(currentContactId).getUser().setProfileImage(image);
     }
 }

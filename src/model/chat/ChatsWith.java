@@ -37,7 +37,9 @@ public class ChatsWith implements Serializable {
 
     public int getUserId() {
         return user.getUserId();
-    }
+
+
+
 
     /*
     private int chatId;
@@ -76,4 +78,13 @@ public class ChatsWith implements Serializable {
     }
 
      */
+    }
+
+    public UserInfo getUser() {
+        return user;
+    }
+
+    public void setUser(UserInfo user) {
+        this.user = user;
+    }
 }
