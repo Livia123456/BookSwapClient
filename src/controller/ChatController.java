@@ -5,6 +5,7 @@ import model.chat.*;
 import view.GUI.pages.ChatPage;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +20,7 @@ public class ChatController {
     private int userId;
     private String name;
     private int currentContactId;
+    private int buttonIndex;
     private String[] titleOfUsersBooks;
     private ChatPage chatPage;
 
@@ -70,27 +72,21 @@ public class ChatController {
     }
 
     public void openChatWith(int i) {
-        for (int j = 0; j < contacts.size(); j++) {
-            System.out.println(contacts.get(i).getName());
-
-        }
+        buttonIndex = i;
         chatsWith = contacts.get(i);
         currentContactId = contacts.get(i).getUserId();
         controller.getServer().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
         updateAvailableBooks(contacts.get(i).getName());//TODO
-        uploadProfileImage(contacts.size());
     }
 
-    private void uploadProfileImage(int buttonId) {
-        ImageIcon img = null;
-        if (contacts.get(buttonId).getUserId() == currentContactId) {
-            img = contacts.get(buttonId).getUser().getProfileImage();
-        }
-
-
+    private void uploadProfileImage(int id) {
+        ImageIcon img = contacts.get(id).getUser().getProfileImage();
 
         if (img == null) {
-            chatPage.setProfileImage(new ImageIcon("files/Avatar.jpg"));
+            Image originalImage = new ImageIcon("files/Avatar.jpg").getImage();
+            Image scaledImage = originalImage.getScaledInstance(180, 180, Image.SCALE_SMOOTH);
+            ImageIcon resizedImageIcon = new ImageIcon(scaledImage);
+            chatPage.setProfileImage(resizedImageIcon);
         }else {
             chatPage.setProfileImage(img);
         }
@@ -114,10 +110,12 @@ public class ChatController {
     }
 
     public void addProfileImage(ImageIcon image) {
-        for (int i = contacts.size()-1; i >= 0; i--) {
+        for (int i = 0; i < contacts.size(); i++) {
             if (currentContactId == contacts.get(i).getUserId()){
-                contacts.get(currentContactId).getUser().setProfileImage(image);
+                contacts.get(i).getUser().setProfileImage(image);
+
             }
         }
+        uploadProfileImage(buttonIndex);
     }
 }
