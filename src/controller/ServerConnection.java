@@ -63,7 +63,9 @@ public class ServerConnection extends Thread{
                 while ((message = ois.readObject()) != null) {
                     if (message instanceof UserInfo) {
                         controller.tryLoggingIn((UserInfo) message);
-                        controller.getCurrentUser().setProfileImage(((UserInfo) message).getProfileImage());
+                        if(((UserInfo) message).getProfileImage() != null) {
+                            controller.getCurrentUser().setProfileImage(((UserInfo) message).getProfileImage());
+                        }
                     }
                     else if (message instanceof String) {
                         System.out.println(message);
