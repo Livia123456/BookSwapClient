@@ -74,7 +74,7 @@ public class ChatController {
     public void openChatWith(int i) {
         buttonIndex = i;
         chatsWith = contacts.get(i);
-        currentContactId = contacts.get(i).getUserId();
+        currentContactId = chatsWith.getUserId();
         controller.getServer().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
         updateAvailableBooks(contacts.get(i).getName());//TODO
     }

@@ -24,12 +24,6 @@ public class ChatPage extends JPanel implements ActionListener {
 
     private Controller controller;
     private ChatController chatController;
-    //private String name;
-    //private ChatsWith chatsWith;
-    //private int userId;
-
-    //private ArrayList<ChatsWith> contacts;
-    //private String[] titleOfUsersBooks;
     private JTextArea chatArea;
     private JTextField inputField;
     private JButton sendButton;
@@ -112,9 +106,6 @@ public class ChatPage extends JPanel implements ActionListener {
         }
 
 
-
-
-        //Profilepic
         BufferedImage profilePicture;
         try {
             profilePicture = ImageIO.read(new File("files/Avatar.jpg"));
@@ -122,7 +113,7 @@ public class ChatPage extends JPanel implements ActionListener {
             throw new RuntimeException(e);
         }
 
-        int newWidth = 179;
+        int newWidth = 180;
         int newHeight = (int) Math.round((double) profilePicture.getHeight() / profilePicture.getWidth() * newWidth);
 
         BufferedImage resizedImage = new BufferedImage(newWidth, newHeight, profilePicture.getType());
@@ -137,29 +128,16 @@ public class ChatPage extends JPanel implements ActionListener {
 
         profilePanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-
         profileNameLabel = new JLabel(name, SwingConstants.CENTER);
         profileNameLabel.setAlignmentY(Component.TOP_ALIGNMENT);
         profileNameLabel.setFont(new Font("Arial", Font.BOLD, 24));
         profilePanel.add(profileNameLabel);
-
-        //JLabel space = new JLabel(" ");
-
         profilePanel.add(glue);
 
         theUsersBooksLabel = new JLabel("Books available:");
         theUsersBooksLabel.setFont(new Font("Calibri", Font.BOLD, 18));
 
         profilePanel.add(theUsersBooksLabel);
-
-        //titleOfUsersBooks = new String[0];
-        /*
-        for (int i = 0; i < titleOfUsersBooks.length; i++) {
-            JLabel bookTitle = new JLabel(titleOfUsersBooks[i]);
-            bookTitle.setFont(new Font("Calibri", Font.ITALIC, 16));
-            profilePanel.add(bookTitle);
-        }
-        */
         profilePanel.add(glue);
 
 

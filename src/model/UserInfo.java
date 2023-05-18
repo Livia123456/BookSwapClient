@@ -20,8 +20,7 @@ public class UserInfo implements Serializable {
     private boolean correctInfo = false;
     private ArrayList<Book> currentUsersUploadedBooks;
     private ArrayList<ChatsWith> chatsWith;
-    private ImageIcon profileImage = null;
-
+    private ImageIcon profileImage;
 
 
     public UserInfo(Email email, String password) {
@@ -37,10 +36,6 @@ public class UserInfo implements Serializable {
         this.name = name;
     }
 
-    public UserInfo(String name, int userId) {
-        this.userId = userId;
-        this.name = name;
-    }
 
     public ArrayList<ChatsWith> getChatsWith() {
         return chatsWith;
@@ -59,21 +54,12 @@ public class UserInfo implements Serializable {
     }
 
 
-
     public Email getEmail() {
         return email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setEmail(Email email) {
         this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public boolean isCorrectInfo() {
