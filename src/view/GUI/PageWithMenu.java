@@ -44,7 +44,7 @@ public class PageWithMenu extends JPanel {
         homeButton.setBounds(116, 48, 60, 16);
         homeButton.addActionListener(menuActionListener);
 
-        bookMarketButton = new JButton("BookMarket");
+        bookMarketButton = new JButton("Book Market");
         bookMarketButton.setBounds(183, 48, 100, 16);
         bookMarketButton.addActionListener(menuActionListener);
 

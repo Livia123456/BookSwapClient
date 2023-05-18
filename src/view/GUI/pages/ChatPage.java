@@ -40,9 +40,8 @@ public class ChatPage extends JPanel implements ActionListener {
     private JPanel contactsPanel;
     private ArrayList<JButton> buttons;
     private JButton but;
-
     private JButton homeButton = new JButton("Home");
-    private JButton bookMarketButton = new JButton("Book market");
+    private JButton bookMarketButton = new JButton("Book Market");
     private JButton profileButton = new JButton("Profile");
     private JButton chatButton = new JButton("Chat");
     private JButton bookSwapButton;
@@ -190,6 +189,8 @@ public class ChatPage extends JPanel implements ActionListener {
         add(inputPanel, BorderLayout.SOUTH);
         add(contactsPanel, BorderLayout.WEST);
 
+        profilePanel.setVisible(false);
+
         sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -228,16 +229,17 @@ public class ChatPage extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         for (int i = 0; i < buttons.size(); i++) {
+            JButton button = buttons.get(i);
 
-            if (e.getSource() == buttons.get(i)) {
+            if (e.getSource() == button) {
                 chatController.openChatWith(i);
-                return;
-
+                button.setEnabled(false);
+            } else {
+                button.setEnabled(true);
             }
+            button.setFocusPainted(false);
         }
-
     }
 
     public void messageSent(String name, String message) {
@@ -265,6 +267,7 @@ public class ChatPage extends JPanel implements ActionListener {
         profilePanel.add(glue);
         profilePanel.revalidate();
         profilePanel.repaint();
+        profilePanel.setVisible(true);
     }
 
 
