@@ -70,19 +70,35 @@ public class ChatController {
     }
 
     public void openChatWith(int i) {
+        for (int j = 0; j < contacts.size(); j++) {
+            System.out.println(contacts.get(i).getName());
+
+        }
         chatsWith = contacts.get(i);
         currentContactId = contacts.get(i).getUserId();
         controller.getServer().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
         updateAvailableBooks(contacts.get(i).getName());//TODO
-        uploadProfileImage();
+        uploadProfileImage(contacts.size());
     }
 
-    private void uploadProfileImage() {
-        chatPage.setProfileImage(contacts.get(currentContactId).getUser().getProfileImage());
+    private void uploadProfileImage(int buttonId) {
+        ImageIcon img = null;
+        if (contacts.get(buttonId).getUserId() == currentContactId) {
+            img = contacts.get(buttonId).getUser().getProfileImage();
+        }
+
+
+
+        if (img == null) {
+            chatPage.setProfileImage(new ImageIcon("files/Avatar.jpg"));
+        }else {
+            chatPage.setProfileImage(img);
+        }
+
     }
 
     private void updateAvailableBooks(String name) {
-        titleOfUsersBooks = new String[]{"hej", "hejdå"};
+        titleOfUsersBooks = new String[]{"bok1", "bok2"};
         String books = "";
         for (int i = 0; i < titleOfUsersBooks.length; i++) {
             books += titleOfUsersBooks[i] + "\n";
@@ -98,6 +114,10 @@ public class ChatController {
     }
 
     public void addProfileImage(ImageIcon image) {
-        contacts.get(currentContactId).getUser().setProfileImage(image);
+        for (int i = contacts.size()-1; i >= 0; i--) {
+            if (currentContactId == contacts.get(i).getUserId()){
+                contacts.get(currentContactId).getUser().setProfileImage(image);
+            }
+        }
     }
 }
