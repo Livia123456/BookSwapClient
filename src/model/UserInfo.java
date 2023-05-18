@@ -20,7 +20,7 @@ public class UserInfo implements Serializable {
     private boolean correctInfo = false;
     private ArrayList<Book> currentUsersUploadedBooks;
     private ArrayList<ChatsWith> chatsWith;
-    private ImageIcon profileImage;
+    private ImageIcon profileImage = null;
 
 
 
