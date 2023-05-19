@@ -23,6 +23,8 @@ public class ChatController {
     private int buttonIndex;
     private String[] titleOfUsersBooks;
     private ChatPage chatPage;
+    private Loading load;
+
 
     public ChatController(Controller controller){
         this.controller = controller;
@@ -30,6 +32,7 @@ public class ChatController {
 
     public void chatPageOpened(ChatPage chatPage) {
         this.chatPage = chatPage;
+        load = new Loading(chatPage);
         name = controller.getCurrentUser().getName();
         userId = controller.getCurrentUser().getUserId();
         contacts = controller.getCurrentUser().getChatsWith();
@@ -76,21 +79,32 @@ public class ChatController {
         chatsWith = contacts.get(i);
         currentContactId = chatsWith.getUserId();
         controller.getServer().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
+        load.startLoading();
         updateAvailableBooks(contacts.get(i).getName());//TODO
     }
 
     private void uploadProfileImage(int id) {
-        ImageIcon img = contacts.get(id).getUser().getProfileImage();
+        if (load.stopLoading()) {
+            ImageIcon img = contacts.get(id).getUser().getProfileImage();
 
-        if (img == null) {
-            Image originalImage = new ImageIcon("files/Avatar.jpg").getImage();
-            Image scaledImage = originalImage.getScaledInstance(180, 180, Image.SCALE_SMOOTH);
-            ImageIcon resizedImageIcon = new ImageIcon(scaledImage);
-            chatPage.setProfileImage(resizedImageIcon);
-        }else {
-            chatPage.setProfileImage(img);
+            if (img == null) {
+                Image originalImage = new ImageIcon("files/user.jpg").getImage();
+                Image scaledImage = originalImage.getScaledInstance(180, 180, Image.SCALE_SMOOTH);
+                ImageIcon resizedImageIcon = new ImageIcon(scaledImage);
+                chatPage.setProfileImage(resizedImageIcon);
+            } else {
+                chatPage.setProfileImage(img);
+            }
         }
+    }
 
+    public void addProfileImage(ImageIcon image) {
+        for (int i = 0; i < contacts.size(); i++) {
+            if (currentContactId == contacts.get(i).getUserId()) {
+                contacts.get(i).getUser().setProfileImage(image);
+            }
+        }
+        uploadProfileImage(buttonIndex);
     }
 
     private void updateAvailableBooks(String name) {
@@ -109,13 +123,4 @@ public class ChatController {
         updateAvailableBooks(message.getChatsWith().getName());
     }
 
-    public void addProfileImage(ImageIcon image) {
-        for (int i = 0; i < contacts.size(); i++) {
-            if (currentContactId == contacts.get(i).getUserId()){
-                contacts.get(i).getUser().setProfileImage(image);
-
-            }
-        }
-        uploadProfileImage(buttonIndex);
-    }
 }

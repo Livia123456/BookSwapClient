@@ -51,7 +51,7 @@ public class ProfilePage extends PageWithMenu{
 
         try {
             if (controller.getController().getCurrentUser().getProfileImage() == null){
-                BufferedImage defaultImage = ImageIO.read(new File("files/gubbe.jpg"));
+                BufferedImage defaultImage = ImageIO.read(new File("files/user.jpg"));
 
                 int newWidth = 200;
                 int newHeight = (int) Math.round((double) defaultImage.getHeight() / defaultImage.getWidth() * newWidth);
@@ -178,6 +178,7 @@ public class ProfilePage extends PageWithMenu{
                         int width = 200;
                         int height = 200;
                         ImageIcon img = new ImageIcon(image.getScaledInstance(width, height, Image.SCALE_SMOOTH));
+                        controller.getController().getCurrentUser().setProfileImage(img);
                         profileImage.setIcon(img);
                         add(profileImage);
                         revalidate();
