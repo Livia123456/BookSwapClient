@@ -106,16 +106,15 @@ public class ChatPage extends JPanel implements ActionListener {
         }
 
 
-        BufferedImage profilePicture;
+       BufferedImage profilePicture;
         try {
-            profilePicture = ImageIO.read(new File("files/Avatar.jpg"));
+            profilePicture = ImageIO.read(new File("files/user.jpg"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         int newWidth = 180;
         int newHeight = (int) Math.round((double) profilePicture.getHeight() / profilePicture.getWidth() * newWidth);
-
         BufferedImage resizedImage = new BufferedImage(newWidth, newHeight, profilePicture.getType());
 
         Graphics2D g2d = resizedImage.createGraphics();
@@ -125,8 +124,8 @@ public class ChatPage extends JPanel implements ActionListener {
         profilePictureLabel = new JLabel(new ImageIcon(resizedImage));
         profilePictureLabel.setAlignmentY(Component.TOP_ALIGNMENT);
         profilePanel.add(profilePictureLabel);
-
         profilePanel.add(Box.createRigidArea(new Dimension(0, 10)));
+
 
         profileNameLabel = new JLabel(name, SwingConstants.CENTER);
         profileNameLabel.setAlignmentY(Component.TOP_ALIGNMENT);
@@ -196,7 +195,6 @@ public class ChatPage extends JPanel implements ActionListener {
         });
     }
 
-    //public void addChatHistory(ArrayList<MessageObject> list){
     public void addChatHistory(String chat){
         chatArea.setText(chat);
     }
