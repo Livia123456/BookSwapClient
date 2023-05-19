@@ -93,9 +93,9 @@ public class ServerConnection extends Thread{
                             if (obj instanceof ChatsWith) {
                                 controller.getChatController().populateChat((ArrayList<ChatsWith>) message);
                             }
-//                            else if (obj instanceof MessageObject) {
-//                                controller.getChatController().addChatHistory((ArrayList<MessageObject>) message);
-//                            }
+                            else if (obj instanceof MessageObject) {
+                                controller.getChatController().addChatHistory((ArrayList<MessageObject>) message);
+                            }
                         }
                     }
                     else if (message instanceof ChatHistory) {

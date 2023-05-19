@@ -3,6 +3,7 @@ package controller;
 import model.*;
 import model.chat.ChatObject;
 import model.chat.ChatStatus;
+import model.chat.ChatsWith;
 import model.chat.MessageObject;
 import model.search.AdvancedSearchResult;
 import model.search.SearchObject;
@@ -171,11 +172,6 @@ public class GUIController extends Thread {
             view.getAdvancedSearch().displayResults(result);
         }
     }
-    // todo: Kasper fixar
-    /*public void uploadActiveChats(ArrayList<ChatsWith> message) {
-        view.uploadChats(message);
-    } */
-
 
     public void displaySearchResult(Book[] books) {
         if(books.length == 0) {
