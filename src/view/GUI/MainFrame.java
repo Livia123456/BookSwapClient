@@ -25,6 +25,7 @@ public class MainFrame extends JFrame {
     private MyWishList myWishList;
     private MyBooks myBooks;
     private UpLoadABook upLoadABook;
+    private EditBook editBook;
 
     public MainFrame(Controller controller) {
         this.controller = controller;
@@ -179,6 +180,19 @@ public class MainFrame extends JFrame {
 
         getContentPane().removeAll();
         setContentPane(upLoadABook);
+        getContentPane().revalidate();
+        getContentPane().repaint();
+    }
+
+    public void editBook(Book book) {
+        editBook = new EditBook(controller, book);
+        editBook.setVisible(true);
+
+        setSize(1100, 700);
+        setLocationRelativeTo(null);
+
+        getContentPane().removeAll();
+        setContentPane(editBook);
         getContentPane().revalidate();
         getContentPane().repaint();
     }

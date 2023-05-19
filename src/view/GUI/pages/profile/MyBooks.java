@@ -23,6 +23,7 @@ public class MyBooks extends ProfilePage implements ActionListener {
     private JScrollPane scrollPane;
     private Book[] myBooks;
     private JButton[] buttons;
+    private JButton[] editButtons;
     private GUIController controller;
 
 
@@ -32,6 +33,7 @@ public class MyBooks extends ProfilePage implements ActionListener {
         myBooks = new Book[currentUsersUploadedBooks.size()];
         myBooks = currentUsersUploadedBooks.toArray(myBooks);
         buttons = new JButton[myBooks.length];
+        editButtons = new JButton[myBooks.length];
         setUp();
     }
 
@@ -119,9 +121,13 @@ public class MyBooks extends ProfilePage implements ActionListener {
 
 
         JButton button = new JButton("Delete book");
+        JButton editButton = new JButton("Edit book");
+        editButton.setSize(100, 20);
+        editButton.addActionListener(this);
         button.setSize(100, 20);
         button.addActionListener(this);
         buttons[i] = button;
+        editButtons[i] = editButton;
 
         panel.add(Box.createRigidArea(new Dimension(0,5)));
         panel.add(title);
@@ -129,6 +135,7 @@ public class MyBooks extends ProfilePage implements ActionListener {
         textPanel.add(text);
         textPanel.add(Box.createHorizontalGlue());
         textPanel.add(button);
+        textPanel.add(editButton);
         panel.add(textPanel);
         panel.setBorder(new MatteBorder(0, 0, 1, 0, Color.BLACK));
 
@@ -148,6 +155,9 @@ public class MyBooks extends ProfilePage implements ActionListener {
                     throw new RuntimeException(ex);
                 }
                 controller.myBooks();
+            }
+            else if (e.getSource() == editButtons[i]) {
+                controller.editBook(myBooks[i]);
             }
         }
 
