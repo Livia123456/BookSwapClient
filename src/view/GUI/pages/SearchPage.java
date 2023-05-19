@@ -26,13 +26,14 @@ public class SearchPage extends PageWithMenu implements ActionListener {
 
     private JButton searchButton = new JButton("Search");
     private JButton advancedSearchButton = new JButton("Advanced search");
-    private JButton myWishListButton = new JButton("My wish list");
+    private JLabel myWishListLabel = new JLabel("My wish list");
+    private JPanel wishListPanel;
     private JTextArea searchField;
     private SearchController searchController;
     private JLabel error;
     private JLabel bookLabel1;
-    private JLabel bookLabel2;
     private JScrollPane scrollPane;
+    private JScrollPane scrollPaneMyWishList;
     private JButton[] startChatButtons;
     private StartChatListener startChatListener;
     private Controller controller;
@@ -68,22 +69,47 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         advancedSearchButton.setBounds(107, 180, 130, 26);
         advancedSearchButton.addActionListener(this);
 
-        myWishListButton.setFont(new Font("Calibri", Font.ITALIC, 17));
-        myWishListButton.setBounds(675, 128, 150, 32);
-        myWishListButton.addActionListener(this);
+        myWishListLabel.setFont(new Font("Calibri", Font.ITALIC, 22));
+        myWishListLabel.setForeground(Color.BLACK);
+        myWishListLabel.setBounds(800, 90, 150, 32);
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.setBackground(Color.WHITE);
+
+        //books = new Book[result.getBooks().size()];
+        //books = result.getBooks().toArray(new Book[0]);
+
+        for (int i = 0; i < 100; i++) {
+            JLabel text = new JLabel(String.valueOf(i));
+            panel.add(text);
+        }
+
+        panel.add(Box.createHorizontalGlue());
+        panel.add(Box.createVerticalGlue());
+
+        scrollPaneMyWishList = new JScrollPane(panel);
+        scrollPaneMyWishList.setBackground(Color.WHITE);
+        scrollPaneMyWishList.setBorder(new LineBorder(Color.GREEN));
+        scrollPaneMyWishList.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPaneMyWishList.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPaneMyWishList.setBounds(700, 132, 380, 530);
+
+        scrollPaneMyWishList.revalidate();
+        scrollPaneMyWishList.repaint();
+        add(scrollPaneMyWishList);
+        revalidate();
+        repaint();
 
 
         try {
             BufferedImage book1 = ImageIO.read(new File("files/Book1.jpg"));
-            BufferedImage book2 = ImageIO.read(new File("files/Book2.jpg"));
 
             bookLabel1 = new JLabel(new ImageIcon(book1));
             bookLabel1.setBounds(15, 250, 500, 500);
 
-            bookLabel2 = new JLabel(new ImageIcon(book2));
-            bookLabel2.setBounds(600, 250, 550, 500);
             add(bookLabel1);
-            add(bookLabel2);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -92,7 +118,8 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         add(searchField);
         add(searchButton);
         add(advancedSearchButton);
-        add(myWishListButton);
+        add(myWishListLabel);
+        add(scrollPaneMyWishList);
 
         super.menuSetUp();
         super.setBookMarketButtonFalse();
@@ -106,16 +133,11 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         } else if (e.getSource() == advancedSearchButton) {
             controller.getGui().advanceSearch();
         }
-
-        else if (e.getSource() == myWishListButton) {
-            displayMyWishListResults();
-        }
     }
 
     public void displayResults(Book[] books) {
         try {
             remove(bookLabel1);
-            remove(bookLabel2);
             remove(scrollPane);
             remove(error);
         } catch (Exception e) {}
@@ -140,7 +162,7 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         scrollPane.setBorder(new LineBorder(Color.PINK));
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollPane.setBounds(113, 210, 560, 460);
+        scrollPane.setBounds(113, 210, 560, 452);
 
         scrollPane.revalidate();
         scrollPane.repaint();
@@ -214,43 +236,6 @@ public class SearchPage extends PageWithMenu implements ActionListener {
 
 
         return panel;
-    }
-
-    public void displayMyWishListResults() {
-        Book[] books = new Book[10];
-        try {
-            remove(bookLabel1);
-            remove(bookLabel2);
-            remove(scrollPane);
-            remove(error);
-        } catch (Exception e) {}
-
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-        panel.setBackground(Color.WHITE);
-
-//        books = new Book[result.getBooks().size()];
-//        books = result.getBooks().toArray(new Book[0]);
-
-        /*for (int i = 0; i < books.length; i++) {
-            panel.add(addBook(books[i], i));
-        }*/
-
-        panel.add(Box.createHorizontalGlue());
-        panel.add(Box.createVerticalGlue());
-
-        scrollPane = new JScrollPane(panel);
-        scrollPane.setBackground(Color.WHITE);
-        scrollPane.setBorder(new LineBorder(Color.PINK));
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollPane.setBounds(700, 180, 300, 460);
-
-        scrollPane.revalidate();
-        scrollPane.repaint();
-        add(scrollPane);
-        revalidate();
-        repaint();
 
     }
 
