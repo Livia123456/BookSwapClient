@@ -16,7 +16,10 @@ public class BookController { //TODO fixa så att null aldrig visas (eller spara
 
     public void uploadBook(Book book) {
         controller.getServer().sendMessage(book);
+    }
 
+    public void updateBook(Book book) {
+        controller.getServer().sendMessage(book);
     }
 
 
