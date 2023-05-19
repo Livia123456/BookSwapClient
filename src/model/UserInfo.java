@@ -30,6 +30,8 @@ public class UserInfo implements Serializable {
         this.chatsWith = new ArrayList<>();
     }
 
+    public UserInfo() {}
+
     public UserInfo(int userId, String name, Email email) {
         this.email = email;
         this.userId = userId;
@@ -85,5 +87,57 @@ public class UserInfo implements Serializable {
 
     public void setProfileImage(ImageIcon profileImage) {
         this.profileImage = profileImage;
+    }
+
+    private class UserBuilder {
+        private UserInfo userInfo;
+
+        public UserBuilder() {
+            userInfo = new UserInfo();
+        }
+
+        public UserBuilder email(Email email){
+            userInfo.email = email;
+            return this;
+        }
+
+        public UserBuilder name(String name) {
+            userInfo.name = name;
+            return this;
+        }
+
+        public UserBuilder userId(int userId) {
+            userInfo.userId = userId;
+            return this;
+        }
+
+        public UserBuilder password(String password) {
+            userInfo.password = password;
+            return this;
+        }
+
+        public UserBuilder correctInfo(boolean correctInfo) {
+            userInfo.correctInfo = correctInfo;
+            return this;
+        }
+
+        public UserBuilder uploadedBooks(ArrayList<Book> uploadedBooks) {
+            userInfo.currentUsersUploadedBooks = uploadedBooks;
+            return this;
+        }
+
+        public UserBuilder chatsWith(ArrayList<ChatsWith> chatsWiths) {
+            userInfo.chatsWith = chatsWiths;
+            return this;
+        }
+
+        public UserBuilder profileImage(ImageIcon imageIcon) {
+            userInfo.profileImage = imageIcon;
+            return this;
+        }
+
+        public UserInfo build() {
+            return userInfo;
+        }
     }
 }
