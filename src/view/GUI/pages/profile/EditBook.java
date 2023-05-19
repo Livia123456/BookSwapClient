@@ -2,6 +2,7 @@ package view.GUI.pages.profile;
 
 import controller.Controller;
 import model.Book;
+import model.BookUpdate;
 import view.GUI.ProfilePage;
 
 import javax.swing.*;
@@ -174,11 +175,11 @@ public class EditBook extends ProfilePage implements ActionListener {
             boolean hasTitle = (titleField.getText() != null && !titleField.getText().isEmpty());
             boolean hasAuthor = (authorField.getText() != null && !authorField.getText().isEmpty());
             if(hasTitle && hasAuthor) {
-                Book book = new Book.BookBuilder().title(titleField.getText()).author(authorField.getText())
-                        .release_date(yearField.getText()).genre(genreComboBox.getSelectedItem().toString())
+                BookUpdate book = new BookUpdate.BookUpdateBuilder().title(titleField.getText()).author(authorField.getText())
+                        .year(yearField.getText()).genre(genreComboBox.getSelectedItem().toString())
                         .isbn(iSBNField.getText()).edition(editionField.getText()).
                         publisher(publisherField.getText()).uploadedBy(controller.getCurrentUser()).build();
-                controller.getBookController().uploadBook(book);
+                controller.getBookController().updateBook(book);
             } else {
                 errorMessage.setText("You need to enter both title and author");
             }

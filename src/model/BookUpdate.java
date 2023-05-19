@@ -3,13 +3,14 @@ package model;
 public class BookUpdate {
 
     private final static long serialVersionUID = 1243412L;
-    String title;
-    String author;
-    String isbn;
-    String edition;
-    String publisher;
-    String year;
-    String genre;
+    private String title;
+    private String author;
+    private String isbn;
+    private String edition;
+    private String publisher;
+    private String year;
+    private String genre;
+    private UserInfo uploadedBy;
 
     public BookUpdate() {}
 
@@ -41,7 +42,7 @@ public class BookUpdate {
         return genre;
     }
 
-    private class BookUpdateBuilder {
+    public static class BookUpdateBuilder {
         private BookUpdate newBookInfo;
 
         public BookUpdateBuilder() {
@@ -80,6 +81,11 @@ public class BookUpdate {
 
         public BookUpdateBuilder genre(String genre) {
             newBookInfo.genre = genre;
+            return this;
+        }
+
+        public BookUpdateBuilder uploadedBy(UserInfo userInfo) {
+            newBookInfo.uploadedBy = userInfo;
             return this;
         }
 
