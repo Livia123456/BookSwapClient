@@ -1,6 +1,7 @@
 package controller;
 
 import model.Book;
+import model.BookUpdate;
 
 /**
  * This class is responsible for handling methods concerning book objects on the client-side.
@@ -18,9 +19,8 @@ public class BookController { //TODO fixa så att null aldrig visas (eller spara
         controller.getServer().sendMessage(book);
     }
 
-    public void updateBook(Book book) {
+    public void updateBook(BookUpdate book) {
         controller.getServer().sendMessage(book);
     }
-
 
 }
