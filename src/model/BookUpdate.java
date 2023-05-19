@@ -1,8 +1,11 @@
 package model;
 
-public class BookUpdate {
+import java.io.Serializable;
+
+public class BookUpdate implements Serializable {
 
     private final static long serialVersionUID = 1243412L;
+    private int bookId;
     private String title;
     private String author;
     private String isbn;
@@ -47,6 +50,11 @@ public class BookUpdate {
 
         public BookUpdateBuilder() {
             newBookInfo = new BookUpdate();
+        }
+
+        public BookUpdateBuilder bookId(int bookId) {
+            newBookInfo.bookId = bookId;
+            return this;
         }
 
         public BookUpdateBuilder title(String title) {

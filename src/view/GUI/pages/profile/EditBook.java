@@ -29,10 +29,12 @@ public class EditBook extends ProfilePage implements ActionListener {
     private JButton editBook;
     private Controller controller;
     private JLabel errorMessage;
+    private int bookId;
 
     public EditBook(Controller controller, Book book) {
         super(controller);
         this.controller = controller;
+        this.bookId = book.getBook_id();
         setUp();
         populateTexfieldsWithBookInfo(book);
     }
@@ -178,7 +180,7 @@ public class EditBook extends ProfilePage implements ActionListener {
                 BookUpdate book = new BookUpdate.BookUpdateBuilder().title(titleField.getText()).author(authorField.getText())
                         .year(yearField.getText()).genre(genreComboBox.getSelectedItem().toString())
                         .isbn(iSBNField.getText()).edition(editionField.getText()).
-                        publisher(publisherField.getText()).uploadedBy(controller.getCurrentUser()).build();
+                        publisher(publisherField.getText()).uploadedBy(controller.getCurrentUser()).bookId(bookId).build();
                 controller.getBookController().updateBook(book);
             } else {
                 errorMessage.setText("You need to enter both title and author");
