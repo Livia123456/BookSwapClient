@@ -40,6 +40,8 @@ public class ChatPage extends JPanel implements ActionListener {
     private JButton chatButton = new JButton("Chat");
     private JButton bookSwapButton;
     private JLabel profilePictureLabel;
+    private JLabel profilePicture;
+    private JLabel profilePicLabel;
     private JLabel profileNameLabel;
 
 
@@ -93,7 +95,18 @@ public class ChatPage extends JPanel implements ActionListener {
         contactsPanel = new JPanel();
         contactsPanel.setPreferredSize(new Dimension(200, profilePanel.getHeight()));
         contactsPanel.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
+        //contactsPanel.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
         contactsPanel.setBackground(Color.WHITE);
+
+
+        Image originalImage = controller.getCurrentUser().getProfileImage().getImage();
+        Image scaledImage = originalImage.getScaledInstance(180, 180, Image.SCALE_SMOOTH);
+        ImageIcon resizedImageIcon = new ImageIcon(scaledImage);
+        profilePicLabel = new JLabel(resizedImageIcon);
+        profilePicLabel.setAlignmentY(Component.TOP_ALIGNMENT);
+        contactsPanel.add(profilePicLabel);
+
+
 
         for (int i = 0; i < contacts.size(); i++) {
 
@@ -142,11 +155,12 @@ public class ChatPage extends JPanel implements ActionListener {
 
 
         JPanel chatPanel = new JPanel(new BorderLayout());
-        chatArea = new JTextArea(20, 50);
+        chatArea = new JTextArea(20, 30);
         chatArea.setEditable(false);
 
         JScrollPane chatScroll = new JScrollPane(chatArea);
-        chatScroll.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
+        //chatScroll.setBorder(BorderFactory.createEmptyBorder(50, 10, 10, 10));
+        chatScroll.setBorder(BorderFactory.createEmptyBorder(160, 80, 60, 80));
         chatScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         chatScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         chatPanel.add(chatScroll, BorderLayout.CENTER);
@@ -210,6 +224,7 @@ public class ChatPage extends JPanel implements ActionListener {
 
             if (e.getSource() == button) {
                 chatController.openChatWith(i);
+               // chatArea.setText("");
                 button.setEnabled(false);
             } else {
                 button.setEnabled(true);
