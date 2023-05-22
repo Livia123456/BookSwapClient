@@ -4,8 +4,10 @@ import model.Book;
 import model.chat.ChatObject;
 import model.chat.ChatStatus;
 import model.search.AdvancedSearchObject;
+import model.search.AdvancedSearchResult;
 import model.search.SearchObject;
 import model.search.SearchResult;
+import view.GUI.pages.AdvancedSearch;
 
 /**
  * Responsible for search object to be sent to the sendMessage method (in serverConnection).
@@ -28,6 +30,9 @@ public class SearchController {
 
     public void search(String isbn, String title, String author, String genre, String year,
                        String edition, String publisher) {
+        if(genre.equals("-") || genre.equals("--")) {
+            genre = "";
+        }
         controller.getServer().sendMessage(new AdvancedSearchObject(isbn, title, author, genre,
                 year, edition, publisher));
     }
@@ -37,6 +42,13 @@ public class SearchController {
         books = new Book[result.getBooks().size()];
         books = result.getBooks().toArray(new Book[0]);
         controller.getGui().displaySearchResult(books);
+    }
+
+    public void displaySearchResult(AdvancedSearchResult result) {
+        //this.searchResult = result;
+        books = new Book[result.getBooks().size()];
+        books = result.getBooks().toArray(new Book[0]);
+        controller.getGui().displayAdvancedSearchResult(books);
     }
 
     public void startChatWith(int i) {

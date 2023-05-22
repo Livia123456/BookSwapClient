@@ -2,6 +2,7 @@ package view.GUI.pages;
 
 import controller.Controller;
 import controller.GUIController;
+import controller.SearchController;
 import model.*;
 import model.Book;
 import model.search.AdvancedSearchResult;
@@ -31,14 +32,6 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
     private Book[] books;
     private JButton[] startChatButtons;
     private StartChatListener startChatListener;
-
-    public AdvancedSearch(Controller controller) {
-        super(controller);
-        this.controller = controller;
-        startChatListener = new StartChatListener();
-        setUp();
-    }
-
     private JTextField titleField;
     private JTextField authorField;
     private JComboBox genreComboBox;
@@ -47,6 +40,15 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
     private JTextField iSBNField;
     private JTextField publisherField;
     private JPanel bookPanel;
+    private SearchController searchController;
+
+    public AdvancedSearch(Controller controller) {
+        super(controller);
+        this.controller = controller;
+        this.searchController = controller.getSearchController();
+        startChatListener = new StartChatListener();
+        setUp();
+    }
 
     public void setUp() {
 
@@ -78,7 +80,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         genre.setFont(new Font("Serif", Font.BOLD, 16));
         genre.setBounds(30, 260, 100, 20);
 
-        genreComboBox = new JComboBox<>(new String[]{"--","Fiction", "Data Science", "HCI", "Mathematics",
+        genreComboBox = new JComboBox<>(new String[]{"-","Fiction", "Data Science", "HCI", "Mathematics",
                 "Language Arts", "Fine Arts", "Physical Education", "Religion"});
         genreComboBox.setMaximumRowCount(5);
         genreComboBox.setBackground(Color.WHITE);
@@ -160,13 +162,13 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
     }
 
 
-    public void displayResults(AdvancedSearchResult result) {
+    public void displayResults(Book[] books) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.setBackground(Color.WHITE);
 
-        books = new Book[result.getBooks().size()];
-        books = result.getBooks().toArray(new Book[0]);
+        //books = new Book[result.getBooks().size()];
+        //books = result.getBooks().toArray(new Book[0]);
         startChatButtons = new JButton[books.length];
 
         for (int i = 0; i < books.length; i++) {
@@ -270,7 +272,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
             boolean noIsbn = (iSBNField.getText() == null || iSBNField.getText().isEmpty());
             boolean noTitle = (titleField.getText() == null || titleField.getText().isEmpty());
             boolean noAuthor = (authorField.getText() == null || authorField.getText().isEmpty());
-            boolean noGenre = (genreComboBox.getSelectedItem().equals("--"));
+            boolean noGenre = (genreComboBox.getSelectedItem().equals("-"));
             boolean noYear = (yearField.getText() == null ||yearField.getText().isEmpty());
             boolean noEdition = (editionField.getText() == null || editionField.getText().isEmpty());
             boolean noPublisher = (publisherField.getText() == null || publisherField.getText().isEmpty());
@@ -309,8 +311,7 @@ public class AdvancedSearch extends PageWithMenu implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (int i = 0; i < startChatButtons.length; i++) {
                 if (e.getSource() == startChatButtons[i]) {
-                    //TODO starta chat
-                    //books[i].getUploadedBy(); nånting sånt
+                    searchController.startChatWith(i);
                 }
             }
         }

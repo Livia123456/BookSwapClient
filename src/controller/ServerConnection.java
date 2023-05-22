@@ -63,11 +63,11 @@ public class ServerConnection extends Thread{
                 while ((message = ois.readObject()) != null) {
                     if (message instanceof UserInfo) {
                         controller.tryLoggingIn((UserInfo) message);
-                        if(((UserInfo) message).getProfileImage() != null) {
+                        if(((UserInfo) message).getProfileImage() != null) { //borde denna koden flyttas??
                             controller.getCurrentUser().setProfileImage(((UserInfo) message).getProfileImage());
                         }
                     }
-                    else if (message instanceof String) {
+                    else if (message instanceof String) { //används ej??
                         System.out.println(message);
                     }
                     else if (message instanceof Email) {
@@ -77,7 +77,8 @@ public class ServerConnection extends Thread{
                         controller.getGui().bookReceived((Book) message);
                     }
                     else if (message instanceof AdvancedSearchResult) {
-                        controller.getGui().displayAdvancedSearchResult((AdvancedSearchResult) message);
+                        //controller.getGui().displayAdvancedSearchResult((AdvancedSearchResult) message);
+                        controller.getSearchController().displaySearchResult((AdvancedSearchResult) message);
                     }
 
                     else if (message instanceof SearchResult) {

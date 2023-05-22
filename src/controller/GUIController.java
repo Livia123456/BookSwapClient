@@ -163,13 +163,12 @@ public class GUIController extends Thread {
     }
 
 
-    public void displayAdvancedSearchResult(AdvancedSearchResult result) {
-        System.out.println("Sökresultat mottaget");
-        if(result.getBooks().size() == 0) {
+    public void displayAdvancedSearchResult(Book[] books) {
+        if(books.length == 0) {
             view.getAdvancedSearch().displayErrorMessage();
 
         } else {
-            view.getAdvancedSearch().displayResults(result);
+            view.getAdvancedSearch().displayResults(books);
         }
     }
 
