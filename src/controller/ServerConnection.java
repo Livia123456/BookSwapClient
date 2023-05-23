@@ -77,12 +77,10 @@ public class ServerConnection extends Thread{
                         controller.getGui().bookReceived((Book) message);
                     }
                     else if (message instanceof AdvancedSearchResult) {
-                        //controller.getGui().displayAdvancedSearchResult((AdvancedSearchResult) message);
                         controller.getSearchController().displaySearchResult((AdvancedSearchResult) message);
                     }
 
                     else if (message instanceof SearchResult) {
-                        //controller.getGui().displaySearchResult((SearchResult) message);
                         controller.getSearchController().displaySearchResult((SearchResult) message);
                     }
 

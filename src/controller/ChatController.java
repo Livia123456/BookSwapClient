@@ -1,6 +1,7 @@
 package controller;
 
 
+import model.Book;
 import model.chat.*;
 import view.GUI.pages.ChatPage;
 
@@ -21,7 +22,7 @@ public class ChatController {
     private String name;
     private int currentContactId;
     private int buttonIndex;
-    private String[] titleOfUsersBooks;
+    //private String[] titleOfUsersBooks;
     private ChatPage chatPage;
     private Loading load;
 
@@ -80,7 +81,7 @@ public class ChatController {
         currentContactId = chatsWith.getUserId();
         controller.getServer().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
         load.startLoading();
-        updateAvailableBooks(contacts.get(i).getName());//TODO
+        updateAvailableBooks(contacts.get(i));//TODO
     }
 
     private void uploadProfileImage(int id) {
@@ -102,25 +103,27 @@ public class ChatController {
         for (int i = 0; i < contacts.size(); i++) {
             if (currentContactId == contacts.get(i).getUserId()) {
                 contacts.get(i).getUser().setProfileImage(image);
+                break;
             }
         }
         uploadProfileImage(buttonIndex);
     }
 
-    private void updateAvailableBooks(String name) {
-        titleOfUsersBooks = new String[]{"bok1", "bok2"};
-        String books = "";
-        for (int i = 0; i < titleOfUsersBooks.length; i++) {
-            books += titleOfUsersBooks[i] + "\n";
+    private void updateAvailableBooks(ChatsWith chatsWith) {
+        ArrayList<Book> titleOfUsersBooks = chatsWith.getUser().getCurrentUsersUploadedBooks();
+        String books = "<html>";
+        for (int i = 0; i < titleOfUsersBooks.size(); i++) {
+            books += titleOfUsersBooks.get(i).getTitle() + "<br/>";
         }
-        chatPage.updateProfilePanel(books, name);
+        books += "</html>";
+        chatPage.updateProfilePanel(books, chatsWith.getName());
     }
 
     public void startChatFromSearch(StartChat message) {
         populateChat(message.getContacts());
         chatsWith = message.getChatsWith();
         addChatHistory(message.getMessages());
-        updateAvailableBooks(message.getChatsWith().getName());
+        updateAvailableBooks(chatsWith);
     }
 
 }

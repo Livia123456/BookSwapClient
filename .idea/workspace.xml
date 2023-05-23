@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/BookUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BookUpdate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/profile/EditBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/profile/EditBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/chat/ChatsWith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/chat/ChatsWith.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,13 +209,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/ChatController.java</url>
-          <line>56</line>
+          <line>57</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/ChatController.java</url>
-          <line>72</line>
+          <line>73</line>
           <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/controller/ChatController.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
         <breakpoint type="java-exception">
           <properties class="java.lang.IllegalArgumentException" package="java.lang" />

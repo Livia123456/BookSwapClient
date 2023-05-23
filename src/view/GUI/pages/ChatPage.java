@@ -2,6 +2,7 @@ package view.GUI.pages;
 
 import controller.ChatController;
 import controller.Controller;
+import model.Book;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -252,7 +253,7 @@ public class ChatPage extends JPanel implements ActionListener {
         profilePanel.add(profileNameLabel);
         profilePanel.add(theUsersBooksLabel);
 
-        bookTitle = new JLabel(books);
+        bookTitle = new JLabel(books, SwingConstants.LEFT);
         bookTitle.setFont(new Font("Calibri", Font.ITALIC, 16));
         profilePanel.add(bookTitle);
         profilePanel.add(glue);
