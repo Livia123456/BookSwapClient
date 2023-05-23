@@ -89,6 +89,7 @@ public class GUIController extends Thread {
     }
 
     public void bookMarket() {
+        controller.getSearchController().search("");
         view.search();
     }
 

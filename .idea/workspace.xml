@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/chat/ChatsWith.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/chat/ChatsWith.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/ChatPage.java" afterDir="false" />
-    </list>
+    <list default="true" id="54f68d45-63ae-4a3e-bfcc-08f9a3db5efd" name="Changes" comment="new classes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

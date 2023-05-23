@@ -127,7 +127,8 @@ public class SearchPage extends PageWithMenu implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == searchButton) {
+        if (e.getSource() == searchButton && searchField.getText() != null
+                && !searchField.getText().isEmpty()) {
             searchController.search(searchField.getText());
 
         } else if (e.getSource() == advancedSearchButton) {
@@ -247,7 +248,7 @@ public class SearchPage extends PageWithMenu implements ActionListener {
 
         error = new JLabel("No matching books found");
         error.setFont(new Font("Calibri", Font.ITALIC, 20));
-        error.setBounds(125, 190, 600, 24);
+        error.setBounds(125, 210, 600, 24);
 
         error.revalidate();
         error.repaint();
