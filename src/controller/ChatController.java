@@ -81,21 +81,23 @@ public class ChatController {
         currentContactId = chatsWith.getUserId();
         controller.getServer().sendMessage(new ChatObject(userId, chatsWith.getUserId(), ChatStatus.open));
         load.startLoading();
-        updateAvailableBooks(contacts.get(i));//TODO
+        updateAvailableBooks(contacts.get(i));
+    }
+    public void updateImage(ImageIcon img) {
+        if (img == null) {
+            Image originalImage = new ImageIcon("files/user.jpg").getImage();
+            Image scaledImage = originalImage.getScaledInstance(180, 180, Image.SCALE_SMOOTH);
+            ImageIcon resizedImageIcon = new ImageIcon(scaledImage);
+            chatPage.setProfileImage(resizedImageIcon);
+        } else {
+            chatPage.setProfileImage(img);
+        }
     }
 
     private void uploadProfileImage(int id) {
         if (load.stopLoading()) {
             ImageIcon img = contacts.get(id).getUser().getProfileImage();
-
-            if (img == null) {
-                Image originalImage = new ImageIcon("files/user.jpg").getImage();
-                Image scaledImage = originalImage.getScaledInstance(180, 180, Image.SCALE_SMOOTH);
-                ImageIcon resizedImageIcon = new ImageIcon(scaledImage);
-                chatPage.setProfileImage(resizedImageIcon);
-            } else {
-                chatPage.setProfileImage(img);
-            }
+            updateImage(img);
         }
     }
 
@@ -122,6 +124,8 @@ public class ChatController {
     public void startChatFromSearch(StartChat message) {
         populateChat(message.getContacts());
         chatsWith = message.getChatsWith();
+        currentContactId = message.getChatsWith().getUserId();
+        updateImage(message.getImage());
         addChatHistory(message.getMessages());
         updateAvailableBooks(chatsWith);
     }
