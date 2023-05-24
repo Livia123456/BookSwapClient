@@ -76,6 +76,7 @@ public class ChatController {
     }
 
     public void openChatWith(int i) {
+        load.stopLoading();
         buttonIndex = i;
         chatsWith = contacts.get(i);
         currentContactId = chatsWith.getUserId();
