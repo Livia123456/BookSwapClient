@@ -158,6 +158,15 @@ public class GUIController extends Thread {
         }
     }
 
+    public void bookUpdateRecieved(BookUpdate book) {
+        if(book.infoIsChanged()) {
+            view.changeSuccessful();
+        } else {
+            view.changeFailed();
+        }
+
+    }
+
     public void removeBook(Book book) {
         BookToDelete bookToDelete = new BookToDelete(book.getBook_id());
         controller.getServer().sendMessage(bookToDelete);

@@ -72,9 +72,12 @@ public class ServerConnection extends Thread{
                     }
                     else if (message instanceof Email) {
                         controller.getGui().showRegistrationPage((Email) message);
-
-                    } else if (message instanceof Book) {
+                    }
+                    else if (message instanceof Book) {
                         controller.getGui().bookReceived((Book) message);
+                    }
+                    else if (message instanceof BookUpdate) {
+                        controller.getGui().bookUpdateRecieved((BookUpdate) message);
                     }
                     else if (message instanceof AdvancedSearchResult) {
                         controller.getSearchController().displaySearchResult((AdvancedSearchResult) message);

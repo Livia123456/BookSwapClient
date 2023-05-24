@@ -192,18 +192,12 @@ public class EditBook extends ProfilePage implements ActionListener {
 
     }
 
-    public void uploadSuccessful() {
-        iSBNField.setText("");
-        titleField.setText("");
-        authorField.setText("");
-        yearField.setText("");
-        editionField.setText("");
-        publisherField.setText("");
-        genreComboBox.setSelectedIndex(0);
-        errorMessage.setText("Book successfully uploaded");
+
+    public void updateSuccessful() {
+        errorMessage.setText("Book successfully updated");
     }
 
-    public void uploadUnsuccessful() {
-        errorMessage.setText("Unable to upload book");
+    public void failedToUpdate() {
+        errorMessage.setText("Failed to update book info");
     }
 }

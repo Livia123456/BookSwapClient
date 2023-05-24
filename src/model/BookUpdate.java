@@ -14,6 +14,7 @@ public class BookUpdate implements Serializable {
     private String year;
     private String genre;
     private UserInfo uploadedBy;
+    private boolean infoChanged;
 
     public BookUpdate() {}
 
@@ -44,6 +45,9 @@ public class BookUpdate implements Serializable {
     public String getGenre() {
         return genre;
     }
+
+    public boolean infoIsChanged() { return infoChanged; }
+    public void setInfoChanged(boolean value) { infoChanged = value; }
 
     public static class BookUpdateBuilder {
         private BookUpdate newBookInfo;

@@ -221,6 +221,14 @@ public class MainFrame extends JFrame {
     public ChatPage getChatPage() {
         return chatPage;
     }
+
+    public void changeSuccessful() {
+        editBook.updateSuccessful();
+    }
+
+    public void changeFailed() {
+        editBook.failedToUpdate();
+    }
 }
 
 
