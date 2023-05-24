@@ -13,7 +13,7 @@ public class Loading extends Thread{
     private ImageIcon load1;
     private ImageIcon load2;
     private ImageIcon load3;
-    private Semaphore mutex = new Semaphore(1);
+
 
     public Loading(ChatPage chatPage){
         this.chatPage = chatPage;
