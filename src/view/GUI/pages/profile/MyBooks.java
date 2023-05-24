@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 /**
  * This class inheritates from the Profile page and lets the user see its uploaded books.
- * @author, Livia Tengelin, Olle Huss
+ * @author Livia Tengelin, Olle Huss
  */
 
 public class MyBooks extends ProfilePage implements ActionListener {
@@ -102,23 +102,26 @@ public class MyBooks extends ProfilePage implements ActionListener {
         }
 
         String string = " av " + book.getAuthor();
-        if(book.getRelease_date() != null && !book.getRelease_date().isEmpty()) {
-            string += ", " + book.getRelease_date();
+        String str = book.getRelease_date();
+        if(str != null && !str.isEmpty() && !str.equals("null")) {
+            string += ", " + str;
         }
-        if(book.getGenre() != null && !book.getGenre().isEmpty()) {
-            string += ", " + book.getGenre();
+        str = book.getGenre();
+        if(str != null && !str.isEmpty() && !str.equals("null")) {
+            string += ", " + str;
         }
-        if(book.getEdition() != null && !book.getEdition().isEmpty()) {
-            string += ", " + book.getEdition();
+        str = book.getEdition();
+        if(str != null && !str.isEmpty() && !str.equals("null")) {
+            string += ", " + str;
         }
-        if(book.getPublisher() != null && !book.getPublisher().isEmpty()) {
-            string += ", " + book.getPublisher();
+        str = book.getPublisher();
+        if(str != null && !str.isEmpty() && !str.equals("null")) {
+            string += ", " + str;
         }
 
         JLabel description = new JLabel(string);
         description.setFont(new Font("Serif", Font.PLAIN, 14));
         text.add(description);
-
 
         JButton button = new JButton("Delete book");
         JButton editButton = new JButton("Edit book");

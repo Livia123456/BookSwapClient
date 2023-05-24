@@ -172,17 +172,21 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         }
 
         String string = " av " + book.getAuthor();
-        if(book.getRelease_date() != null && !book.getRelease_date().isEmpty()) {
-            string += ", " + book.getRelease_date();
+        String str = book.getRelease_date();
+        if(str != null && !str.isEmpty() && !str.equals("null")) {
+            string += ", " + str;
         }
-        if(book.getGenre() != null && !book.getGenre().isEmpty()) {
-            string += ", " + book.getGenre();
+        str = book.getGenre();
+        if(str != null && !str.isEmpty() && !str.equals("null")) {
+            string += ", " + str;
         }
-        if(book.getEdition() != null && !book.getEdition().isEmpty()) {
-            string += ", " + book.getEdition();
+        str = book.getEdition();
+        if(str != null && !str.isEmpty() && !str.equals("null")) {
+            string += ", " + str;
         }
-        if(book.getPublisher() != null && !book.getPublisher().isEmpty()) {
-            string += ", " + book.getPublisher();
+        str = book.getPublisher();
+        if(str != null && !str.isEmpty() && !str.equals("null")) {
+            string += ", " + str;
         }
 
         JLabel description = new JLabel(string);

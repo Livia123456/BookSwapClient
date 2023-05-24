@@ -10,6 +10,8 @@
       <change beforePath="$PROJECT_DIR$/src/controller/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ServerConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/BookUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BookUpdate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/MainFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/AdvancedSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/AdvancedSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/SearchPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GUI/pages/profile/EditBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GUI/pages/profile/EditBook.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
