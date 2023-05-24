@@ -27,7 +27,6 @@ public class ProfilePage extends PageWithMenu{
     //profile page buttons
     private JButton editPersonalInformation;
     private JButton uploadABook;
-    private JButton myWishList;
     private JButton myBooks;
     private JButton signOut;
     private JButton changePicture;
@@ -89,28 +88,23 @@ public class ProfilePage extends PageWithMenu{
 
     public void profilePageButtonsSetUp() {
         editPersonalInformation = new JButton("Edit personal information");
-        editPersonalInformation.setBounds(286, 120, 200, 26);
+        editPersonalInformation.setBounds(286, 120, 200, 32);
         editPersonalInformation.addActionListener(profilePageListener);
 
         uploadABook = new JButton("Upload a book");
-        uploadABook.setBounds(286, 160, 200, 26);
+        uploadABook.setBounds(286, 170, 200, 32);
         uploadABook.addActionListener(profilePageListener);
 
-        myWishList = new JButton("My wish list");
-        myWishList.setBounds(286, 200, 200, 26);
-        myWishList.addActionListener(profilePageListener);
-
         myBooks = new JButton("My books");
-        myBooks.setBounds(286, 240, 200, 26);
+        myBooks.setBounds(286, 220, 200, 32);
         myBooks.addActionListener(profilePageListener);
 
         signOut = new JButton("Sign out");
-        signOut.setBounds(286, 280, 200, 26);
+        signOut.setBounds(286, 270, 200, 32);
         signOut.addActionListener(profilePageListener);
 
         add(editPersonalInformation);
         add(uploadABook);
-        add(myWishList);
         add(myBooks);
         add(signOut);
     }
@@ -122,10 +116,6 @@ public class ProfilePage extends PageWithMenu{
 
     public void setUploadABookFalse() {
         this.uploadABook.setEnabled(false);
-    }
-
-    public void setMyWishListFalse() {
-        this.myWishList.setEnabled(false);
     }
 
     public void setMyBooksFalse() {
@@ -156,8 +146,6 @@ public class ProfilePage extends PageWithMenu{
 
             } else if (e.getSource() == uploadABook) {
                 controller.uploadBook();
-            } else if (e.getSource() == myWishList) {
-                controller.myWishList();
             } else if (e.getSource() == myBooks) {
                 controller.myBooks();
             } else if (e.getSource() == signOut) {

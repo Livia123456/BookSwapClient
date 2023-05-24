@@ -58,7 +58,7 @@ public class ChatPage extends JPanel implements ActionListener {
         MenuActionListener mal = new MenuActionListener();
         bookSwapButton = new JButton("BookSwap");
         bookSwapButton.setFont(new Font("Calibri", Font.PLAIN, 18));
-        bookSwapButton.setBounds(18, 46, 90, 22);
+        bookSwapButton.setBounds(18, 46, 100, 20);
         bookSwapButton.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         bookSwapButton.addActionListener(mal);
 

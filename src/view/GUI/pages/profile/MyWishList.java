@@ -135,7 +135,6 @@ public class MyWishList extends ProfilePage implements ActionListener {
         add(scrollPane);
 
         super.setUp();
-        super.setMyWishListFalse();
     }
 
     @Override
