@@ -32,6 +32,7 @@ public class SearchPage extends PageWithMenu implements ActionListener {
     private SearchController searchController;
     private JLabel error;
     private JLabel bookLabel1;
+    private JLabel bookLabel2;
     private JScrollPane scrollPane;
     private JScrollPane scrollPaneMyWishList;
     private JButton[] startChatButtons;
@@ -69,46 +70,18 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         advancedSearchButton.setBounds(107, 180, 130, 26);
         advancedSearchButton.addActionListener(this);
 
-        myWishListLabel.setFont(new Font("Calibri", Font.ITALIC, 22));
-        myWishListLabel.setForeground(Color.BLACK);
-        myWishListLabel.setBounds(800, 90, 150, 32);
-
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-        panel.setBackground(Color.WHITE);
-
-        //books = new Book[result.getBooks().size()];
-        //books = result.getBooks().toArray(new Book[0]);
-
-        for (int i = 0; i < 100; i++) {
-            JLabel text = new JLabel(String.valueOf(i));
-            panel.add(text);
-        }
-
-        panel.add(Box.createHorizontalGlue());
-        panel.add(Box.createVerticalGlue());
-
-        scrollPaneMyWishList = new JScrollPane(panel);
-        scrollPaneMyWishList.setBackground(Color.WHITE);
-        scrollPaneMyWishList.setBorder(new LineBorder(Color.GREEN));
-        scrollPaneMyWishList.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPaneMyWishList.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollPaneMyWishList.setBounds(700, 132, 380, 530);
-
-        scrollPaneMyWishList.revalidate();
-        scrollPaneMyWishList.repaint();
-        add(scrollPaneMyWishList);
-        revalidate();
-        repaint();
-
-
         try {
             BufferedImage book1 = ImageIO.read(new File("files/Book1.jpg"));
+            BufferedImage book2 = ImageIO.read(new File("files/Book6.png"));
 
             bookLabel1 = new JLabel(new ImageIcon(book1));
             bookLabel1.setBounds(15, 250, 500, 500);
 
+            bookLabel2 = new JLabel(new ImageIcon(book2));
+            bookLabel2.setBounds(680, 135, 400, 500);
+
             add(bookLabel1);
+            add(bookLabel2);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -118,8 +91,6 @@ public class SearchPage extends PageWithMenu implements ActionListener {
         add(searchField);
         add(searchButton);
         add(advancedSearchButton);
-        add(myWishListLabel);
-        add(scrollPaneMyWishList);
 
         super.menuSetUp();
         super.setBookMarketButtonFalse();
