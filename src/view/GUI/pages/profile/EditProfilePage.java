@@ -44,9 +44,9 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
         Font labelFont = new Font("Calibri", Font.PLAIN, 14);
         Font fieldFont = new Font("Calibri", Font.ITALIC, 11);
 
-        JLabel userName = new JLabel("User name:");
+        JLabel userName = new JLabel("New user name:");
         userName.setFont(labelFont);
-        userName.setBounds(640, 120, 100, 20);
+        userName.setBounds(615, 120, 120, 20);
 
         userNameField = new JTextField(controller.getCurrentUser().getName());
         userNameField.setFont(fieldFont);
@@ -54,17 +54,17 @@ public class EditProfilePage extends ProfilePage implements ActionListener {
         userNameField.setBorder(new LineBorder(Color.GRAY));
         userNameField.setBounds(740, 122, 260, 20);
 
-        JLabel password = new JLabel("Password:");
+        JLabel password = new JLabel("New password:");
         password.setFont(labelFont);
-        password.setBounds(640, 160, 100, 20);
+        password.setBounds(615, 160, 120, 20);
 
         passWordField = new JTextField();
         passWordField.setBorder(new LineBorder(Color.GRAY));
         passWordField.setBounds(740, 162, 260, 20);
 
-        JLabel eMail = new JLabel("E-mail:");
+        JLabel eMail = new JLabel("New e-mail:");
         eMail.setFont(labelFont);
-        eMail.setBounds(640, 200, 100, 20);
+        eMail.setBounds(615, 200, 120, 20);
 
         eMailField = new JTextField(controller.getCurrentUser().getEmail().getEmailAddress());
         eMailField.setFont(fieldFont);
