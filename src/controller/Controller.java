@@ -20,7 +20,7 @@ public class Controller {
 
 
     public Controller() {
-        server = new ServerConnection("127.0.0.1", 700, this);
+        server = new ServerConnection("172.20.10.7", 700, this);
         gui = new GUIController(this);
         registrationController = new RegistrationController(this);
         bookController = new BookController(this);
